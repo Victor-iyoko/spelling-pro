@@ -3,7 +3,8 @@
         class="category d-block position-relative text-decoration-none text-center mb-2 p-2 d-flex flex-column rounded-3"
         :to="`/game/${url}`">
         <h2 class="fs-5 fw-bold m-0">{{ name }}</h2>
-        <h6 class="fw-bold m-0" :style="{ 'color': name === 'PRACTICE' ? 'yellow' : 'white' }">{{ `YOUR BEST: ${score}` }}
+        <h6 class="fw-bold m-0" :style="{ 'color': name === 'PRACTICE' ? 'yellow' : 'white' }">{{ `YOUR BEST: ${score}`
+            }}
         </h6>
         <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" class="bi bi-star-fill"
             viewBox="0 0 16 16">
@@ -41,6 +42,11 @@ svg {
 
 .category {
     box-shadow: 3px 3px 4px #000000;
+}
+
+.category:hover {
+    background-color: #1e292c;
+    transition: all .4s ease-in-out;
 }
 
 h2 {
