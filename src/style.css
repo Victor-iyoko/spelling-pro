@@ -1,3 +1,8 @@
+/* @font-face {
+  font-family: 'Poppins-Light';
+  src: url('./Poppins-Light.ttf');
+} */
+
 body {
   background-image: linear-gradient(
     to right bottom,
@@ -5,6 +10,7 @@ body {
     #8f4d2f
   );
   font-family: Arial, Monospace, sans-serif;
+  /* font-family: 'Poppins-Light'; */
   width: 100%;
   height: 100vh;
   display: flex;
@@ -14,4 +20,8 @@ body {
 #app {
   width: 100%;
   height: 100%;
+}
+
+.text-shadow {
+  text-shadow: 0 2px 2px #000;
 }

@@ -17,13 +17,13 @@
                         <div class="form-check form-check-inline">
                             <input @click="handleTimeDep('new question')" class="form-check-input"
                                 :checked="formData.time.dependency === 'new question'" type="radio" name="time"
-                                id="inlineRadio1" value="new question">
+                                value="new question">
                             <label class="form-check-label" for="new question">New question</label>
                         </div>
                         <div class="form-check form-check-inline">
                             <input @click="handleTimeDep('end game')" class="form-check-input"
                                 :checked="formData.question.time === 'end game'" type="radio" name="time"
-                                id="inlineRadio2" value="end game">
+                                value="end game">
                             <label class="form-check-label" for="end game">End game</label>
                         </div>
                     </div>
@@ -38,9 +38,9 @@
                             </span>
                         </label>
                         <input v-if="formData.time.dependency === 'end game'" type="range" :value="formData.time.number"
-                            @click="handleTimeNum" class="form-range" min="1" max="5" step="1" id="customRange3">
+                            @click="handleTimeNum" class="form-range" min="1" max="5" step="1">
                         <input v-else type="range" :value="formData.time.number" @click="handleTimeNum"
-                            class="form-range" min="10" max="30" step="1" id="customRange3">
+                            class="form-range" min="10" max="30" step="1">
                     </div>
                     <div class="mb-3">
                         <label for="questions based on?" data-bs-toggle="tooltip" data-bs-placement="right"
@@ -49,13 +49,13 @@
                             your?</label>
                         <div class="form-check form-check-inline">
                             <input @click="handleQuestionDep('age')" :checked="formData.question.dependency === 'age'"
-                                class="form-check-input" type="radio" name="question" id="inlineRadio1" value="age">
+                                class="form-check-input" type="radio" name="question" value="age">
                             <label class="form-check-label" for="age">Age</label>
                         </div>
                         <div class="form-check form-check-inline">
                             <input @click="handleQuestionDep('class')"
                                 :checked="formData.question.dependency === 'class'" class="form-check-input"
-                                type="radio" name="question" id="inlineRadio2" value="class">
+                                type="radio" name="question" value="class">
                             <label class="form-check-label" for="class">Class</label>
                         </div>
                     </div>
@@ -67,7 +67,7 @@
                                 <span>{{ formData.question.number }}</span>
                             </label>
                             <input type="range" :value="formData.question.number" @click="handleQuestionNum"
-                                class="form-range" min="10" max="30" step="1" id="customRange3">
+                                class="form-range" min="10" max="30" step="1">
                         </div>
                     </Transition>
                     <div class="form-check form-switch d-flex ps-0">
@@ -75,7 +75,7 @@
                             title="Music and sound effects settings" class="form-label fw-bold me-5">
                             Sound:
                         </label>
-                        <input class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckChecked"
+                        <input class="form-check-input" name="checkbox" type="checkbox" role="switch"
                             :checked="formData.sound" @click="formData.sound = !formData.sound">
                     </div>
                 </div>

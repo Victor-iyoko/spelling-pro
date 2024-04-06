@@ -1,6 +1,6 @@
 <template>
     <div style="width: 80%; max-width: 500px;"
-        class="mt-3 w-100 d-flex ms-auto me-auto align-items-center justify-content-between">
+        class="mt-2 w-100 d-flex ms-auto me-auto align-items-center justify-content-between">
         <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor"
             style="color: rgb(255, 255, 0)" class="bi bi-gear m-2" data-bs-toggle="modal"
             data-bs-target="#staticBackdrop" viewBox="0 0 16 16">
