@@ -11,13 +11,13 @@
         <Category name="PRACTICE" score="271" url="practice" color="rgb(255, 255, 255)" />
         <Footer score="1792" />
     </div>
-    <Modal />
+    <Settings />
 </template>
 
 <script setup>
 import Title from '../components/Title.vue';
 import Category from '../components/Category.vue';
 import Footer from '../components/Footer.vue';
-import Modal from '../components/Modal.vue';
+import Settings from '../components/Settings.vue';
 
 </script>
