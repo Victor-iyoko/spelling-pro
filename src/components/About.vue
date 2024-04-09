@@ -22,9 +22,12 @@
                     experience for all.
                 </div>
                 <div class="modal-footer text-secondary">
-                    Inspired by
-                    <a href="http://play.google.com/store/apps/details?id=air.com.littlebigplay.spellingmaster&hl=en_US&gl=US"
-                        target="_blank" class="link-dark">Spelling Master</a>
+                    <p class="me-auto">@2024</p>
+                    <div>
+                        Inspired by
+                        <a href="http://play.google.com/store/apps/details?id=air.com.littlebigplay.spellingmaster&hl=en_US&gl=US"
+                            target="_blank" class="link-dark">Spelling Master</a>
+                    </div>
                 </div>
             </div>
         </div>
