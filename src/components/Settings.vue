@@ -99,8 +99,7 @@
                     </div>
                     <div class="mb-3">
                         <label for="lifes" data-bs-toggle="tooltip" data-bs-placement="right"
-                            title="Length of time is dependent on the countdown timer settings; New question(seconds), End game(min)"
-                            class="form-label">
+                            title="The number of attempts before game over" class="form-label">
                             <span class="fw-bold">Lifes: </span>
                             <span>
                                 {{ formData.lifes }}
