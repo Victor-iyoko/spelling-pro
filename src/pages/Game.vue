@@ -5,7 +5,7 @@
         <Transition mode="out-in">
             <Instructions @click="loadQuestions = true"
                 v-if="loadQuestions === false && startGame === false && questions.length === 0" />
-            <LoadingQuestions @click="start" @loadQuestions="start"
+            <LoadingQuestions @loadQuestions="start"
                 v-else-if="loadQuestions === true && startGame === false && questions.length === 0"
                 :questions="questions" />
             <div class="d-flex justify-content-center w-100 h-100"
@@ -15,11 +15,12 @@
                 <Decide v-else-if="gameMode === 'decide' || gameMode === 'decide-and-correct'" />
                 <WhichLetter v-else-if="gameMode === 'which-letter'" />
                 <MultipleChoice v-else-if="gameMode === 'multiple-choice'" />
+                <Spell v-else-if="gameMode === 'spell-it'" />
                 <h2 v-else>IT DOES NOT EXIST</h2>
             </div>
         </Transition>
     </Board>
-    <h3 :style="{ loadQuestions }" :class="[!loadQuestions ? 'tap' : 'opacity-0']"
+    <h3 :class="[!loadQuestions ? 'tap' : 'opacity-0']"
         class="text-shadow mx-auto text-center fw-bold text-white mt-2 mt-xl-4 mb-1 mb-xl-3 fs-3">TAP THE BOARD
     </h3>
 </template>
@@ -33,6 +34,7 @@ import SelectOne from '../components/games/SelectOne.vue';
 import Decide from '../components/games/Decide.vue';
 import WhichLetter from '../components/games/WhichLetter.vue';
 import MultipleChoice from '../components/games/MultipleChoice.vue';
+import Spell from '../components/games/Spell.vue';
 import { ref } from 'vue';
 import { useRoute } from 'vue-router';
 

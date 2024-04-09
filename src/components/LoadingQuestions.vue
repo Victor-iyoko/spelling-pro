@@ -1,31 +1,7 @@
 <template>
     <div class="w-100 h-100 d-flex flex-column justify-content-center align-items-center">
-        <!-- <div>
-            <div class="spinner-grow text-primary" role="status">
-                <span class="visually-hidden">Loading...</span>
-            </div>
-            <div class="spinner-grow text-secondary" role="status">
-                <span class="visually-hidden">Loading...</span>
-            </div>
-            <div class="spinner-grow text-success" role="status">
-                <span class="visually-hidden">Loading...</span>
-            </div>
-            <div class="spinner-grow text-danger" role="status">
-                <span class="visually-hidden">Loading...</span>
-            </div>
-            <div class="spinner-grow text-warning" role="status">
-                <span class="visually-hidden">Loading...</span>
-            </div>
-            <div class="spinner-grow text-info" role="status">
-                <span class="visually-hidden">Loading...</span>
-            </div>
-            <div class="spinner-grow text-dark" role="status">
-                <span class="visually-hidden">Loading...</span>
-            </div>
-        </div> -->
-
-
-        <h2>Loading...</h2>
+        <div class="spinner-border text-dark" role="status"></div>
+        <h2 class="fs-3 mt-2 text-center">Fetching words from chatgpt...</h2>
     </div>
 </template>
 

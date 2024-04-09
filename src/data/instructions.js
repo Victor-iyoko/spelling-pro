@@ -27,6 +27,10 @@ const instructionsArr = [
     [
         "4 WORD TO BE SHOWN!",
         "SELECT THE WORDS THAT ARE SPELT CORRECTLY OR INCORRECTLY ACCORDING TO THE INSTRUCTIONS!"
+    ],
+    [
+        "1 WORD TO BE SPOKEN!",
+        "SPELL THE WORD AS FAST AS POSSIBLE!"
     ]
 ];
 
