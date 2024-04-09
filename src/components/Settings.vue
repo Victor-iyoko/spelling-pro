@@ -83,7 +83,7 @@
                         </div>
                     </Transition>
                     <div class="mb-3">
-                        <label for="number of questions" data-bs-toggle="tooltip" data-bs-placement="right"
+                        <label for="time" data-bs-toggle="tooltip" data-bs-placement="right"
                             title="Length of time is dependent on the countdown timer settings; New question(seconds), End game(min)"
                             class="form-label">
                             <span class="fw-bold">Time: </span>
@@ -96,6 +96,18 @@
                             @click="handleTimeNum" class="form-range" min="1" max="5" step="1">
                         <input v-else type="range" :value="formData.time.number" @click="handleTimeNum"
                             class="form-range" min="10" max="30" step="1">
+                    </div>
+                    <div class="mb-3">
+                        <label for="lifes" data-bs-toggle="tooltip" data-bs-placement="right"
+                            title="Length of time is dependent on the countdown timer settings; New question(seconds), End game(min)"
+                            class="form-label">
+                            <span class="fw-bold">Lifes: </span>
+                            <span>
+                                {{ formData.lifes }}
+                            </span>
+                        </label>
+                        <input type="range" :value="formData.lifes" @click="handleLifes" class="form-range" min="1"
+                            max="7" step="1">
                     </div>
                     <div class="form-check form-switch d-flex ps-0">
                         <label for="number of questions" data-bs-toggle="tooltip" data-bs-placement="right"
@@ -125,6 +137,7 @@ const formData = ref({
     },
     class: "1",
     age: "7",
+    lifes: "5",
     sound: false
 });
 
@@ -150,6 +163,9 @@ function handleClass(e) {
 }
 function handleAge(e) {
     formData.value.age = e.target.value;
+}
+function handleLifes(e) {
+    formData.value.lifes = e.target.value;
 }
 function save() {
     console.log(formData.value);
