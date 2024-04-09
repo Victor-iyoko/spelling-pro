@@ -16,13 +16,13 @@
     background-color: #773516 !important;
     box-shadow: 4px 4px 4px rgba(0, 0, 0, 0.2),
         -5px -5px 5px rgba(255, 255, 255, 0.1);
-    /* box-shadow: 7px 4px 20px rgba(0, 0, 0, .5); */
+    overflow: hidden;
 }
 
 .inner {
     width: 92%;
     height: 90%;
-    box-shadow: inset 4px 4px 4px rgba(0, 0, 0, 0.4),
+    box-shadow: inset 4px 4px 8px rgba(0, 0, 0, 0.5),
         inset -5px -5px 5px rgba(255, 255, 255, 0.1);
 }
 </style>

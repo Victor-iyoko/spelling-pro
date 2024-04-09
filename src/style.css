@@ -2,12 +2,16 @@
   font-family: 'Poppins-Light';
   src: url('./Poppins-Light.ttf');
 } */
+@font-face {
+  font-family: 'PermanentMarker-Regular';
+  src: url('./PermanentMarker-Regular.ttf');
+}
 
 body {
   background-image: linear-gradient(
     to right bottom,
-    #773516,
-    #8f4d2f
+    #8f4d2f,
+    #773516
   );
   font-family: Arial, Monospace, sans-serif;
   /* font-family: 'Poppins-Light'; */
@@ -15,6 +19,7 @@ body {
   height: 100vh;
   display: flex;
   flex-direction: column;
+  /* overflow: hidden; */
 }
 
 #app {
