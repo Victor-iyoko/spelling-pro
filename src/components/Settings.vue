@@ -1,6 +1,6 @@
 <template>
     <!-- Modal -->
-    <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+    <div class="modal fade" id="settings" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
         aria-labelledby="staticBackdropLabel" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered">
             <div class="modal-content">
@@ -169,8 +169,7 @@ function save() {
 }
 
 input[type=radio]:focus,
-input[type=checkbox]:focus,
-.btn-close:focus {
+input[type=checkbox]:focus {
     box-shadow: none;
 }
 
