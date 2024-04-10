@@ -15,13 +15,14 @@
                             class="fw-bold d-block form-label">Questions should be based on
                             your?</label>
                         <div class="form-check form-check-inline">
-                            <input @click="handleQuestionDep('age')" :checked="formData.question.dependency === 'age'"
-                                class="form-check-input" type="radio" name="question" value="age">
+                            <input @click="handleSettings('question', 'age')"
+                                :checked="settings.$state.question.dependency === 'age'" class="form-check-input"
+                                type="radio" name="question" value="age">
                             <label class="form-check-label" for="age">Age</label>
                         </div>
                         <div class="form-check form-check-inline">
-                            <input @click="handleQuestionDep('class')"
-                                :checked="formData.question.dependency === 'class'" class="form-check-input"
+                            <input @click="handleSettings('question', 'class')"
+                                :checked="settings.$state.question.dependency === 'class'" class="form-check-input"
                                 type="radio" name="question" value="class">
                             <label class="form-check-label" for="class">Class</label>
                         </div>
@@ -30,7 +31,7 @@
                         <label for="number of questions" data-bs-toggle="tooltip" data-bs-placement="right"
                             title="Select the age or grade you belong to" class="form-label">
                             <Transition mode="out-in">
-                                <span class="fw-bold" v-if="formData.question.dependency === 'class'">
+                                <span class="fw-bold" v-if="settings.$state.question.dependency === 'class'">
                                     Class:
                                 </span>
                                 <span class="fw-bold" v-else>
@@ -38,19 +39,22 @@
                                 </span>
                             </Transition>
                             <Transition mode="out-in">
-                                <span v-if="formData.question.dependency === 'class'">
-                                    {{ " Grade " + formData.class }}
+                                <span v-if="settings.$state.question.dependency === 'class'">
+                                    {{ " Grade " + settings.$state.class }}
                                 </span>
                                 <span v-else>
-                                    {{ " " + formData.age + " years" }}
+                                    {{ " " + settings.$state.age + " years" }}
                                 </span>
                             </Transition>
                         </label>
                         <Transition mode="out-in">
-                            <input v-if="formData.question.dependency === 'class'" type="range" :value="formData.class"
-                                @click="handleClass" class="form-range" min="1" max="12" step="1">
-                            <input v-else type="range" :value="formData.age" @click="handleAge" class="form-range"
-                                min="7" max="20" step="1">
+                            <input v-if="settings.$state.question.dependency === 'class'" type="range"
+                                :value="settings.$state.class"
+                                @click="(e) => { handleSettings('class', e.target.value) }" class="form-range" min="1"
+                                max="12" step="1">
+                            <input v-else type="range" :value="settings.$state.age"
+                                @click="(e) => { handleSettings('age', e.target.value) }" class="form-range" min="7"
+                                max="20" step="1">
                         </Transition>
                     </div>
                     <div class="mb-3">
@@ -59,27 +63,28 @@
                             Countdown timer
                         </label>
                         <div class="form-check form-check-inline">
-                            <input @click="handleTimeDep('new question')" class="form-check-input"
-                                :checked="formData.time.dependency === 'new question'" type="radio" name="time"
+                            <input @click="handleSettings('time', 'new question')" class="form-check-input"
+                                :checked="settings.$state.time.dependency === 'new question'" type="radio" name="time"
                                 value="new question">
                             <label class="form-check-label" for="new question">New question</label>
                         </div>
                         <div class="form-check form-check-inline">
-                            <input @click="handleTimeDep('end game')" class="form-check-input"
-                                :checked="formData.question.time === 'end game'" type="radio" name="time"
+                            <input @click="handleSettings('time', 'end game')" class="form-check-input"
+                                :checked="settings.$state.time.dependency === 'end game'" type="radio" name="time"
                                 value="end game">
                             <label class="form-check-label" for="end game">End game</label>
                         </div>
                     </div>
                     <Transition>
-                        <div v-show="formData.time.dependency === 'new question'" class="mb-3">
+                        <div v-show="settings.$state.time.dependency === 'new question'" class="mb-3">
                             <label for="number of questions" data-bs-toggle="tooltip" data-bs-placement="right"
                                 title="Select the number of questions below within the range of 10 - 30 questions"
                                 class="form-label"><span class="fw-bold">Number of questions: </span>
-                                <span>{{ formData.question.number }}</span>
+                                <span>{{ settings.$state.question.number }}</span>
                             </label>
-                            <input type="range" :value="formData.question.number" @click="handleQuestionNum"
-                                class="form-range" min="10" max="30" step="1">
+                            <input type="range" :value="settings.$state.question.number"
+                                @click="(e) => { handleSettings('question', e.target.value) }" class="form-range"
+                                min="10" max="30" step="1">
                         </div>
                     </Transition>
                     <div class="mb-3">
@@ -88,24 +93,28 @@
                             class="form-label">
                             <span class="fw-bold">Time: </span>
                             <span>
-                                {{ formData.time.number }}
-                                {{ formData.time.dependency === 'new question' ? " Sec" : " Min" }}
+                                {{ settings.$state.time.number }}
+                                {{ settings.$state.time.dependency === 'new question' ? " Sec" : " Min" }}
                             </span>
                         </label>
-                        <input v-if="formData.time.dependency === 'end game'" type="range" :value="formData.time.number"
-                            @click="handleTimeNum" class="form-range" min="1" max="5" step="1">
-                        <input v-else type="range" :value="formData.time.number" @click="handleTimeNum"
-                            class="form-range" min="10" max="30" step="1">
+                        <input v-if="settings.$state.time.dependency === 'end game'" type="range"
+                            :value="settings.$state.time.number"
+                            @click="(e) => { handleSettings('time', e.target.value) }" class="form-range" min="1"
+                            max="5" step="1">
+                        <input v-else type="range" :value="settings.$state.time.number"
+                            @click="(e) => { handleSettings('time', e.target.value) }" class="form-range" min="10"
+                            max="30" step="1">
                     </div>
                     <div class="mb-3">
                         <label for="lifes" data-bs-toggle="tooltip" data-bs-placement="right"
                             title="The number of attempts before game over" class="form-label">
                             <span class="fw-bold">Lifes: </span>
                             <span>
-                                {{ formData.lifes }}
+                                {{ settings.$state.lifes }}
                             </span>
                         </label>
-                        <input type="range" :value="formData.lifes" @click="handleLifes" class="form-range" min="1"
+                        <input type="range" :value="settings.$state.lifes"
+                            @click="(e) => { handleSettings('lifes', e.target.value) }" class="form-range" min="1"
                             max="7" step="1">
                     </div>
                     <div class="form-check form-switch d-flex ps-0">
@@ -114,7 +123,7 @@
                             Sound:
                         </label>
                         <input class="form-check-input" name="checkbox" type="checkbox" role="switch"
-                            :checked="formData.sound" @click="formData.sound = !formData.sound">
+                            :checked="settings.$state.sound" @click="handleSettings('sound', !settings.$state.sound)">
                     </div>
                 </div>
             </div>
@@ -123,50 +132,22 @@
 </template>
 
 <script setup>
-import { ref } from 'vue';
+import { useSettingsStore } from '../stores/settings';
 
-const formData = ref({
-    question: {
-        dependency: "age",
-        number: "10"
-    },
-    time: {
-        dependency: "new question",
-        number: "10"
-    },
-    class: "1",
-    age: "7",
-    lifes: "5",
-    sound: false
-});
+let settings = useSettingsStore();
 
-function handleQuestionDep(val) {
-    formData.value.question.dependency = val;
-}
-function handleQuestionNum(e) {
-    formData.value.question.number = e.target.value;
-}
-function handleTimeDep(val) {
-    formData.value.time.dependency = val;
-    if (formData.value.time.dependency === 'end game') {
-        formData.value.time.number = 1;
+function handleSettings(key, val) {
+    if (key === 'question' || key === 'time') {
+        ['new question', 'end game', 'age', 'class'].includes(val) ? settings.$state[key].dependency = val : settings.$state[key].number = Number(val);
+
+        if (['new question', 'end game'].includes(val)) {
+            val === 'end game' ? settings.$state.time.number = 1 : settings.$state.time.number = 10;
+        }
     } else {
-        formData.value.time.number = 10;
+        key === 'sound' ? settings.$state[key] = val : settings.$state[key] = Number(val);
     }
+    localStorage.setItem("settings", JSON.stringify(settings.$state));
 }
-function handleTimeNum(e) {
-    formData.value.time.number = e.target.value;
-}
-function handleClass(e) {
-    formData.value.class = e.target.value;
-}
-function handleAge(e) {
-    formData.value.age = e.target.value;
-}
-function handleLifes(e) {
-    formData.value.lifes = e.target.value;
-}
-
 </script>
 
 <style scoped>
