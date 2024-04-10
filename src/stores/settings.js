@@ -4,7 +4,7 @@ export const useSettingsStore =
 defineStore({
     id: 'settings',
     state: () => ({
-      
+       
     }),
     getters: {
 

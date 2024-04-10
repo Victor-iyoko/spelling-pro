@@ -166,9 +166,7 @@ function handleAge(e) {
 function handleLifes(e) {
     formData.value.lifes = e.target.value;
 }
-function save() {
-    console.log(formData.value);
-}
+
 </script>
 
 <style scoped>

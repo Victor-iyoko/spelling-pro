@@ -4,7 +4,9 @@ export const useGameStore =
 defineStore({
     id: 'game',
     state: () => ({
-        sound: "yes"
+        lifes: null,
+        questionAns: null,
+        score: null
     }),
     getters: {
 
