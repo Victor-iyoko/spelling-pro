@@ -1,8 +1,8 @@
 <template>
     <div class="w-100 h-100 d-flex flex-column justify-content-center align-items-center">
         <Transition mode="out-in">
-            <div v-if="hasFetched === true"
-                class="rounded-circle bg-success d-flex justify-content-center align-items-center" role="status">
+            <div v-if="hasFetched" class="rounded-circle bg-success d-flex justify-content-center align-items-center"
+                role="status">
                 <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor"
                     class="bi bi-check-lg text-white" viewBox="0 0 16 16">
                     <path
@@ -17,16 +17,16 @@
 
 <script setup>
 import { onMounted, ref } from 'vue';
+import { useGameStore } from '../stores/game';
 
-const emit = defineEmits(['loadQuestions']);
+let game = useGameStore();
 const hasFetched = ref(false);
 
 onMounted(() => {
     setTimeout(() => {
-        // console.log(props.questions);
         hasFetched.value = true;
         setTimeout(() => {
-            emit('loadQuestions', [
+            game.questions = [
                 {
                     options: ["PLAGUE", "PLAGE"],
                     answer: "PLAGUE"
@@ -71,7 +71,8 @@ onMounted(() => {
                     options: ["CLAY", "CLEY"],
                     answer: "CLAY"
                 }
-            ]);
+            ];
+            game.start = true;
         }, 2500);
     }, 3000);
 });

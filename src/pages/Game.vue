@@ -1,15 +1,14 @@
 <template>
-    <Hud :start="startGame" />
+    <Hud />
     <h2 class="time user-select-none text-shadow text-center display-6 fw-bold my-2 my-xl-3">30</h2>
     <Board>
         <Transition mode="out-in">
             <Instructions @click="loadQuestions = true"
-                v-if="loadQuestions === false && startGame === false && questions.length === 0" />
-            <LoadingQuestions @loadQuestions="start"
-                v-else-if="loadQuestions === true && startGame === false && questions.length === 0"
-                :questions="questions" />
+                v-if="loadQuestions === false && game.start === false && game.questions.length === 0" />
+            <LoadingQuestions
+                v-else-if="loadQuestions === true && game.start === false && game.questions.length === 0" />
             <div class="d-flex justify-content-center w-100 h-100"
-                v-else-if="loadQuestions === true && questions.length > 0 && startGame === true">
+                v-else-if="loadQuestions === true && game.questions.length > 0 && game.start === true">
                 <SelectOne
                     v-if="gameMode === 'one-word-two-forms' || gameMode === 'find-correct' || gameMode === 'find-misspelled'" />
                 <Decide v-else-if="gameMode === 'decide' || gameMode === 'decide-and-correct'" />
@@ -35,19 +34,24 @@ import Decide from '../components/games/Decide.vue';
 import WhichLetter from '../components/games/WhichLetter.vue';
 import MultipleChoice from '../components/games/MultipleChoice.vue';
 import Spell from '../components/games/Spell.vue';
-import { ref } from 'vue';
+import { ref, onMounted, onUnmounted } from 'vue';
 import { useRoute } from 'vue-router';
+import { useGameStore } from '../stores/game';
+import { useSettingsStore } from '../stores/settings';
+import { gameDefault } from '../data/default';
 
+let game = useGameStore();
+let settings = useSettingsStore();
 const gameMode = useRoute().params.category;
-const startGame = ref(false);
 const loadQuestions = ref(false);
-const questions = ref([]);
 
-function start(data) {
-    console.log(data);
-    questions.value = data;
-    startGame.value = true;
-}
+onMounted(() => {
+    game.$state = { lifes: settings.data.lifes, questionAns: 0, score: 0 };
+    console.log(game.$state);
+});
+onUnmounted(() => {
+    game.$state = { ...gameDefault };
+});
 </script>
 
 <style scoped>

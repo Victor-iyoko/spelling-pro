@@ -23,22 +23,15 @@ function loadSettings() {
   if (!localSettings) {
     // setting the default settings in the local storage
     localStorage.setItem('settings', JSON.stringify(settingsDefault));
-    settings.$state = settingsDefault;
+    settings.data = settingsDefault;
     console.log("set store to default value");
   } else {
-    if (!("question" in settings.$state &&
-      "time" in settings.$state &&
-      "class" in settings.$state &&
-      "age" in settings.$state &&
-      "lifes" in settings.$state &&
-      "sound" in settings.$state)) {
-      settings.$state = localSettings;
+    // check if global store is empty then set to local storage value
+    if (Object.keys(settings.$state).length === 0) {
       console.log("set store to local storage value");
+      settings.data = localSettings;
     }
   }
-  console.log(settings.$state);
-  // settings.$state = settingsDefault;
-  // console.log(settings.$state);
 }
 
 onMounted(() => {

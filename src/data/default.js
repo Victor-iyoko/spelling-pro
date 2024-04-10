@@ -13,4 +13,12 @@ const settingsDefault = {
         sound: false
     };
 
-export {settingsDefault};
+const gameDefault = {
+        start: false,
+        questions: [],
+        lifes: null,
+        questionAns: null,
+        score: null
+    };
+
+export { settingsDefault, gameDefault };
