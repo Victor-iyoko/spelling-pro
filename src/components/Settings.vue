@@ -156,16 +156,6 @@ input[type=checkbox]:focus {
     box-shadow: none;
 }
 
-.v-enter-active,
-.v-leave-active {
-    transition: opacity 0.5s ease;
-}
-
-.v-enter-from,
-.v-leave-to {
-    opacity: 0;
-}
-
 input[type="range"]::-webkit-slider-runnable-track {
     background: #77351633;
 }

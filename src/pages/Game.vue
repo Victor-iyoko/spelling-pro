@@ -1,6 +1,9 @@
 <template>
     <Hud />
-    <h2 class="time user-select-none text-shadow text-center display-6 fw-bold my-2 my-xl-3">30</h2>
+    <h2 :class="game.start ? 'opacity-1 time' : 'opacity-0'"
+        class="user-select-none text-shadow text-center display-6 fw-bold my-2 my-xl-3">
+        {{ settings.data.time.number }}
+    </h2>
     <Board>
         <Transition mode="out-in">
             <Instructions @click="loadQuestions = true"
@@ -15,7 +18,7 @@
                 <WhichLetter v-else-if="gameMode === 'which-letter'" />
                 <MultipleChoice v-else-if="gameMode === 'multiple-choice'" />
                 <Spell v-else-if="gameMode === 'spell-it'" />
-                <h2 v-else>IT DOES NOT EXIST</h2>
+                <h3 v-else>IT DOES NOT EXIST</h3>
             </div>
         </Transition>
     </Board>
@@ -55,7 +58,7 @@ onUnmounted(() => {
 </script>
 
 <style scoped>
-.time {
+h2 {
     color: rgb(59, 255, 0);
 }
 
@@ -63,30 +66,11 @@ div {
     font-family: 'PermanentMarker-Regular';
 }
 
-@keyframes blink {
-    0% {
-        opacity: 1;
-    }
-
-    100% {
-        opacity: 0;
-    }
+h2.time {
+    animation: blink .7s ease-in 1;
 }
 
 .tap {
-    animation-name: blink;
-    animation-duration: 450ms;
-    animation-timing-function: linear;
-    animation-iteration-count: infinite;
-}
-
-.v-enter-active,
-.v-leave-active {
-    transition: opacity .7s ease;
-}
-
-.v-enter-from,
-.v-leave-to {
-    opacity: 0;
+    animation: blink .45s ease-in-out infinite;
 }
 </style>

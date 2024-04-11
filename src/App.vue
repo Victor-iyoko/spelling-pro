@@ -1,6 +1,6 @@
 <template>
   <router-view v-slot="{ Component }">
-    <transition name="scale" mode="out-in">
+    <transition name="scale" mode="out-in" class="scale">
       <div class="w-100 h-100" :key="route.name">
         <component :is="Component" />
       </div>
@@ -38,16 +38,3 @@ onMounted(() => {
   loadSettings();
 });
 </script>
-
-<style scoped>
-.scale-enter-active,
-.scale-leave-active {
-  transition: all 0.5s ease;
-}
-
-.scale-enter-from,
-.scale-leave-to {
-  opacity: 0;
-  transform: scale(0.9);
-}
-</style>

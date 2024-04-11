@@ -7,7 +7,7 @@ const settingsDefault = {
             dependency: "new question",
             number: 10
         },
-        class: "1",
+        class: 1,
         age: 7,
         lifes: 5,
         sound: false

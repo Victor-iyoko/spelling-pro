@@ -31,4 +31,8 @@ const props = defineProps({
 div {
     letter-spacing: 2px;
 }
+
+.option:hover {
+    text-decoration: underline;
+}
 </style>
