@@ -17,6 +17,7 @@ const gameDefault = {
         start: false,
         questions: [],
         lifes: null,
+        lifesArr: [],
         questionAns: null,
         score: null
     };

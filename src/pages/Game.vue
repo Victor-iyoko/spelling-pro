@@ -48,8 +48,16 @@ let settings = useSettingsStore();
 const gameMode = useRoute().params.category;
 const loadQuestions = ref(false);
 
+function setLifes() {
+    let lifes = [];
+    for (let i = 1; i <= settings.data.lifes; i++) {
+        lifes.push({ id: i, alive: true });
+    }
+    game.$state = { lifesArr: lifes, lifes: settings.data.lifes, questionAns: 0, score: 0 };
+}
+
 onMounted(() => {
-    game.$state = { lifes: settings.data.lifes, questionAns: 0, score: 0 };
+    setLifes();
     console.log(game.$state);
 });
 onUnmounted(() => {

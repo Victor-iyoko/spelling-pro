@@ -9,6 +9,13 @@ defineStore({
 
     },
     actions: {
-
+        reduce() {
+            this.lifes--;
+            if (this.lifes >= 0) {
+                setTimeout(() => {
+                    this.lifesArr[this.lifes].alive = false;
+                }, 100);
+            }
+        }
     }
 });
