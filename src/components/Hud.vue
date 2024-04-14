@@ -65,7 +65,6 @@
 
 <script setup>
 import { RouterLink } from 'vue-router';
-import { ref, onMounted } from 'vue';
 import { useSettingsStore } from '../stores/settings';
 import { useGameStore } from '../stores/game';
 
