@@ -37,7 +37,7 @@ import Decide from '../components/games/Decide.vue';
 import WhichLetter from '../components/games/WhichLetter.vue';
 import MultipleChoice from '../components/games/MultipleChoice.vue';
 import Spell from '../components/games/Spell.vue';
-import { ref, onMounted, onUnmounted } from 'vue';
+import { ref, onMounted, onBeforeUnmount } from 'vue';
 import { useRoute } from 'vue-router';
 import { useGameStore } from '../stores/game';
 import { useSettingsStore } from '../stores/settings';
@@ -58,10 +58,9 @@ function setLifes() {
 
 onMounted(() => {
     setLifes();
-    console.log(game.$state);
 });
-onUnmounted(() => {
-    game.$state = { ...gameDefault };
+onBeforeUnmount(() => {
+    game.reset();
 });
 </script>
 
@@ -71,7 +70,7 @@ h2 {
 }
 
 div {
-    font-family: 'PermanentMarker-Regular';
+    font-family: 'PermanentMarker-Regular', Arial, Helvetica, sans-serif;
 }
 
 h2.time {

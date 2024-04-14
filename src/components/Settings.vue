@@ -140,6 +140,10 @@ let settings = useSettingsStore();
 </script>
 
 <style scoped>
+label {
+    color: #31393b;
+}
+
 .form-check-input[type=radio],
 .form-check-input[type=checkbox] {
     border-width: 2px;

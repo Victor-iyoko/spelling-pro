@@ -1,6 +1,5 @@
 <template>
-    <header @click="game.reduce"
-        class="bg-white p-1 p-md-2 d-flex justify-content-between align-items-center user-select-none">
+    <header class="bg-white p-1 p-md-2 d-flex justify-content-between align-items-center user-select-none">
         <div class="d-flex justify-content-between align-items-center">
             <RouterLink to="/" class="me-auto">
                 <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" fill="currentColor"
@@ -10,7 +9,7 @@
                 </svg>
             </RouterLink>
             <span v-show="game.start" class="fs-4">
-                1 / <span v-if="settings.data.time.dependency === 'new question'">
+                {{ game.questionAns }} / <span v-if="settings.data.time.dependency === 'new question'">
                     {{ settings.data.question.number }}
                 </span>
                 <svg v-else xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor"
@@ -44,7 +43,7 @@
             <h1 v-else class="fs-4 m-0 text-dark user-select-none">HOW TO PLAY</h1>
         </Transition>
         <div class="d-flex justify-content-between align-items-center">
-            <Transition><span v-show="game.start" class="fs-4">100</span></Transition>
+            <Transition><span v-show="game.start" class="fs-4">{{ game.score }}</span></Transition>
 
             <svg @click="settings.handleSettings('sound', !settings.data.sound)" xmlns="http://www.w3.org/2000/svg"
                 width="40" height="40" fill="currentColor" class="bi bi-volume-up text-dark ms-auto"
@@ -72,23 +71,6 @@ import { useGameStore } from '../stores/game';
 
 let settings = useSettingsStore();
 let game = useGameStore();
-const heartsArr = ref([]);
-const storeLife = ref(settings.data.lifes);
-
-// function reduce() {
-//     storeLife.value--;
-//     if (storeLife.value >= 0) {
-//         setTimeout(() => {
-//             heartsArr.value[storeLife.value].alive = false;
-//         }, 100);
-//     }
-// }
-
-// onMounted(() => {
-//     // for (let index = 1; index <= settings.data.lifes; index++) {
-//     //     heartsArr.value.push({ id: index, alive: true });
-//     // }
-// });
 </script>
 
 <style scoped>

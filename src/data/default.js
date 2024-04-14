@@ -16,10 +16,11 @@ const settingsDefault = {
 const gameDefault = {
         start: false,
         questions: [],
-        lifes: null,
+        lifes: 0,
         lifesArr: [],
-        questionAns: null,
-        score: null
+        questionAns: 0,
+        currentQuestIndex: 0,
+        score: 0
     };
 
 export { settingsDefault, gameDefault };
