@@ -15,60 +15,113 @@
 <script setup>
 import { onMounted, ref } from 'vue';
 import { useGameStore } from '../stores/game';
+import { useRoute } from 'vue-router';
 
 let game = useGameStore();
 const hasFetched = ref(false);
+const gameMode = useRoute().params.category;
 
 onMounted(() => {
     setTimeout(() => {
         hasFetched.value = true;
         setTimeout(() => {
-            game.questions = [
-                {
-                    options: ["PLAGUE", "PLAGE"],
-                    answer: "PLAGUE"
+            if (gameMode === "one-word-two-forms") {
+                game.questions = [
+                    {
+                        options: ["PLAGUE", "PLAGE"],
+                        answer: "PLAGUE"
+                    },
+                    {
+                        options: ["RYTHM", "RITHM"],
+                        answer: "RYTHM"
+                    },
+                    {
+                        options: ["EXPECT", "ESPECT"],
+                        answer: "EXPECT"
+                    },
+                    {
+                        options: ["CATARRH", "CARTARH"],
+                        answer: "CATARRH"
+                    },
+                    {
+                        options: ["PESSIMISTIC", "PESIMISTIC"],
+                        answer: "PESSIMISTIC"
+                    },
+                    {
+                        options: ["CONCRATE", "CONCRETE"],
+                        answer: "CONCRETE"
+                    },
+                    {
+                        options: ["PIACE", "PLACE"],
+                        answer: "PLACE"
+                    },
+                    {
+                        options: ["SPOILT", "SOILT"],
+                        answer: "SPOILT"
+                    },
+                    {
+                        options: ["FLANGE", "FLANJE"],
+                        answer: "FLANGE"
+                    },
+                    {
+                        options: ["SORY", "SORRY"],
+                        answer: "SORRY"
+                    },
+                    {
+                        options: ["CLAY", "CLEY"],
+                        answer: "CLAY"
+                    }
+                ];
+            } else if (gameMode === "find-misspelled") {
+                game.questions = [{
+                    options: ["AFTER", "CHALLENGE", "SWIP", "CHANGE"],
+                    answer: "SWIP"
                 },
                 {
-                    options: ["RYTHM", "RITHM"],
-                    answer: "RYTHM"
+                    options: ["FEIGN", "GOURE", "HATE", "RITE"],
+                    answer: "GOURE"
                 },
                 {
-                    options: ["EXPECT", "ESPECT"],
-                    answer: "EXPECT"
+                    options: ["ELLITE", "ECLIPSE", "ELLIPSES", "EXUBBERANT"],
+                    answer: "ELLITE"
                 },
                 {
-                    options: ["CATARRH", "CARTARH"],
-                    answer: "CATARRH"
+                    options: ["CATASTROPHE", "CATILAGE", "BOLDACIOUS", "ANTONYM"],
+                    answer: "CATILAGE"
                 },
                 {
-                    options: ["PESSIMISTIC", "PESIMISTIC"],
-                    answer: "PESSIMISTIC"
+                    options: ["PTERIDACTYL", "COMMISSION", "ECSTATIC", "ABSOLOTE"],
+                    answer: "ABSOLOTE"
                 },
                 {
-                    options: ["CONCRATE", "CONCRETE"],
-                    answer: "CONCRETE"
+                    options: ["CHARACTER", "JUSTICE", "ACCOUNTAMT", "LAMBORGHINI"],
+                    answer: "ACCOUNTAMT"
                 },
                 {
-                    options: ["PIACE", "PLACE"],
-                    answer: "PLACE"
+                    options: ["PERPLEXED", "CARDIAC", "SURGEON", "CALORISE"],
+                    answer: "CALORISE"
                 },
                 {
-                    options: ["SPOILT", "SOILT"],
-                    answer: "SPOILT"
+                    options: ["TORTOISE", "METALLURGY", "ACROBATE", "SOLITUDE"],
+                    answer: "ACROBATE"
                 },
                 {
-                    options: ["FLANGE", "FLANJE"],
-                    answer: "FLANGE"
+                    options: ["INCORPORATE", "LOUSY", "NOUSAINCE", "ORGANISE"],
+                    answer: "NOUSAINCE"
                 },
                 {
-                    options: ["SORY", "SORRY"],
-                    answer: "SORRY"
+                    options: ["VEXING", "CUSHION", "WHOOPING", "AGREGATE"],
+                    answer: "AGREGATE"
                 },
                 {
-                    options: ["CLAY", "CLEY"],
-                    answer: "CLAY"
-                }
-            ];
+                    options: ["CANDIR", "FLAMBOYANT", "YATCH", "TIER"],
+                    answer: "CANDIR"
+                },
+                {
+                    options: ["BOUYANCY", "QUIETER", "CHEQUIE", "FRENZY"],
+                    answer: "CHEQUIE"
+                }];
+            }
             game.start = true;
         }, 2500);
     }, 3000);

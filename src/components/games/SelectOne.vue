@@ -1,5 +1,5 @@
 <template>
-    <div>
+    <div id="option">
         <h3 class="fs-2 my-5 user-select-none">Select correct form</h3>
         <div class="options d-flex flex-column align-items-center mx-auto">
             <Option @resetOption="" v-for="(option, i) in game.questions[game.currentQuestIndex].options"
@@ -11,7 +11,7 @@
 <script setup>
 import Option from '../Option.vue';
 import { useGameStore } from '../../stores/game';
-import { onMounted } from 'vue';
+import { onMounted, onBeforeUnmount } from 'vue';
 
 const game = useGameStore();
 
@@ -29,7 +29,16 @@ function getColor(index) {
     }
 }
 
-onMounted(() => game.questionAns++);
+onMounted(() => {
+    // Start the countdown timer
+    game.startCountDown();
+    game.questionAns++;
+});
+
+onBeforeUnmount(() => {
+    // Cleanup: stop the timer when the component is destroyed
+    game.clearCountDown();
+});
 </script>
 
 <style scoped>

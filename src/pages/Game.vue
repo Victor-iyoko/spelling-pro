@@ -1,9 +1,6 @@
 <template>
     <Hud />
-    <h2 :class="game.start ? 'opacity-1 time' : 'opacity-0'"
-        class="user-select-none text-shadow text-center display-6 fw-bold my-2 my-xl-3">
-        {{ settings.data.time.number }}
-    </h2>
+    <CountDown />
     <Board>
         <Transition mode="out-in">
             <Instructions @click="loadQuestions = true"
@@ -42,6 +39,7 @@ import { useRoute } from 'vue-router';
 import { useGameStore } from '../stores/game';
 import { useSettingsStore } from '../stores/settings';
 import { gameDefault } from '../data/default';
+import CountDown from '../components/CountDown.vue';
 
 let game = useGameStore();
 let settings = useSettingsStore();
