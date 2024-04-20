@@ -14,6 +14,7 @@ const settingsDefault = {
     };
 
 const gameDefault = {
+        mode: null,
         start: false,
         questions: [],
         lifes: 0,

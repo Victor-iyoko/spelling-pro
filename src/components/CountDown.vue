@@ -28,7 +28,5 @@ onMounted(() => {
     game.time.initial = settings.data.time.dependency === 'end game' ? settings.data.time.number * 60 : settings.data.time.number;
     game.time.current = game.time.initial;
     game.time.dependency = settings.data.time.dependency;
-
-    console.log(game.time.current);
 });
 </script>

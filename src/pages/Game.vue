@@ -51,7 +51,7 @@ function setLifes() {
     for (let i = 1; i <= settings.data.lifes; i++) {
         lifes.push({ id: i, alive: true });
     }
-    game.$state = { lifesArr: lifes, lifes: settings.data.lifes, questionAns: 0, score: 0 };
+    game.$state = { lifesArr: lifes, lifes: settings.data.lifes, questionAns: 0, score: 0, mode: gameMode };
 }
 
 onMounted(() => {

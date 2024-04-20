@@ -1,7 +1,7 @@
 <template>
-    <div id="option">
+    <div>
         <h3 class="fs-2 my-5 user-select-none">Select correct form</h3>
-        <div class="options d-flex flex-column align-items-center mx-auto">
+        <div class="options d-flex flex-column align-items-center mx-auto" id="select-one-options">
             <Option @resetOption="" v-for="(option, i) in game.questions[game.currentQuestIndex].options"
                 :color="getColor(i)" :title="option" :index="i" />
         </div>

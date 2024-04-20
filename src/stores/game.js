@@ -1,5 +1,6 @@
 import { defineStore } from "pinia";
 import { gameDefault } from "../data/default";
+import checkMatch from "../functions";
 
 export const useGameStore = 
 defineStore({
@@ -28,10 +29,13 @@ defineStore({
                     if (this.time.dependency === 'end game') {
                         clearInterval(this.timer);  // Stop the timer when time reaches 0
                     } else {
-                        this.reduce();  // reduce player's life when time reaches 0
-                        this.questionAns++; // increase number of answered questions
+                        this.reduce();
+                        setTimeout(() => {
+                            this.questionAns++; // increase number of answered questions
+                        }, 500);
                         this.currentQuestIndex++; // get new question when time reaches 0
                         this.time.current = this.time.initial; // reset time to initial value if the game questions are limited
+                        checkMatch(null, { mode: this.mode, handleClick: this.handleClick }, true);
                     }
                 }
             }, 1000); // Update timer every second (1000 milliseconds)
@@ -39,11 +43,13 @@ defineStore({
         clearCountDown() {
             clearInterval(this.timer);
         },
-        isAnswer(option, isReturn) {
-            if (isReturn) {
-              return this.questions[this.currentQuestIndex].answer === option;  
-            } else {
-                if (this.questions[this.currentQuestIndex].answer === option) {
+        isAnswer(option) {
+            return this.questions[this.currentQuestIndex].answer === option;
+        },
+        handleClick(answer) {
+            // checkMatch(e, {mode: this.mode, isAnswer: this.isAnswer});
+                if (this.isAnswer(answer)) {
+                    console.log("yes")
                 this.time.dependency === 'end game' ? null : this.time.current = this.time.initial;
                 setTimeout(() => {
                     this.currentQuestIndex++;
@@ -53,12 +59,6 @@ defineStore({
                 } else {
                     this.reduce();
                 }
-            }
-
-        },
-        selectOneMatch() {
-            const option = document.getElementById('option');
-            console.log(option);
         }
     }
 });
