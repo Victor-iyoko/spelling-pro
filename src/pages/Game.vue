@@ -4,11 +4,11 @@
     <Board>
         <Transition mode="out-in">
             <Instructions @click="loadQuestions = true"
-                v-if="loadQuestions === false && game.start === false && game.questions.length === 0" />
+                v-if="!loadQuestions && !game.start && game.questions.length === 0 && !game.game0ver" />
             <LoadingQuestions
-                v-else-if="loadQuestions === true && game.start === false && game.questions.length === 0" />
+                v-else-if="loadQuestions && !game.start && game.questions.length === 0 && !game.game0ver" />
             <div class="d-flex justify-content-center w-100 h-100"
-                v-else-if="loadQuestions === true && game.questions.length > 0 && game.start === true">
+                v-else-if="loadQuestions && game.questions.length > 0 && game.start && !game.game0ver">
                 <SelectOne
                     v-if="gameMode === 'one-word-two-forms' || gameMode === 'find-correct' || gameMode === 'find-misspelled'" />
                 <Decide v-else-if="gameMode === 'decide' || gameMode === 'decide-and-correct'" />
@@ -17,6 +17,7 @@
                 <Spell v-else-if="gameMode === 'spell-it'" />
                 <h3 v-else>IT DOES NOT EXIST</h3>
             </div>
+            <GameOver v-else />
         </Transition>
     </Board>
     <h3 :class="[!loadQuestions ? 'tap' : 'opacity-0']"
@@ -29,6 +30,7 @@ import Board from '../components/Board.vue';
 import Hud from '../components/Hud.vue';
 import Instructions from '../components/Instructions.vue';
 import LoadingQuestions from '../components/LoadingQuestions.vue';
+import GameOver from '../components/GameOver.vue';
 import SelectOne from '../components/games/SelectOne.vue';
 import Decide from '../components/games/Decide.vue';
 import WhichLetter from '../components/games/WhichLetter.vue';
@@ -38,7 +40,6 @@ import { ref, onMounted, onBeforeUnmount } from 'vue';
 import { useRoute } from 'vue-router';
 import { useGameStore } from '../stores/game';
 import { useSettingsStore } from '../stores/settings';
-import { gameDefault } from '../data/default';
 import CountDown from '../components/CountDown.vue';
 
 let game = useGameStore();
@@ -51,7 +52,14 @@ function setLifes() {
     for (let i = 1; i <= settings.data.lifes; i++) {
         lifes.push({ id: i, alive: true });
     }
-    game.$state = { lifesArr: lifes, lifes: settings.data.lifes, questionAns: 0, score: 0, mode: gameMode };
+    game.$state = {
+        lifesArr: lifes,
+        lifes: settings.data.lifes,
+        questionAns: 0,
+        score: 0,
+        mode: gameMode,
+        maxQuestion: settings.data.question.number
+    };
 }
 
 onMounted(() => {

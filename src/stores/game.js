@@ -13,6 +13,7 @@ defineStore({
         },
         reduce() {
             this.lifes--;
+            this.checkGameOver(true);
             if (this.lifes >= 0) {
                 setTimeout(() => {
                     this.lifesArr[this.lifes].alive = false;
@@ -27,13 +28,15 @@ defineStore({
                         this.time.current--; // Decrement time by 1 second
                 } else {
                     if (this.time.dependency === 'end game') {
+                        this.game0ver = true;   // Load game over page
                         clearInterval(this.timer);  // Stop the timer when time reaches 0
                     } else {
                         this.reduce();
-                        setTimeout(() => {
-                            this.questionAns++; // increase number of answered questions
-                        }, 500);
                         this.currentQuestIndex++; // get new question when time reaches 0
+                        setTimeout(() => {
+                          //  this.questionAns++; // increase number of answered questions
+                            this.checkGameOver(false);
+                        }, 500);
                         this.time.current = this.time.initial; // reset time to initial value if the game questions are limited
                         checkMatch(null, { mode: this.mode, handleClick: this.handleClick }, true);
                     }
@@ -47,18 +50,25 @@ defineStore({
             return this.questions[this.currentQuestIndex].answer === option;
         },
         handleClick(answer) {
-            // checkMatch(e, {mode: this.mode, isAnswer: this.isAnswer});
-                if (this.isAnswer(answer)) {
-                    console.log("yes")
+            if (this.isAnswer(answer)) {
                 this.time.dependency === 'end game' ? null : this.time.current = this.time.initial;
                 setTimeout(() => {
                     this.currentQuestIndex++;
-                    this.questionAns++;
-                    this.score += 10;
+                    this.checkGameOver(false);
                 }, 500);
-                } else {
-                    this.reduce();
-                }
+                this.score += 10;
+            } else {
+                this.reduce();
+            }
+    },
+    checkGameOver(onLifeReduce) {
+        if (this.currentQuestIndex + 1 > this.maxQuestion || this.lifes === 0) {
+            this.game0ver = true;
+            this.clearCountDown();
+            return;
+        } else {
+                !onLifeReduce && this.questionAns++;
+            }
         }
     }
 });

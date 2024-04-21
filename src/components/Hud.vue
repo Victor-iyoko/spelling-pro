@@ -24,7 +24,7 @@
                 <div class="position-absolute d-flex">
                     <svg v-for=" heart  in  game.lifesArr " xmlns="http://www.w3.org/2000/svg" width="25" height="25"
                         fill="currentColor" class="bi bi-heart-fill pe-1 text-danger pe-none"
-                        :class="{ 'destroy': game.lifes === heart.id - 1, 'opacity-0': heart.alive === false }"
+                        :class="{ 'destroy': game.lifes === heart.id - 1, 'opacity-0': heart.alive === false, 'last-life': game.lifes === 1 && heart.id === 1 }"
                         viewBox="0 0 16 16">
                         <path v-if="game.lifes === heart.id - 1"
                             d="M8.931.586 7 3l1.5 4-2 3L8 15C22.534 5.396 13.757-2.21 8.931.586M7.358.77 5.5 3 7 7l-1.5 3 1.815 4.537C-6.533 4.96 2.685-2.467 7.358.77" />
@@ -34,7 +34,8 @@
                 </div>
                 <div class="position-absolute d-flex">
                     <svg v-for=" heart  in  game.lifesArr " xmlns="http://www.w3.org/2000/svg" width="25" height="25"
-                        fill="currentColor" class="bi bi-heart pe-1 text-danger pe-none" viewBox="0 0 16 16">
+                        fill="currentColor" class="bi bi-heart pe-1 text-danger pe-none" viewBox="0 0 16 16"
+                        :class="{ 'last-life': game.lifes === 1 && heart.id === 1 }">
                         <path
                             d="m8 2.748-.717-.737C5.6.281 2.514.878 1.4 3.053c-.523 1.023-.641 2.5.314 4.385.92 1.815 2.834 3.989 6.286 6.357 3.452-2.368 5.365-4.542 6.286-6.357.955-1.886.838-3.362.314-4.385C13.486.878 10.4.28 8.717 2.01zM8 15C-7.333 4.868 3.279-3.04 7.824 1.143q.09.083.176.171a3 3 0 0 1 .176-.17C12.72-3.042 23.333 4.867 8 15" />
                     </svg>
@@ -102,6 +103,10 @@ let game = useGameStore();
 
 .destroy {
     animation: destroy 1.5s ease;
+}
+
+.last-life {
+    animation: blink 0.75s ease-in infinite;
 }
 
 .position-absolute {

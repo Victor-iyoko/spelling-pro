@@ -23,7 +23,9 @@ const gameDefault = {
         lifesArr: [],
         questionAns: 0,
         currentQuestIndex: 0,
-        score: 0
+        score: 0,
+        game0ver: false,
+        maxQuestion: null
     };
 
 export { settingsDefault, gameDefault };

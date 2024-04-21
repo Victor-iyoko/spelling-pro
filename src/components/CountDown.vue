@@ -1,5 +1,5 @@
 <template>
-    <h2 :class="game.start ? 'opacity-1 time' : 'opacity-0'"
+    <h2 :class="game.start && !game.game0ver ? 'opacity-1 time' : 'opacity-0'"
         class="user-select-none text-shadow text-center display-6 fw-bold my-2 my-xl-3">
         {{ formatTime }}
     </h2>
@@ -18,9 +18,8 @@ const formatTime = computed(() => {
     const minutes = Math.floor(game.time.current / 60);
     const seconds = game.time.current % 60;
     // Format minutes and seconds as string with leading zeros
-    const formattedMinutes = String(minutes).padStart(2, "0");
     const formattedSeconds = String(seconds).padStart(2, "0");
-    return settings.data.time.dependency === 'end game' ? `${formattedMinutes}:${formattedSeconds}` : formattedSeconds;
+    return settings.data.time.dependency === 'end game' ? `${minutes}:${formattedSeconds}` : formattedSeconds;
 });
 
 onMounted(() => {
