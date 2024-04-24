@@ -56,7 +56,7 @@ defineStore({
                     this.currentQuestIndex++;
                     this.checkGameOver(false);
                 }, 500);
-                this.score += 10;
+                this.score += 10 + this.time.current;
             } else {
                 this.reduce();
             }

@@ -7,7 +7,7 @@
                 v-if="!loadQuestions && !game.start && game.questions.length === 0 && !game.game0ver" />
             <LoadingQuestions
                 v-else-if="loadQuestions && !game.start && game.questions.length === 0 && !game.game0ver" />
-            <div class="d-flex justify-content-center w-100 h-100"
+            <div class="d-flex justify-content-center w-100 h-100 p-3"
                 v-else-if="loadQuestions && game.questions.length > 0 && game.start && !game.game0ver">
                 <SelectOne
                     v-if="gameMode === 'one-word-two-forms' || gameMode === 'find-correct' || gameMode === 'find-misspelled'" />
@@ -79,11 +79,21 @@ div {
     font-family: 'PermanentMarker-Regular', Arial, Helvetica, sans-serif;
 }
 
+@keyframes show {
+    0% {
+        opacity: 0;
+    }
+
+    100% {
+        opacity: 1;
+    }
+}
+
 h2.time {
-    animation: blink .7s ease-in 1;
+    animation: show 1s ease-in 1;
 }
 
 .tap {
-    animation: blink .45s ease-in-out infinite;
+    animation: blink .45s ease-in-out infinite alternate;
 }
 </style>

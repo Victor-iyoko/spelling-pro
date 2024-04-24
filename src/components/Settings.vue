@@ -145,6 +145,10 @@ let settings = useSettingsStore();
 </script>
 
 <style scoped>
+/* .modal {
+    z-index: 100 !important;
+} */
+
 label {
     color: #31393b;
 }

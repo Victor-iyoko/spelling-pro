@@ -1,60 +1,169 @@
 <template>
-    <RouterLink :style="{ color: color }"
-        class="category d-block position-relative text-decoration-none text-center mb-2 p-2 d-flex flex-column rounded-3"
-        :to="`/game/${url}`">
+    <RouterLink :style="{ color: color, transform: 'translateX(150px) scale(0)' }"
+        class="category position-relative text-decoration-none text-center mb-2 p-2 d-flex flex-column justify-content-center rounded-3 opacity-0"
+        :class="{ 'animate': animatedTiles.includes(id) }" :id="url.substring(2, undefined)" :to="`/game/${url}`">
         <h2 class="fs-5 fw-bold m-0">{{ name }}</h2>
-        <h6 class="fw-bold m-0" :style="{ 'color': name === 'SPELL IT' ? 'yellow' : 'white' }">{{ `YOUR BEST: ${score}`
+        <h6 class="fw-bold m-0 mt-1" :style="{ 'color': id === 7 ? 'yellow' : 'white' }">{{ `YOUR BEST: ${score}`
             }}
         </h6>
-        <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" class="bi bi-star-fill"
-            viewBox="0 0 16 16">
-            <path
-                d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z" />
+        <svg xmlns="http://www.w3.org/2000/svg" :class="id === 5 || id === 6 ? 'vertical opacity-0 ' : 'opacity-0'"
+            :fill="color" width="80" height="80" id="Layer_1" data-name="Layer 1" viewBox="0 0 24 24">
+            <path :d="img" />
         </svg>
     </RouterLink>
 </template>
 
 <script setup>
 import { RouterLink } from 'vue-router';
+import { onMounted, ref } from 'vue';
+import categoriesArr from '../data/categories';
 
 const props = defineProps({
     name: String,
+    id: Number,
     score: String,
     url: String,
-    color: String
+    color: String,
+    img: String
+});
+
+const animatedTiles = ref([]);
+
+onMounted(() => {
+    categoriesArr.forEach((_, i) => {
+        setTimeout(() => {
+            animatedTiles.value.push(i);
+        }, i * 300);
+    });
 });
 </script>
 
 <style scoped>
 a {
-    background-color: #31393b;
+    perspective: 150rem !important;
+    background-color: #1e292c;
     width: 100%;
-    max-width: 500px;
+    height: 100%;
 }
 
 svg {
     position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
-    right: 7px;
-    color: yellow;
+    opacity: 1;
+    right: -30%;
+    top: 100%;
+    transform: rotate(-70deg);
+    transition: all .8s ease-in-out;
+}
+
+svg.vertical {
+    right: 100%;
+    left: 0;
+    top: 100%;
+}
+
+.category:hover svg.vertical {
+    top: 60%;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.category:hover svg {
+    opacity: 0.4 !important;
+    top: 20%;
+    right: 10%;
+    transform: rotate(0);
+}
+
+.category:hover h2 {
+    transform: scale(0.6);
+    /* opacity: 0; */
+}
+
+.category:hover h6 {
+    transform: scale(1.3);
 }
 
 .category {
     box-shadow: 3px 3px 4px #000000;
+    transition: all .4s ease-in-out;
+    overflow: hidden;
+}
+
+.animate {
+    opacity: 1 !important;
+    transform: translateX(0) scale(1) !important;
 }
 
 .category:hover {
-    background-color: #1e292c;
-    transition: all .4s ease-in-out;
+    background-color: #31393b;
+    box-shadow: none;
 }
 
 h2 {
     word-spacing: 10px;
     line-height: 1.3;
+    transition: all .8s ease-in-out;
 }
 
 h6 {
     font-size: 11px;
+    transition: all .8s ease-in-out;
+}
+
+#decide {
+    grid-row: 1 / 5;
+    grid-column: 1 / 2;
+}
+
+#find-correct {
+    grid-row: 5 / 12;
+    grid-column: 1 / 2;
+}
+
+#decide-and-correct {
+    grid-row: 1 / 12;
+    grid-column: 2 / 3;
+}
+
+#which-letter {
+    grid-row: 7 / 12;
+    grid-column: 3 / 4;
+}
+
+#spell-it {
+    grid-row: 1 / 7;
+    grid-column: 3 / 4;
+}
+
+#one-word-two-forms {
+    grid-row: 12 / 18;
+    grid-column: 1 / 3;
+}
+
+#find-misspelled {
+    grid-row: 18 / 24;
+    grid-column: 1 / 3;
+}
+
+#multiple-choice {
+    grid-row: 12 / 24;
+    grid-column: 3 / 4;
+}
+
+@media screen and (max-width: 600px) {
+    a {
+        max-width: 500px;
+    }
+}
+
+@media screen and (max-width: 600px) and (min-height: 700px) {
+    a {
+        margin-bottom: 10px !important;
+        padding: 12px !important;
+    }
+
+    h2 {
+        margin-bottom: 5px !important;
+    }
 }
 </style>

@@ -1,11 +1,13 @@
 <template>
-    <Title />
-    <div class="container d-flex flex-column justify-content-center align-items-center">
-        <Category v-for="(item, index) in categoriesArr" :name="item.name" :score="item.score" :url="item.url"
-            :color="item.color" />
+    <div class="wrapper">
+        <Title />
+        <div class="container categories-grid h-100 d-flex flex-column justify-content-center align-items-center">
+            <Category v-for="(item, index) in categoriesArr" :key="index" :id="index" :name="item.name"
+                :score="item.score" :url="item.url" :color="item.color" :img="item.img" />
+        </div>
         <Footer score="1792" />
-        <About />
     </div>
+    <About />
     <Settings />
 </template>
 
@@ -16,4 +18,29 @@ import Category from '../components/Category.vue';
 import Footer from '../components/Footer.vue';
 import Settings from '../components/Settings.vue';
 import About from '../components/About.vue';
+import { ref, onMounted } from 'vue';
+
 </script>
+
+<style scoped>
+@media screen and (min-width: 600px) {
+    .wrapper {
+        width: 100%;
+        height: 100%;
+        display: grid;
+        grid-template-rows: auto 80% auto;
+    }
+
+    .categories-grid {
+        width: 85%;
+        max-width: 800px;
+        height: 100%;
+        min-height: 500px;
+        display: grid !important;
+        grid-template-columns: repeat(3, 1fr);
+        grid-template-rows: repeat(24, 1fr);
+        justify-content: center;
+        gap: 10px;
+    }
+}
+</style>

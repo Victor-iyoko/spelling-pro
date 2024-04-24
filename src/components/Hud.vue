@@ -106,7 +106,7 @@ let game = useGameStore();
 }
 
 .last-life {
-    animation: blink 0.75s ease-in infinite;
+    animation: blink 0.75s ease-in-out infinite alternate;
 }
 
 .position-absolute {
