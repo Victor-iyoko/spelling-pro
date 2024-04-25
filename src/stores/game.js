@@ -56,19 +56,21 @@ defineStore({
                     this.currentQuestIndex++;
                     this.checkGameOver(false);
                 }, 500);
-                this.score += 10 + this.time.current;
+                this.score += 10;
+                console.log(this.time.current);
+                this.score += this.time.current;
             } else {
                 this.reduce();
             }
-    },
-    checkGameOver(onLifeReduce) {
-        if (this.currentQuestIndex + 1 > this.maxQuestion || this.lifes === 0) {
-            this.game0ver = true;
-            this.clearCountDown();
-            return;
-        } else {
-                !onLifeReduce && this.questionAns++;
-            }
+        },
+        checkGameOver(onLifeReduce) {
+            if (this.currentQuestIndex + 1 > this.maxQuestion || this.lifes === 0) {
+                this.game0ver = true;
+                this.clearCountDown();
+                return;
+            } else {
+                    !onLifeReduce && this.questionAns++;
+                }
         }
     }
 });

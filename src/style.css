@@ -28,10 +28,10 @@ body {
   /* z-index: 2; */
 }
 
+/* custom utilities */
 .text-shadow {
   text-shadow: 0 2px 2px #000;
 }
-
 @keyframes blink {
   0% {
     opacity: 1;
@@ -41,6 +41,15 @@ body {
     opacity: 0;
   }
 }
+.tap {
+  animation: blink .45s ease-in-out infinite alternate;
+}
+.ls-1 {
+  letter-spacing: 1px;
+}.ls-2 {
+  letter-spacing: 2px;
+}
+
 
 /* fade transition style */
 .v-enter-active,

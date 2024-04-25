@@ -1,6 +1,6 @@
 <template>
     <div>
-        <h3 class="fs-2 my-5 user-select-none">Select correct form</h3>
+        <h3 class="fs-2 ls-1 my-5 user-select-none text-center">{{ getInstruction() }}</h3>
         <div class="options d-flex flex-column align-items-center mx-auto" id="select-one-options">
             <Option @resetOption="" v-for="(option, i) in game.questions[game.currentQuestIndex].options"
                 :color="getColor(i)" :title="option" :index="i" />
@@ -15,6 +15,15 @@ import { onMounted, onBeforeUnmount } from 'vue';
 
 const game = useGameStore();
 
+function getInstruction() {
+    if (game.mode === 'one-word-two-forms') {
+        return 'Select Correct Form';
+    } else if (game.mode === 'find-misspelled') {
+        return 'Find Misspelled Word';
+    } else {
+        return 'Find Correct Word';
+    }
+}
 function getColor(index) {
     let colors = ["#ea3556", "blue, #f658e3", "green"];
     colors = colors.sort(() => Math.random() - 0.5);
@@ -44,9 +53,5 @@ onBeforeUnmount(() => {
 <style scoped>
 .options {
     width: 90%;
-}
-
-h3 {
-    letter-spacing: 1px;
 }
 </style>

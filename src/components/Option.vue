@@ -1,6 +1,6 @@
 <template>
-    <div class="d-flex justify-content-between align-items-center mb-2">
-        <span class="d-flex align-items-center user-select-none fs-4 opacity-0 pe-4">
+    <div class="d-flex gap-4 justify-content-between align-items-center mb-2">
+        <span class="d-flex align-items-center user-select-none pe-none fs-4 opacity-0">
             {{ index + 1 }}.
         </span>
         <span
@@ -8,7 +8,7 @@
             class="option fs-2 user-select-none" role="button" :style="{ color: color }">
             {{ title }}
         </span>
-        <span class="opacity-0 ps-3">
+        <span class="opacity-0">
             <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" fill="currentColor"
                 class="bi bi-check-lg text-success" viewBox="0 0 16 16">
                 <path

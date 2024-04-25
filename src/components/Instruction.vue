@@ -1,5 +1,5 @@
 <template>
-    <p :style="{ color: color }" class="user-select-none fs-4 fw-bold text-center">{{ title }}</p>
+    <p :style="{ color: color }" class="ls-1 user-select-none fs-4 fw-bold text-center">{{ title }}</p>
 </template>
 
 <script setup>
@@ -12,6 +12,5 @@ const props = defineProps({
 <style scoped>
 p {
     width: 90%;
-    letter-spacing: 1px;
 }
 </style>

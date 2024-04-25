@@ -121,6 +121,66 @@ onMounted(() => {
                     options: ["BOUYANCY", "QUIETER", "CHEQUIE", "FRENZY"],
                     answer: "CHEQUIE"
                 }];
+            } else if (gameMode === "find-correct") {
+                game.questions = [
+                    {
+                        options: ["BOUYANCY", "QUIETE", "CHEQUIE", "FRENZEY"],
+                        answer: "BOUYANCY"
+                    },
+                    {
+                        options: ["VACE", "WRENCH", "SOROW", "YESTEDAY"],
+                        answer: "WRENCH"
+                    },
+                    {
+                        options: ["EPETEMOLOGY", "BEATIFULLY", "NECROMANSY", "HYACINTH"],
+                        answer: "HYACINTH"
+                    },
+                    {
+                        options: ["WIERD", "WIER", "WRIT", "WIRT"],
+                        answer: "WIERD"
+                    },
+                    {
+                        options: ["LONLY", "OBNOXIOUS", "ELLITE", "KILLO"],
+                        answer: "OBNOXIOUS"
+                    },
+                    {
+                        options: ["ECCOLOGY", "CONECTION", "COMITTEE", "MAINTENANCE"],
+                        answer: "MAINTENANCE"
+                    },
+                    {
+                        options: ["ORIFICE", "SOLDIER", "OBSOLUTE", "PLASS"],
+                        answer: "SOLDIER"
+                    },
+                    {
+                        options: ["PETROLEUM", "XYLOFONIC", "PIRANA", "SOUCE"],
+                        answer: "PETROLEUM"
+                    },
+                    {
+                        options: ["BAILOON", "CODEIN", "MASHMELLO", "ORCA"],
+                        answer: "ORCA"
+                    },
+                    {
+                        options: ["OCHESTRAITE", "PENGUINE", "GENUINE", "SOROGAT"],
+                        answer: "GENUINE"
+                    },
+                    {
+                        options: ["SPIOL", "COROSIVE", "DIAMMOND", "COBALT"],
+                        answer: "COBALT"
+                    }];
+            } else if (gameMode === "which-letter") {
+                game.questions = [
+                    { word: "DELICIOUS", position: "third", answer: "L" },
+                    { word: "FROG", position: "first", answer: "F" },
+                    { word: "AROMA", position: "fifth", answer: "A" },
+                    { word: "EASE", position: "second", answer: "A" },
+                    { word: "GHOST", position: "fourth", answer: "S" },
+                    { word: "QUEEN", position: "first", answer: "Q" },
+                    { word: "RHOMBUS", position: "second", answer: "H" },
+                    { word: "TANGERINE", position: "seventh", answer: "I" },
+                    { word: "COMPETENT", position: "sixth", answer: "T" },
+                    { word: "XYLOPHONE", position: "ninth", answer: "E" },
+                    { word: "DELICIOUS", position: "third", answer: "L" }
+                ];
             }
             game.start = true;
         }, 2500);

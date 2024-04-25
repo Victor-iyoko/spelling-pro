@@ -15,7 +15,7 @@
 
 <script setup>
 import { RouterLink } from 'vue-router';
-import { onMounted, ref } from 'vue';
+import { onMounted, onUnmounted, ref } from 'vue';
 import categoriesArr from '../data/categories';
 
 const props = defineProps({
@@ -27,14 +27,42 @@ const props = defineProps({
     img: String
 });
 
+let hoverAnimationInterval;
 const animatedTiles = ref([]);
 
+function runHoverAnimation() {
+    setTimeout(() => {
+        [4, 5, 7, 3, 6, 1, 0, 2].forEach((el, i) => {
+            setTimeout(() => {
+                let category = categoriesArr[el].url.substring(2, undefined);
+                document.getElementById(category)?.classList.add('category-hover');
+                setTimeout(() => {
+                    document.getElementById(category)?.classList.remove('category-hover');
+                }, 1000);
+            }, i * 1500);
+        });
+    }, 3000);
+}
+
+// window.addEventListener('resize', (e) = {
+//     console.log(e.focus.innerWidth)
+// });
 onMounted(() => {
+
     categoriesArr.forEach((_, i) => {
         setTimeout(() => {
             animatedTiles.value.push(i);
         }, i * 300);
     });
+
+    if (window.innerWidth >= 600) {
+        runHoverAnimation();
+        hoverAnimationInterval = setInterval(runHoverAnimation, 12000);
+    }
+});
+
+onUnmounted(() => {
+    clearInterval(hoverAnimationInterval);
 });
 </script>
 
@@ -61,28 +89,6 @@ svg.vertical {
     top: 100%;
 }
 
-.category:hover svg.vertical {
-    top: 60%;
-    left: 50%;
-    transform: translateX(-50%);
-}
-
-.category:hover svg {
-    opacity: 0.4 !important;
-    top: 20%;
-    right: 10%;
-    transform: rotate(0);
-}
-
-.category:hover h2 {
-    transform: scale(0.6);
-    /* opacity: 0; */
-}
-
-.category:hover h6 {
-    transform: scale(1.3);
-}
-
 .category {
     box-shadow: 3px 3px 4px #000000;
     transition: all .4s ease-in-out;
@@ -92,11 +98,6 @@ svg.vertical {
 .animate {
     opacity: 1 !important;
     transform: translateX(0) scale(1) !important;
-}
-
-.category:hover {
-    background-color: #31393b;
-    box-shadow: none;
 }
 
 h2 {
@@ -164,6 +165,41 @@ h6 {
 
     h2 {
         margin-bottom: 5px !important;
+    }
+}
+
+@media screen and (min-width: 600px) {
+
+    .category:hover svg.vertical,
+    .category-hover>svg.vertical {
+        top: 60%;
+        left: 50%;
+        transform: translateX(-50%);
+    }
+
+    .category:hover svg,
+    .category-hover>svg {
+        opacity: 0.4 !important;
+        top: 20%;
+        right: 10%;
+        transform: rotate(0);
+    }
+
+    .category:hover h2,
+    .category-hover>h2 {
+        transform: scale(0.6);
+        /* opacity: 0; */
+    }
+
+    .category:hover h6,
+    .category-hover>h6 {
+        transform: scale(1.3);
+    }
+
+    .category:hover,
+    .category-hover {
+        background-color: #31393b;
+        box-shadow: none;
     }
 }
 </style>
