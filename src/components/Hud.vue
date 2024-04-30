@@ -1,5 +1,5 @@
 <template>
-    <header class="bg-white p-1 p-md-2 d-flex justify-content-between align-items-center user-select-none">
+    <header class="bg-light-subtle p-1 p-md-2 d-flex justify-content-between align-items-center user-select-none">
         <div class="d-flex justify-content-between align-items-center">
             <RouterLink to="/" class="me-auto">
                 <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" fill="currentColor"

@@ -1,19 +1,8 @@
-const event = new CustomEvent('showWordPage');
+const event = new CustomEvent('showWordPage', {detail: {reset: true}});
 
 function reset() {
-    const options = document.getElementById("letter-options")?.children;
-    if (options) {
-        for (let i = 0; i < options.length; i++) {
-            // removing pointer event none class from all the words
-            options[i].classList.remove("pe-none");
-
-            // set opacity to full
-            options[i].style.opacity = 1;
-
-            // display the word page
-            document.dispatchEvent(event);
-        }
-    }
+    // display the word page only since both  options and word page gets remounted, there is no need for custom reset
+    document.dispatchEvent(event);
 }
 
 export default function whichLetter(e, game, timeOut) {
@@ -36,4 +25,5 @@ export default function whichLetter(e, game, timeOut) {
     /* calling the store function here because it changes the currentQuestIndex which
      changes the question and answer thereby preventing the first call from having approrpriate data */
     game.handleClick(e.target.textContent);
+
 }

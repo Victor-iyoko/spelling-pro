@@ -20,7 +20,7 @@
             <GameOver v-else />
         </Transition>
     </Board>
-    <h3 id="tap-board" :class="[!loadQuestions ? 'tap' : 'opacity-0']"
+    <h3 id="tap-board" v-show="!game.game0ver" :class="[!loadQuestions ? 'tap' : 'opacity-0']"
         class="text-shadow mx-auto text-center fw-bold text-white mt-2 mt-xl-4 mb-1 mb-xl-3 fs-3">TAP THE BOARD
     </h3>
 </template>

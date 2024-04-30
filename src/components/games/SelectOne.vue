@@ -2,14 +2,14 @@
     <div>
         <h3 class="fs-2 ls-1 my-5 user-select-none text-center">{{ getInstruction() }}</h3>
         <div class="options d-flex flex-column align-items-center mx-auto" id="select-one-options">
-            <Option @resetOption="" v-for="(option, i) in game.questions[game.currentQuestIndex].options"
+            <SelectOneOption @resetOption="" v-for="(option, i) in game.questions[game.currentQuestIndex].options"
                 :color="getColor(i)" :title="option" :index="i" />
         </div>
     </div>
 </template>
 
 <script setup>
-import Option from '../Option.vue';
+import SelectOneOption from '../SelectOneOption.vue';
 import { useGameStore } from '../../stores/game';
 import { onMounted, onBeforeUnmount } from 'vue';
 

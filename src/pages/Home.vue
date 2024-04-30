@@ -18,8 +18,6 @@ import Category from '../components/Category.vue';
 import Footer from '../components/Footer.vue';
 import Settings from '../components/Settings.vue';
 import About from '../components/About.vue';
-import { ref, onMounted } from 'vue';
-
 </script>
 
 <style scoped>

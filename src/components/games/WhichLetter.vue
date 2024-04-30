@@ -1,6 +1,6 @@
 <template>
-    <Transition name="scale" class="scale" mode="out-in">
-        <div @click="toggleWordPage" v-if="wordPage" class="w-100" role="button">
+    <Transition @before-enter="beforeEnter" @after-enter="afterEnter" name="scale" class="scale" mode="out-in">
+        <div @click="toggleWordPage" id="word-page" v-if="wordPage" class="w-100" role="button">
             <h3 class="fs-3 ls-1 my-5 user-select-none text-center">Remember Word</h3>
             <h2 class="fs-1 ls-2 text-center text-danger ">{{ game.questions[game.currentQuestIndex].word }}</h2>
         </div>
@@ -27,6 +27,7 @@ import checkMatch from '../../functions';
 
 const game = useGameStore();
 const wordPage = ref(true);
+const transitioning = ref(false);
 const tap = document.getElementById('tap-board');
 
 const letters = ref([
@@ -36,10 +37,24 @@ const letters = ref([
     "N", "M"
 ].sort(() => Math.random() - 0.5));
 
-function toggleWordPage() {
-    wordPage.value = !wordPage.value;
-}
+function toggleWordPage(e) {
+    if (!transitioning.value) {
+        wordPage.value = !wordPage.value;
+        if (!wordPage.value) {
+            document.getElementById('word-page').classList.add('pe-none');
+        } else {
+            document.getElementById('letter-options').classList.add('pe-none');
+        }
+        tap.classList.toggle('opacity-0');
+        tap.classList.toggle('tap');
+    }
+    if (!transitioning.value && e.detail.reset && !wordPage.value) {
+        document.getElementById('word-page').classList.remove('pe-none');
 
+        tap.classList.toggle('opacity-0');
+        tap.classList.toggle('tap');
+    }
+}
 // sort letters array and switch pages on question change
 watch(() => game.currentQuestIndex, (newIndex, oldIndex) => {
     if (newIndex > oldIndex) {
@@ -47,10 +62,15 @@ watch(() => game.currentQuestIndex, (newIndex, oldIndex) => {
         letters.value.sort(() => Math.random() - 0.5);
     }
 });
-watch(() => wordPage.value, (newValue, oldValue) => {
-    tap.classList.toggle('opacity-0');
-    tap.classList.toggle('tap');
-});
+
+function beforeEnter() {
+    transitioning.value = true;
+    console.log("started transition", transitioning.value);
+}
+function afterEnter() {
+    transitioning.value = false;
+    console.log("ended transition", transitioning.value);
+}
 
 onMounted(() => {
     // show tap board instruction
@@ -62,7 +82,6 @@ onMounted(() => {
     game.questionAns++;
     document.addEventListener('showWordPage', toggleWordPage);
 });
-
 onBeforeUnmount(() => {
     // Cleanup: stop the timer when the component is destroyed
     game.clearCountDown();

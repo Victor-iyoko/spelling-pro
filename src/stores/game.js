@@ -26,21 +26,21 @@ defineStore({
             this.timer = setInterval(() => {
                 if (this.time.current > 0) {
                         this.time.current--; // Decrement time by 1 second
-                } else {
-                    if (this.time.dependency === 'end game') {
-                        this.game0ver = true;   // Load game over page
-                        clearInterval(this.timer);  // Stop the timer when time reaches 0
                     } else {
-                        this.reduce();
-                        this.currentQuestIndex++; // get new question when time reaches 0
-                        setTimeout(() => {
-                          //  this.questionAns++; // increase number of answered questions
-                            this.checkGameOver(false);
-                        }, 500);
-                        this.time.current = this.time.initial; // reset time to initial value if the game questions are limited
-                        checkMatch(null, { mode: this.mode, handleClick: this.handleClick }, true);
+                        if (this.time.dependency === 'end game') {
+                            this.game0ver = true;   // Load game over page
+                            clearInterval(this.timer);  // Stop the timer when time reaches 0
+                        } else {
+                            this.reduce();
+                            this.currentQuestIndex++; // get new question when time reaches 0
+                            setTimeout(() => {
+                                //  this.questionAns++; // increase number of answered questions
+                                this.checkGameOver(false);
+                            }, 500);
+                            this.time.current = this.time.initial; // reset time to initial value if the game questions are limited
+                            checkMatch(null, { mode: this.mode, handleClick: this.handleClick }, true);
+                        }
                     }
-                }
             }, 1000); // Update timer every second (1000 milliseconds)
         },
         clearCountDown() {
@@ -51,14 +51,13 @@ defineStore({
         },
         handleClick(answer) {
             if (this.isAnswer(answer)) {
+                this.score += 10 + this.time.current;
                 this.time.dependency === 'end game' ? null : this.time.current = this.time.initial;
                 setTimeout(() => {
                     this.currentQuestIndex++;
                     this.checkGameOver(false);
                 }, 500);
-                this.score += 10;
-                console.log(this.time.current);
-                this.score += this.time.current;
+                // this.score += this.time.current;
             } else {
                 this.reduce();
             }
@@ -69,8 +68,8 @@ defineStore({
                 this.clearCountDown();
                 return;
             } else {
-                    !onLifeReduce && this.questionAns++;
-                }
+                !onLifeReduce && this.questionAns++;
+            }
         }
     }
 });
