@@ -181,6 +181,53 @@ onMounted(() => {
                     { word: "XYLOPHONE", position: "ninth", answer: "E" },
                     { word: "DELICIOUS", position: "third", answer: "L" }
                 ];
+            } else if (gameMode === "decide") {
+                game.questions = [
+                    {
+                        word: "accrobate",
+                        answer: "false"
+                    },
+                    {
+                        word: "confuse",
+                        answer: "true"
+                    },
+                    {
+                        word: "peint",
+                        answer: "false"
+                    },
+                    {
+                        word: "knowledgeable",
+                        answer: "true"
+                    },
+                    {
+                        word: "feasible",
+                        answer: "true"
+                    },
+                    {
+                        word: "plain",
+                        answer: "false"
+                    },
+                    {
+                        word: "phantom",
+                        answer: "true"
+                    },
+                    {
+                        word: "sample",
+                        answer: "true"
+                    },
+                    {
+                        word: "sele",
+                        answer: "false"
+                    },
+                    {
+                        word: "brittle",
+                        answer: "true"
+                    },
+                    {
+                        word: "coincidece",
+                        answer: "false"
+                    }
+                ]
             }
             game.start = true;
         }, 2500);

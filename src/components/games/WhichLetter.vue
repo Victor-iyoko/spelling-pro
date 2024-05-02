@@ -1,11 +1,12 @@
 <template>
     <Transition @before-enter="beforeEnter" @after-enter="afterEnter" name="scale" class="scale" mode="out-in">
         <div @click="toggleWordPage" id="word-page" v-if="wordPage" class="w-100" role="button">
-            <h3 class="fs-3 ls-1 my-5 user-select-none text-center">Remember Word</h3>
-            <h2 class="fs-1 ls-2 text-center text-danger ">{{ game.questions[game.currentQuestIndex].word }}</h2>
+            <h3 class="fs-3 lh-lg ls-1 my-5 user-select-none text-center">Remember Word</h3>
+            <h2 class="fs-1 lh-base ls-2 text-center text-danger ">{{ game.questions[game.currentQuestIndex].word }}
+            </h2>
         </div>
         <div v-else class="w-100">
-            <h3 class="fs-2 my-2 user-select-none text-center">
+            <h3 class="fs-2 lh-lg my-2 user-select-none text-center">
                 {{ `the ${game.questions[game.currentQuestIndex].position} letter is?` }}
             </h3>
             <div id="letter-options" class="px-2 px-md-5 mt-2 text-center">
@@ -92,15 +93,6 @@ onBeforeUnmount(() => {
 </script>
 
 <style scoped>
-h3 {
-    line-height: 2;
-}
-
-h2 {
-    letter-spacing: 2px;
-    line-height: 1.5;
-}
-
 #letter-options {
     display: grid;
     grid-template-columns: repeat(6, 1fr);

@@ -24,7 +24,8 @@ defineStore({
         startCountDown() {
             // Start the countdown timer
             this.timer = setInterval(() => {
-                if (this.time.current > 0) {
+                if (!this.time.pause) {           
+                    if (this.time.current > 0) {
                         this.time.current--; // Decrement time by 1 second
                     } else {
                         if (this.time.dependency === 'end game') {
@@ -41,6 +42,7 @@ defineStore({
                             checkMatch(null, { mode: this.mode, handleClick: this.handleClick }, true);
                         }
                     }
+                }
             }, 1000); // Update timer every second (1000 milliseconds)
         },
         clearCountDown() {
@@ -50,16 +52,34 @@ defineStore({
             return this.questions[this.currentQuestIndex].answer === option;
         },
         handleClick(answer) {
-            if (this.isAnswer(answer)) {
-                this.score += 10 + this.time.current;
-                this.time.dependency === 'end game' ? null : this.time.current = this.time.initial;
+            // console.log(answer);
+            if (this.mode !== 'decide') {
+                if (this.isAnswer(answer)) {
+                    this.score += 10 + this.time.current;
+                    this.time.dependency === 'end game' ? null : this.time.current = this.time.initial;
+                    setTimeout(() => {
+                        this.currentQuestIndex++;
+                        this.checkGameOver(false);
+                    }, 500);
+                } else {
+                    this.reduce();
+                }
+            } else {
+                // pause the time before next question fully displlays
+                this.time.pause = true;
+                if (this.isAnswer(answer)) {
+                    this.score += 10 + this.time.current;
+                } else {
+                    this.reduce();
+                }
+                setTimeout(() => {
+                    this.time.dependency === 'end game' ? null : this.time.current = this.time.initial;
+                    this.time.pause = false; // continue countdown after question fully displays
+                }, 1500);
                 setTimeout(() => {
                     this.currentQuestIndex++;
                     this.checkGameOver(false);
                 }, 500);
-                // this.score += this.time.current;
-            } else {
-                this.reduce();
             }
         },
         checkGameOver(onLifeReduce) {

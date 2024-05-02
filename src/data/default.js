@@ -18,7 +18,7 @@ const gameDefault = {
         start: false,
         questions: [],
         lifes: 0,
-        time: {initial: null, current: null, dependency: null},
+        time: {initial: null, current: null, pause: false, dependency: null},
         timer: null,
         lifesArr: [],
         questionAns: 0,

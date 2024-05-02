@@ -3,7 +3,7 @@
         <h3 class="fs-2 ls-1 my-5 user-select-none text-center">{{ getInstruction() }}</h3>
         <div class="options d-flex flex-column align-items-center mx-auto" id="select-one-options">
             <SelectOneOption @resetOption="" v-for="(option, i) in game.questions[game.currentQuestIndex].options"
-                :color="getColor(i)" :title="option" :index="i" />
+                :color="colors[i]" :title="option" :index="i" />
         </div>
     </div>
 </template>
@@ -11,9 +11,10 @@
 <script setup>
 import SelectOneOption from '../SelectOneOption.vue';
 import { useGameStore } from '../../stores/game';
-import { onMounted, onBeforeUnmount } from 'vue';
+import { ref, watch, onMounted, onBeforeUnmount } from 'vue';
 
 const game = useGameStore();
+const colors = ref(["#ea3556", "blue", "#f658e3", "green"]);
 
 function getInstruction() {
     if (game.mode === 'one-word-two-forms') {
@@ -24,19 +25,12 @@ function getInstruction() {
         return 'Find Correct Word';
     }
 }
-function getColor(index) {
-    let colors = ["#ea3556", "blue, #f658e3", "green"];
-    colors = colors.sort(() => Math.random() - 0.5);
-    if (index === 0) {
-        return '#ea3556';
-    } else if (index === 1) {
-        return 'blue';
-    } else if (index === 2) {
-        return '#f658e3';
-    } else {
-        return 'green';
+
+watch(() => game.currentQuestIndex, (newIndex, oldIndex) => {
+    if (newIndex > oldIndex) {
+        colors.value.sort(() => Math.random() - 0.5);
     }
-}
+});
 
 onMounted(() => {
     // Start the countdown timer
