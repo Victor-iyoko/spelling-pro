@@ -1,4 +1,5 @@
 export default function decide(e, game, timeOut) {
+    console.log(e.currentTarget.dataset.answer)
     const options = document.getElementById('decide-options');
     if (timeOut) {
         options.classList.remove('pe-none');

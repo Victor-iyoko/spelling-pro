@@ -11,7 +11,8 @@
                 v-else-if="loadQuestions && game.questions.length > 0 && game.start && !game.game0ver">
                 <SelectOne
                     v-if="gameMode === 'one-word-two-forms' || gameMode === 'find-correct' || gameMode === 'find-misspelled'" />
-                <Decide v-else-if="gameMode === 'decide' || gameMode === 'decide-and-correct'" />
+                <Decide v-else-if="gameMode === 'decide'" />
+                <DecideCorrect v-else-if="gameMode === 'decide-and-correct'" />
                 <WhichLetter v-else-if="gameMode === 'which-letter'" />
                 <MultipleChoice v-else-if="gameMode === 'multiple-choice'" />
                 <Spell v-else-if="gameMode === 'spell-it'" />
@@ -33,6 +34,7 @@ import LoadingQuestions from '../components/LoadingQuestions.vue';
 import GameOver from '../components/GameOver.vue';
 import SelectOne from '../components/games/SelectOne.vue';
 import Decide from '../components/games/Decide.vue';
+import DecideCorrect from '../components/games/DecideCorrect.vue';
 import WhichLetter from '../components/games/WhichLetter.vue';
 import MultipleChoice from '../components/games/MultipleChoice.vue';
 import Spell from '../components/games/Spell.vue';

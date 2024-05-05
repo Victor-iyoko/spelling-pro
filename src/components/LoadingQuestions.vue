@@ -184,49 +184,91 @@ onMounted(() => {
             } else if (gameMode === "decide") {
                 game.questions = [
                     {
-                        word: "accrobate",
-                        answer: "false"
+                        word: ["acrobate", "correct"],
+                        answer: "acrobate"
                     },
                     {
-                        word: "confuse",
-                        answer: "true"
+                        word: ["confuse", "correct"],
+                        answer: "confuse"
                     },
                     {
-                        word: "peint",
-                        answer: "false"
+                        word: ["peint", "wrong"],
+                        answer: "paint"
                     },
                     {
-                        word: "knowledgeable",
-                        answer: "true"
+                        word: ["knowledgeable", "correct"],
+                        answer: "knowledgeable"
                     },
                     {
-                        word: "feasible",
-                        answer: "true"
+                        word: ["feasible", "correct"],
+                        answer: "feasible"
                     },
                     {
-                        word: "plain",
-                        answer: "false"
+                        word: ["plain", "wrong"],
+                        answer: "plane"
                     },
                     {
-                        word: "phantom",
-                        answer: "true"
+                        word: ["phantom", "correct"],
+                        answer: "phantom"
                     },
                     {
-                        word: "sample",
-                        answer: "true"
+                        word: ["sample", "correct"],
+                        answer: "sample"
                     },
                     {
-                        word: "sele",
-                        answer: "false"
+                        word: ["sele", "wrong"],
+                        answer: "sale"
                     },
                     {
-                        word: "brittle",
-                        answer: "true"
+                        word: ["brittle", "correct"],
+                        answer: "brittle"
                     },
                     {
-                        word: "coincidece",
-                        answer: "false"
+                        word: ["coincidece", "wrong"],
+                        answer: "coincidence"
                     }
+                ]
+            } else if (gameMode === "decide-and-correct") {
+                game.questions = [{
+                    word: ["ackrobate", "wrong"],
+                    options: ["acrobate", "akrobat", "acrobaite"],
+                    answer: "acrobate"
+                },
+                {
+                    word: ["confuse", "correct"],
+                    answer: "confuse"
+                },
+                {
+                    word: ["peint", "wrong"],
+                    options: ["paaint", "pent", "paint"],
+                    answer: "paint"
+                },
+                {
+                    word: ["knnowledge", "correct"],
+                    answer: "knowledgeable"
+                },
+                {
+                    word: ["feasible", "correct"],
+                    answer: "feasible"
+                },
+                {
+                    word: ["plein", "wrong"],
+                    options: ["plaine", "pleine", "plain"],
+                    answer: "plain"
+                },
+                {
+                    word: ["phantom", "correct"],
+                    answer: "phantom"
+                },
+                {
+                    word: ["sammple", "wrong"],
+                    options: ["semple", "sampil", "sample"],
+                    answer: "sample"
+                },
+                {
+                    word: ["ecstacy", "correct"],
+                    answer: "ecstacy"
+                }
                 ]
             }
             game.start = true;

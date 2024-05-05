@@ -161,7 +161,7 @@ label {
 
 .form-check-input:checked {
     background-color: #773516;
-    border-color: #773516;
+    /* border-color: #773516; */
 }
 
 input[type=radio]:focus,
