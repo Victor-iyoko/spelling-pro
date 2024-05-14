@@ -39,7 +39,7 @@ defineStore({
                                 this.checkGameOver(false);
                             }, 500);
                             this.time.current = this.time.initial; // reset time to initial value if the game questions are limited
-                            checkMatch(null, { mode: this.mode, handleClick: this.handleClick }, true);
+                            checkMatch(null, { mode: this.mode, gameDepComponent: this.gameDepComponent, handleClick: this.handleClick }, true);
                         }
                     }
                 }
@@ -53,33 +53,47 @@ defineStore({
         },
         handleClick(answer) {
             // console.log(answer);
-            if (this.mode !== 'decide') {
+            if ((this.mode !== 'decide' && this.mode !== 'decide-and-correct') || this.gameDepComponent === "select-one") {
                 if (this.isAnswer(answer)) {
+                    // pause the time before next question fully displays for decide and correct game when gameDep is not null
+                    this.gameDepComponent ? this.time.pause = true : null;
+
                     this.score += 10 + this.time.current;
                     this.time.dependency === 'end game' ? null : this.time.current = this.time.initial;
                     setTimeout(() => {
                         this.currentQuestIndex++;
+                        this.time.pause ? this.time.pause = false : null;
                         this.checkGameOver(false);
                     }, 500);
                 } else {
                     this.reduce();
                 }
             } else {
-                // pause the time before next question fully displlays
-                this.time.pause = true;
+                // pause the time before next question fully displays for decide game
+                this.mode === 'decide' || !this.questions[this.currentQuestIndex].options ? this.time.pause = true : null;
                 if (this.isAnswer(answer)) {
                     this.score += 10 + this.time.current;
+                    if (!this.questions[this.currentQuestIndex].options) {                 
+                        setTimeout(() => {
+                            this.time.dependency === 'end game' ? null : this.time.current = this.time.initial;
+                            this.time.pause = false; // continue countdown after question fully displays
+                        }, 1500);
+                        setTimeout(() => {
+                            this.currentQuestIndex++;
+                            this.checkGameOver(false);
+                         }, 500);
+                    }
                 } else {
                     this.reduce();
+                    setTimeout(() => {
+                        this.time.dependency === 'end game' ? null : this.time.current = this.time.initial;
+                        this.time.pause = false; // continue countdown after question fully displays
+                    }, 1500);
+                    setTimeout(() => {
+                        this.currentQuestIndex++;
+                        this.checkGameOver(false);
+                    }, 500);
                 }
-                setTimeout(() => {
-                    this.time.dependency === 'end game' ? null : this.time.current = this.time.initial;
-                    this.time.pause = false; // continue countdown after question fully displays
-                }, 1500);
-                setTimeout(() => {
-                    this.currentQuestIndex++;
-                    this.checkGameOver(false);
-                }, 500);
             }
         },
         checkGameOver(onLifeReduce) {

@@ -15,6 +15,7 @@ const settingsDefault = {
 
 const gameDefault = {
         mode: null,
+        gameDepComponent: null,
         start: false,
         questions: [],
         lifes: 0,

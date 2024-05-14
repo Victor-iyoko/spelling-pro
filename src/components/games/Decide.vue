@@ -5,13 +5,13 @@
             {{ word }}
         </h2>
         <div id="decide-options" class="mt-3 mx-auto w-50 d-flex justify-content-between align-items-center">
-            <svg @click="(e) => checkMatch(e, { mode: game.mode, isAnswer: game.isAnswer, handleClick: game.handleClick }, false)"
+            <svg @click="(e) => checkMatch(e, { mode: game.mode, isAnswer: game.isAnswer, handleClick: game.handleClick, gameDepComponent: game.gameDepComponent }, false)"
                 role="button" xmlns="http://www.w3.org/2000/svg" width="50" height="50" fill="currentColor"
                 class="bi bi-check-lg text-success" :data-answer="assignOptions(true)" viewBox="0 0 16 16">
                 <path
                     d="M12.736 3.97a.733.733 0 0 1 1.047 0c.286.289.29.756.01 1.05L7.88 12.01a.733.733 0 0 1-1.065.02L3.217 8.384a.757.757 0 0 1 0-1.06.733.733 0 0 1 1.047 0l3.052 3.093 5.4-6.425z" />
             </svg>
-            <svg @click="(e) => checkMatch(e, { mode: game.mode, isAnswer: game.isAnswer, handleClick: game.handleClick }, false)"
+            <svg @click="(e) => checkMatch(e, { mode: game.mode, isAnswer: game.isAnswer, handleClick: game.handleClick, gameDepComponent: game.gameDepComponent }, false)"
                 role="button" xmlns="http://www.w3.org/2000/svg" width="50" height="50" fill="currentColor"
                 class="bi bi-x text-danger" :data-answer="assignOptions(false)" viewBox="0 0 16 16">
                 <path
@@ -62,13 +62,17 @@ watch(() => game.currentQuestIndex, (newIndex, oldIndex) => {
 
 onMounted(() => {
     wordElm = document.getElementById('decide-word');
-    // Start the countdown timer
-    game.startCountDown();
-    game.questionAns++;
+    // Start the countdown timer if game mode is decide and not decide and correct
+    if (game.mode === "decide") {
+        game.startCountDown();
+        game.questionAns++;
+    }
 });
 onBeforeUnmount(() => {
     // Cleanup: stop the timer when the component is destroyed
-    game.clearCountDown();
+    if (game.mode === "decide") {
+        game.clearCountDown();
+    }
 });
 </script>
 

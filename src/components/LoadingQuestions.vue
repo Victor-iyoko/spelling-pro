@@ -66,10 +66,6 @@ onMounted(() => {
                     {
                         options: ["SORY", "SORRY"],
                         answer: "SORRY"
-                    },
-                    {
-                        options: ["CLAY", "CLEY"],
-                        answer: "CLAY"
                     }
                 ];
             } else if (gameMode === "find-misspelled") {
@@ -244,7 +240,7 @@ onMounted(() => {
                     answer: "paint"
                 },
                 {
-                    word: ["knnowledge", "correct"],
+                    word: ["knowledge", "correct"],
                     answer: "knowledgeable"
                 },
                 {
@@ -266,14 +262,24 @@ onMounted(() => {
                     answer: "sample"
                 },
                 {
+                    word: ["slegde", "wrong"],
+                    options: ["slege", "sleige", "sledge"],
+                    answer: "sledge"
+                },
+                {
                     word: ["ecstacy", "correct"],
                     answer: "ecstacy"
+                },
+                {
+                    word: ["slegde", "wrong"],
+                    options: ["slege", "sleige", "sledge"],
+                    answer: "sledge"
                 }
                 ]
             }
             game.start = true;
         }, 2500);
-    }, 3000);
+    }, 1000);
 });
 </script>
 

@@ -1,5 +1,6 @@
+const event = new CustomEvent('showDecidePage', {detail: {decidePage: false}});
+
 export default function decide(e, game, timeOut) {
-    console.log(e.currentTarget.dataset.answer)
     const options = document.getElementById('decide-options');
     if (timeOut) {
         options.classList.remove('pe-none');
@@ -7,6 +8,7 @@ export default function decide(e, game, timeOut) {
     }
     options.classList.add('pe-none');
     game.handleClick(e.currentTarget.dataset.answer); //using currentTarget due to event bubbling
+    e.currentTarget.classList.contains('bi-x') && game.isAnswer(e.currentTarget.dataset.answer) && game.mode === "decide-and-correct" && document.dispatchEvent(event);
     
     setTimeout(() => {
         options.classList.remove('pe-none');

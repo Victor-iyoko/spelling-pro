@@ -1,5 +1,5 @@
 <template>
-    <Transition @click="toggleDecidePage" name="scale" class="scale" mode="out-in">
+    <Transition name="scale" class="scale" mode="out-in">
         <Decide v-if="decidePage" />
         <SelectOne v-else />
     </Transition>
@@ -14,19 +14,27 @@ import Decide from './Decide.vue';
 const game = useGameStore();
 const decidePage = ref(true);
 
-
-function toggleDecidePage() {
-    decidePage.value = !decidePage.value;
+function toggleDecidePage(e) {
+    decidePage.value = e.detail.decidePage;
+    decidePage.value ? game.gameDepComponent = "decide" : game.gameDepComponent = "select-one";
 }
 
 onMounted(() => {
-    console.log("decide-correct")
+    // set game component dependency for use in check match function
+    game.gameDepComponent = "decide";
+
     // Start the countdown timer
-    // game.startCountDown();
+    game.startCountDown();
     game.questionAns++;
+
+    // add event listener for switching between pages
+    document.addEventListener('showDecidePage', toggleDecidePage);
 });
 onBeforeUnmount(() => {
     // Cleanup: stop the timer when the component is destroyed
     game.clearCountDown();
+
+    // remove event listener
+    document.removeEventListener('showDecidePage', toggleDecidePage);
 });
 </script>

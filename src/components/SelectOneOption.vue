@@ -4,7 +4,7 @@
             {{ index + 1 }}.
         </span>
         <span
-            @click="(e) => checkMatch(e, { mode: game.mode, isAnswer: game.isAnswer, handleClick: game.handleClick }, false)"
+            @click="(e) => checkMatch(e, { mode: game.mode, isAnswer: game.isAnswer, handleClick: game.handleClick, gameDepComponent: game.gameDepComponent }, false)"
             class="option fs-2 user-select-none" role="button" :style="{ color: color }">
             {{ title }}
         </span>

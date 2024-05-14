@@ -2,8 +2,8 @@
     <div>
         <h3 class="fs-2 ls-1 my-5 user-select-none text-center">{{ getInstruction() }}</h3>
         <div class="options d-flex flex-column align-items-center mx-auto" id="select-one-options">
-            <SelectOneOption @resetOption="" v-for="(option, i) in game.questions[game.currentQuestIndex].options"
-                :color="colors[i]" :title="option" :index="i" />
+            <SelectOneOption v-for="(option, i) in game.questions[game.currentQuestIndex].options" :color="colors[i]"
+                :title="option" :index="i" />
         </div>
     </div>
 </template>
@@ -14,7 +14,7 @@ import { useGameStore } from '../../stores/game';
 import { ref, watch, onMounted, onBeforeUnmount } from 'vue';
 
 const game = useGameStore();
-const colors = ref(["#ea3556", "blue", "#f658e3", "green"]);
+const colors = ref(["#ea3556", "blue", "#f658e3", "green"].sort(() => Math.random() - 0.5));
 
 function getInstruction() {
     if (game.mode === 'one-word-two-forms') {
@@ -34,13 +34,17 @@ watch(() => game.currentQuestIndex, (newIndex, oldIndex) => {
 
 onMounted(() => {
     // Start the countdown timer
-    game.startCountDown();
-    game.questionAns++;
+    if (game.mode !== "decide-and-correct") {
+        game.startCountDown();
+        game.questionAns++;
+    }
 });
 
 onBeforeUnmount(() => {
     // Cleanup: stop the timer when the component is destroyed
-    game.clearCountDown();
+    if (game.mode !== "decide-and-correct") {
+        game.clearCountDown();
+    }
 });
 </script>
 
