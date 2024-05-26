@@ -1,5 +1,5 @@
 <template>
-    <div class="d-flex gap-4 justify-content-between align-items-center mb-2">
+    <div class="d-flex gap-4 justify-content-between align-items-center mb-2 ls-2">
         <span class="d-flex align-items-center user-select-none pe-none fs-4 opacity-0">
             {{ index + 1 }}.
         </span>
@@ -32,10 +32,6 @@ const props = defineProps({
 </script>
 
 <style scoped>
-div {
-    letter-spacing: 2px;
-}
-
 .option:hover {
     text-decoration: underline;
 }

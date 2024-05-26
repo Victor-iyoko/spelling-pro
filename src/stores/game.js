@@ -11,7 +11,7 @@ defineStore({
             this.clearCountDown();
             Object.assign(this, gameDefault);
         },
-        reduce() {
+        reduce(points) {
             this.lifes--;
             this.checkGameOver(true);
             if (this.lifes >= 0) {
@@ -19,7 +19,7 @@ defineStore({
                     this.lifesArr[this.lifes].alive = false;
                 }, 100);
             }
-            this.score - 10 <= 0 ? this.score = 0 : this.score -= 10;
+            this.score - points <= 0 ? this.score = 0 : this.score -= points;
         },
         startCountDown() {
             // Start the countdown timer
@@ -32,7 +32,7 @@ defineStore({
                             this.game0ver = true;   // Load game over page
                             clearInterval(this.timer);  // Stop the timer when time reaches 0
                         } else {
-                            this.reduce();
+                            this.reduce(10);
                             this.currentQuestIndex++; // get new question when time reaches 0
                             setTimeout(() => {
                                 //  this.questionAns++; // increase number of answered questions
@@ -66,7 +66,7 @@ defineStore({
                         this.checkGameOver(false);
                     }, 500);
                 } else {
-                    this.reduce();
+                    this.reduce(10);
                 }
             } else {
                 // pause the time before next question fully displays for decide game
@@ -84,7 +84,7 @@ defineStore({
                          }, 500);
                     }
                 } else {
-                    this.reduce();
+                    this.reduce(10);
                     setTimeout(() => {
                         this.time.dependency === 'end game' ? null : this.time.current = this.time.initial;
                         this.time.pause = false; // continue countdown after question fully displays
@@ -103,6 +103,26 @@ defineStore({
                 return;
             } else {
                 !onLifeReduce && this.questionAns++;
+            }
+        },
+        handleScore(e) {
+            if (e.detail.action === "plus") {
+                this.score += 5;
+            } else if (e.detail.action === "minus") {
+                this.reduce(5);
+            } else {
+                this.score += Math.floor(this.time.current / 3);
+            }
+        },
+        handleTime(e) {
+            if (e.detail.action === "pause") {
+                this.clearCountDown();
+            } else {
+                this.time.dependency === "new question" ? this.time.current = this.time.initial : null;
+                this.startCountDown();
+                // this.questionAns++;
+                this.currentQuestIndex++;
+                this.checkGameOver(false);
             }
         }
     }

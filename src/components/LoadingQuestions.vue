@@ -276,6 +276,51 @@ onMounted(() => {
                     answer: "sledge"
                 }
                 ]
+            } else if (gameMode === "multiple-choice") {
+                game.questions = [
+                    ["FABULOUS", true],
+                    ["TANC", false],
+                    ["MATERIALS", true],
+                    ["PRESICION", false],
+                    ["AMPLIFY", true],
+                    ["QWOTA", false],
+                    ["WRESTLERS", true],
+                    ["YACH", false],
+                    ["PETRIFY", true],
+                    ["VOULT", false],
+                    ["OVERWHELMING", true],
+                    ["THROUST", false],
+                    ["ORTHODOX", true],
+                    ["URETRA", false],
+                    ["ILLUMINATE", true],
+                    ["WHISLE", false],
+                    ["WHISTLE", true],
+                    ["SPHINSTER", true],
+                    ["OVARI", false],
+                    ["FANSY", false],
+                    ["BOROUGH", true],
+                    ["BARRACKS", true],
+                    ["SANITY", true],
+                    ["GREEF", false],
+                    ["VIOLINE", false],
+                    ["SYNPHONY", false],
+                    ["CHOLERAE", false],
+                    ["QUEUE", true],
+                    ["RECTROSPECT", true],
+                    ["TRAMPOLINE", true],
+                    ["POLARIZE", true],
+                    ["ASTHMATIC", true],
+                    ["FURNANCE", false],
+                    ["NICH", false],
+                    ["COLUMBIA", true],
+                    ["DANGLIN", false],
+                    ["ZOMBIS", false],
+                    ["INQUIREY", false],
+                    ["CAROSEL", false],
+                    ["VAULT", true],
+                    ["CHANGES", true],
+                    ["NEIGH", true]
+                ];
             }
             game.start = true;
         }, 2500);
