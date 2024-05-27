@@ -1,9 +1,9 @@
 <template>
     <div class="w-100">
         <h3 class="fs-4 ls-1 mt-5 mb-4 text-center">
-            SELECT
-            {{ questionState.chooseCorrect ? "CORRECT" : "INCORRECT" }}
-            WORDS ONLY
+            Select
+            {{ questionState.chooseCorrect ? "Correct" : "Incorrect" }}
+            Words Only
         </h3>
         <div class="w-75 d-flex flex-column align-items-center mx-auto" id="multi-choice">
             <div v-for="(word, i) in questionState.words"
@@ -12,7 +12,7 @@
                 <span class="option fs-4 ls-2 user-select-none" :style="{ color: colors[i] }">
                     {{ word[0] }}
                 </span>
-                <span class="opacity-0 fs-4">
+                <span class="opacity-0 fs-4 ff-grandstander fw-bold">
                     +5
                 </span>
             </div>

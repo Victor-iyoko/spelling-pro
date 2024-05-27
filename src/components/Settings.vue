@@ -17,7 +17,7 @@
                     <div class="mb-3">
                         <label for="questions based on?" data-bs-toggle="tooltip" data-bs-placement="right"
                             title="Set questions based on your age or level of education you are in school"
-                            class="fw-bold d-block form-label">Questions should be based on
+                            class="fw-bold d-block form-label mb-1">Questions should be based on
                             your?</label>
                         <div class="form-check form-check-inline">
                             <input @click="settings.handleSettings('question', 'age')"
@@ -34,7 +34,7 @@
                     </div>
                     <div class="mb-3">
                         <label for="number of questions" data-bs-toggle="tooltip" data-bs-placement="right"
-                            title="Select the age or grade you belong to" class="form-label">
+                            title="Select the age or grade you belong to" class="form-label mb-1">
                             <Transition mode="out-in">
                                 <span class="fw-bold" v-if="settings.data.question.dependency === 'class'">
                                     Class:
@@ -64,7 +64,8 @@
                     </div>
                     <div class="mb-3">
                         <label for="questions based on?" data-bs-toggle="tooltip" data-bs-placement="right"
-                            title="Dictate what should happen when timer reaches 0" class="d-block fw-bold form-label">
+                            title="Dictate what should happen when timer reaches 0"
+                            class="d-block fw-bold form-label mb-1">
                             Countdown timer
                         </label>
                         <div class="form-check form-check-inline">
@@ -84,7 +85,7 @@
                         <div v-show="settings.data.time.dependency === 'new question'" class="mb-3">
                             <label for="number of questions" data-bs-toggle="tooltip" data-bs-placement="right"
                                 title="Select the number of questions below within the range of 10 - 30 questions"
-                                class="form-label"><span class="fw-bold">Number of questions: </span>
+                                class="form-label mb-1"><span class="fw-bold">Number of questions: </span>
                                 <span>{{ settings.data.question.number }}</span>
                             </label>
                             <input type="range" :value="settings.data.question.number"
@@ -95,7 +96,7 @@
                     <div class="mb-3">
                         <label for="time" data-bs-toggle="tooltip" data-bs-placement="right"
                             title="Length of time is dependent on the countdown timer settings; New question(seconds), End game(min)"
-                            class="form-label">
+                            class="form-label mb-1">
                             <span class="fw-bold">Time: </span>
                             <span>
                                 {{ settings.data.time.number }}
@@ -112,7 +113,7 @@
                     </div>
                     <div class="mb-3">
                         <label for="lifes" data-bs-toggle="tooltip" data-bs-placement="right"
-                            title="The number of attempts before game over" class="form-label">
+                            title="The number of attempts before game over" class="form-label mb-1">
                             <span class="fw-bold">Lifes: </span>
                             <span>
                                 {{ settings.data.lifes }}

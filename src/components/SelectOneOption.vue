@@ -6,7 +6,7 @@
         <span
             @click="(e) => checkMatch(e, { mode: game.mode, isAnswer: game.isAnswer, handleClick: game.handleClick, gameDepComponent: game.gameDepComponent }, false)"
             class="option fs-2 user-select-none" role="button" :style="{ color: color }">
-            {{ title }}
+            {{ title.toUpperCase() }}
         </span>
         <span class="opacity-0">
             <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" fill="currentColor"

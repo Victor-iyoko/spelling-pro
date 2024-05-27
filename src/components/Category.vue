@@ -2,7 +2,7 @@
     <RouterLink :style="{ color: color, transform: 'translateX(150px) scale(0)' }"
         class="category position-relative text-decoration-none text-center mb-2 p-2 d-flex flex-column justify-content-center rounded-3 opacity-0"
         :class="{ 'animate': animatedTiles.includes(id) }" :id="url.substring(2, undefined)" :to="`/game/${url}`">
-        <h2 class="fs-5 fw-bold m-0 ls-2">{{ name }}</h2>
+        <h2 class="fs-5 m-0 ls-2 ff-moresugar-regular">{{ name }}</h2>
         <h6 class="fw-bold m-0 mt-1 ls-1" :style="{ 'color': id === 7 ? 'yellow' : 'white' }">{{ `YOUR BEST: ${score}`
             }}
         </h6>

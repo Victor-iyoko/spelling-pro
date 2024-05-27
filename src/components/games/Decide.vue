@@ -1,8 +1,8 @@
 <template>
     <div class="w-100 overflow-hidden">
-        <h3 class="fs-3 lh-base ls-1 my-5 user-select-none text-center">is this word correct?</h3>
-        <h2 id="decide-word" class="fs-1 lh-base ls-2 text-center" :style="{ 'color': textColor }">
-            {{ word }}
+        <h3 class="fs-3 lh-base ls-1 my-5 user-select-none text-center">Is this word correct?</h3>
+        <h2 id="decide-word" class="fs-2 lh-base ls-2 text-center" :style="{ 'color': textColor }">
+            {{ word.toUpperCase() }}
         </h2>
         <div id="decide-options" class="mt-3 mx-auto w-50 d-flex justify-content-between align-items-center">
             <svg @click="(e) => checkMatch(e, { mode: game.mode, isAnswer: game.isAnswer, handleClick: game.handleClick, gameDepComponent: game.gameDepComponent }, false)"

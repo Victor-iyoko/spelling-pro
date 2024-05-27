@@ -1,5 +1,5 @@
 <template>
-    <p :style="{ color: color }" class="ls-1 user-select-none fs-4 fw-bold text-center">{{ title }}</p>
+    <p :style="{ color: color }" class="fs-4 text-center">{{ title }}</p>
 </template>
 
 <script setup>

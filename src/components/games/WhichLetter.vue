@@ -7,7 +7,7 @@
         </div>
         <div v-else class="w-100">
             <h3 class="fs-2 lh-lg my-2 user-select-none text-center">
-                {{ `the ${game.questions[game.currentQuestIndex].position} letter is?` }}
+                {{ `The ${game.questions[game.currentQuestIndex].position} letter is?` }}
             </h3>
             <div id="letter-options" class="px-2 px-md-5 mt-2 text-center">
                 <span v-for="letter in letters"

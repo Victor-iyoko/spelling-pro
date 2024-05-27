@@ -8,7 +8,7 @@
             </svg>
             <div v-else class="spinner-border text-dark" role="status"></div>
         </Transition>
-        <h2 class="fs-3 mt-2 text-center">Fetching words from chatgpt...</h2>
+        <h2 class="fs-4 mt-2 text-center">FETCHING WORDS FROM CHATGPT...</h2>
     </div>
 </template>
 

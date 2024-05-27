@@ -78,7 +78,7 @@ h2 {
 }
 
 div {
-    font-family: 'PermanentMarker-Regular', Arial, Helvetica, sans-serif;
+    font-family: 'moresugar-regular', Arial, Helvetica, sans-serif;
 }
 
 @keyframes show {

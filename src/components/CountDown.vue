@@ -1,6 +1,6 @@
 <template>
     <h2 :class="game.start && !game.game0ver ? 'opacity-1 time' : 'opacity-0'"
-        class="user-select-none text-shadow text-center display-6 fw-bold my-2 my-xl-3">
+        class="user-select-none text-shadow text-center display-6 ff-moresugar-regular my-2 my-xl-3">
         {{ formatTime }}
     </h2>
 </template>

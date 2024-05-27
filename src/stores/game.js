@@ -49,7 +49,8 @@ defineStore({
             clearInterval(this.timer);
         },
         isAnswer(option) {
-            return this.questions[this.currentQuestIndex].answer === option;
+            console.log(this.questions[this.currentQuestIndex].answer.toLowerCase(), option.toLowerCase());
+            return this.questions[this.currentQuestIndex].answer.toLowerCase() === option.toLowerCase();
         },
         handleClick(answer) {
             // console.log(answer);
