@@ -321,6 +321,21 @@ onMounted(() => {
                     ["CHANGES", true],
                     ["NEIGH", true]
                 ];
+            } else if (gameMode === "spell-it") {
+                game.questions = [
+                    "FABULOUS",
+                    "MATERIALS",
+                    "AMPLIFY",
+                    "WRESTLERS",
+                    "PETRIFY",
+                    "OVERWHELMING",
+                    "ORTHODOX",
+                    "ILLUMINATE",
+                    "WHISTLE",
+                    "SPHINSTER",
+                    "BOROUGH",
+                    "BARRACKS"
+                ];
             }
             game.start = true;
         }, 2500);

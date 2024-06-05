@@ -2,6 +2,7 @@ import decide from "./decide";
 import selectOne from "./selectOne";
 import whichLetter from "./whichLetter";
 import multipleChoice from "./multipleChoice";
+import spell from "./spell";
 
 export default function checkMatch(e, game, timeOut) {
     if (game.mode === "one-word-two-forms" || game.mode === "find-correct" || game.mode === "find-misspelled" 
@@ -13,5 +14,7 @@ export default function checkMatch(e, game, timeOut) {
         decide(e, game, timeOut);
     } else if (game.mode === "multiple-choice") {
         multipleChoice(e, game, timeOut);
+    } else if (game.mode === "spell-it") {
+        spell(e, game, timeOut);
     }
 }

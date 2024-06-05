@@ -49,12 +49,11 @@ defineStore({
             clearInterval(this.timer);
         },
         isAnswer(option) {
-            console.log(this.questions[this.currentQuestIndex].answer.toLowerCase(), option.toLowerCase());
-            return this.questions[this.currentQuestIndex].answer.toLowerCase() === option.toLowerCase();
+            return this.questions[this.currentQuestIndex].answer?.toLowerCase() === option?.toLowerCase();
         },
         handleClick(answer) {
             // console.log(answer);
-            if ((this.mode !== 'decide' && this.mode !== 'decide-and-correct') || this.gameDepComponent === "select-one") {
+            if ((this.mode !== 'decide' && this.mode !== 'decide-and-correct' && this.mode !== 'spell-it') || this.gameDepComponent === "select-one") {
                 if (this.isAnswer(answer)) {
                     // pause the time before next question fully displays for decide and correct game when gameDep is not null
                     this.gameDepComponent ? this.time.pause = true : null;
@@ -69,6 +68,19 @@ defineStore({
                 } else {
                     this.reduce(10);
                 }
+            } else if (this.mode === 'spell-it') {
+                let fail = false;
+                let points = Math.floor(10 / this.questions[this.currentQuestIndex].length);
+                this.clearCountDown();
+                // const timeOut = (this.questions[this.currentQuestIndex].length * 300) + 500;
+                for (let i = 0; i < this.questions[this.currentQuestIndex].length; i++) {
+                    if (this.questions[this.currentQuestIndex][i].toLowerCase() === answer[i]) {
+                        this.score += points;
+                    } else {
+                        fail = true;
+                    }
+                }
+                fail ? this.reduce(10) : this.score += this.time.current;
             } else {
                 // pause the time before next question fully displays for decide game
                 this.mode === 'decide' || !this.questions[this.currentQuestIndex].options ? this.time.pause = true : null;
