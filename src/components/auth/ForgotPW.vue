@@ -35,7 +35,7 @@
         </div>
         <div class="mt-5 fs-7 ls-1">
             <a>Remembered your password? <span @click.prevent="$emit('authRotate')" @click="hasSentCode = false"
-                    role="button" style="color: #FFFF00">Try
+                    :class="isShowOverlay ? '' : 'pe-none'" role="button" style="color: #FFFF00">Try
                     login</span></a>
             <p class="my-1">Or</p>
             <a @click.prevent="$emit('changeAuth')" @click="hasSentCode = false" style="color: #3BFF00"
@@ -48,7 +48,7 @@
 import { ref } from 'vue';
 
 const props = defineProps({
-    isLogin: Boolean
+    isShowOverlay: Boolean
 });
 
 const hasSentCode = ref(false);

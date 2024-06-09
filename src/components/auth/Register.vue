@@ -46,8 +46,8 @@
                 </button> -->
             </form>
             <p class="link-info mt-2 mb-0 fs-7 ls-1">
-                Already have an account? <span @click.prevent="$emit('changeAuth')" class="link-light"
-                    role="button">Login</span>
+                Already have an account? <span @click.prevent="$emit('changeAuth')" :class="isLogin ? 'pe-none' : ''"
+                    class="link-light" role="button">Login</span>
             </p>
         </div>
         <div class="screen__background">
@@ -62,6 +62,9 @@
 <script setup>
 import Title from '../Title.vue';
 
+const props = defineProps({
+    isLogin: Boolean
+});
 const emit = defineEmits(['authRotate', 'changeAuth']);
 
 function handleSubmit() {

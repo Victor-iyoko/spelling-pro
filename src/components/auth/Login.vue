@@ -28,13 +28,13 @@
                     class="d-block w-100 btn rounded-pill px-5 py-2 ls-2 fs-5 lh-sm fw-bolder mx-auto mt-3">
                     LOGIN
                 </button> -->
-                <p @click.prevent="$emit('authRotate')" class="text-end mt-3 mb-2 fs-7 ls-1" role="button"
-                    style="color: #EE82EE">
+                <p @click.prevent="$emit('authRotate')" :class="isShowOverlay ? 'pe-none' : ''"
+                    class="text-end mt-3 mb-2 fs-7 ls-1" role="button" style="color: #EE82EE">
                     Forgot password?</p>
             </form>
             <p class="link-info fs-7 ls-1">
-                Don't have an account? <span @click.prevent="$emit('changeAuth')" class="link-light"
-                    role="button">Register</span>
+                Don't have an account? <span @click.prevent="$emit('changeAuth')" :class="isLogin ? '' : 'pe-none'"
+                    class="link-light" role="button">Register</span>
             </p>
         </div>
         <div class="screen__background">
@@ -50,7 +50,8 @@
 import Title from '../Title.vue';
 
 const props = defineProps({
-    isLogin: Boolean
+    isLogin: Boolean,
+    isShowOverlay: Boolean
 });
 
 function handleSubmit() {

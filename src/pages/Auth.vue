@@ -6,11 +6,11 @@
                     <div id="login-overlay">
                         <div class="d-none">
                             <ForgotPW @changeAuth="handleAuthChange" @authRotate="handleAuthRotate(login, loginOverlay)"
-                                :isLogin="isLogin" />
+                                :isShowOverlay="isShowOverlay" />
                         </div>
                     </div>
                     <Login @changeAuth="handleAuthChange" @authRotate="handleAuthRotate(login, loginOverlay)"
-                        :isLogin="isLogin" />
+                        :isLogin="isLogin" :isShowOverlay="isShowOverlay" />
                 </div>
             </div>
             <div id="register" class="position-absolute">
@@ -36,13 +36,13 @@ import ConfirmEmail from '../components/auth/ConfirmEmail.vue';
 import { ref, onMounted } from 'vue';
 
 const isLogin = ref(true);
-const isForgotPw = ref(false);
+const isShowOverlay = ref(false);
 
 let login, register, registerOverlay, loginOverlay;
 
 function handleAuthRotate(auth, overlay) {
-    isForgotPw.value = !isForgotPw.value;
-    if (isForgotPw.value) {
+    isShowOverlay.value = !isShowOverlay.value;
+    if (isShowOverlay.value) {
         auth.style.transform = 'rotateY(180deg)';
         overlay.style.transform = 'rotateY(-180deg)';
         overlay.style.width = '100%';
@@ -99,7 +99,7 @@ function handleAuthChange() {
             }, 500);
         }, 500);
     } else {
-        isForgotPw.value = false;
+        isShowOverlay.value = false;
         setTimeout(() => {
             login.children[0].style.boxShadow = 'none';
             login.children[0].style.boxShadow = '3px 3px 4px #000000';
