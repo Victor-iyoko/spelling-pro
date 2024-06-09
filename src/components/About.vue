@@ -28,11 +28,16 @@
                 </div>
                 <div class="modal-footer text-secondary">
                     <p class="me-auto">@2024</p>
-                    <div>
+                    <RouterLink to="/user/auth">
+                        <button class="btn btn-dark text-white rounded-pill px-4 ls-2 fs-6" data-bs-dismiss="modal">
+                            LOGIN
+                        </button>
+                    </RouterLink>
+                    <!-- <div>
                         Inspired by
                         <a href="http://play.google.com/store/apps/details?id=air.com.littlebigplay.spellingmaster&hl=en_US&gl=US"
                             target="_blank" class="link-dark">Spelling Master</a>
-                    </div>
+                    </div> -->
                 </div>
             </div>
         </div>

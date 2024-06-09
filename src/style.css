@@ -55,6 +55,9 @@ body {
 }.ls-2 {
   letter-spacing: 2px;
 }
+.fs-7 {
+  font-size: 14px;
+}
 
 
 /* fade transition style */

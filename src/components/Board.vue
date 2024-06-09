@@ -12,7 +12,7 @@
 .outer {
     width: 90% !important;
     max-width: 630px;
-    max-height: 460px !important;
+    height: 460px !important;
     background-color: #773516 !important;
     box-shadow: 4px 4px 4px rgba(0, 0, 0, 0.2),
         -5px -5px 5px rgba(255, 255, 255, 0.1);
