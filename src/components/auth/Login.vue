@@ -1,14 +1,6 @@
 <template>
     <div class="w-100">
-        <div class="title d-flex text-shadow p-2 pb-0 mb-2 justify-content-center">
-            <div class="fs-1 fw-bold ff-moresugar-regular user-select-none d-flex align-items-center">
-                <span class="pe-1" style="color: rgb(255, 0, 147);">L</span>
-                <span class="pe-1" style="color: rgb(59, 255, 0);">O</span>
-                <span class="pe-1" style="color: rgb(0, 194, 255);">G</span>
-                <span class="pe-1" style="color: rgb(255, 165, 0);">I</span>
-                <span class="pe-1" style="color: rgb(0, 204, 255);">N</span>
-            </div>
-        </div>
+        <Title title="LOGIN" class="title" :small="false" />
         <div class="screen__content">
             <form class="login">
                 <div class="login__field">
@@ -55,6 +47,8 @@
 </template>
 
 <script setup>
+import Title from '../Title.vue';
+
 const props = defineProps({
     isLogin: Boolean
 });

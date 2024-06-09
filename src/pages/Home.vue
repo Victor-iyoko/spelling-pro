@@ -1,6 +1,6 @@
 <template>
     <div class="wrapper">
-        <Title />
+        <Title title="SPELLING   PRO." :small="false" />
         <div class="container categories-grid h-100 d-flex flex-column justify-content-center align-items-center">
             <Category v-for="(item, index) in categoriesArr" :key="index" :id="index" :name="item.name"
                 :score="item.score" :url="item.url" :color="item.color" :img="item.img" />

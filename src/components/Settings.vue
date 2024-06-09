@@ -4,8 +4,9 @@
         tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered">
             <div class="modal-content">
-                <div class="modal-header text-light" style="background: #773516">
-                    <h5 class="modal-title fw-bold" id="staticBackdropLabel">Settings</h5>
+                <div class="modal-header text-light py-1" style="background: #773516">
+                    <!-- <h5 class="modal-title fw-bold" id="staticBackdropLabel">Settings</h5> -->
+                    <Title title="Settings" :small="true" />
                     <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" fill="currentColor"
                         class="bi bi-x text-light ms-auto" role="button" data-bs-dismiss="modal" aria-label="Close"
                         viewBox="0 0 16 16">
@@ -140,6 +141,7 @@
 
 <script setup>
 import { useSettingsStore } from '../stores/settings';
+import Title from './Title.vue';
 
 let settings = useSettingsStore();
 

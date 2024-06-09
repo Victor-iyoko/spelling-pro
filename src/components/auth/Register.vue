@@ -1,17 +1,6 @@
 <template>
     <div>
-        <div class="title d-flex text-shadow p-2 pb-0 mb-2 justify-content-center">
-            <div class="fs-1 fw-bold ff-moresugar-regular user-select-none d-flex align-items-center">
-                <span class="pe-1" style="color: rgb(255, 0, 147);">R</span>
-                <span class="pe-1" style="color: rgb(59, 255, 0);">E</span>
-                <span class="pe-1" style="color: rgb(0, 194, 255);">G</span>
-                <span class="pe-1" style="color: rgb(238, 130, 238);">I</span>
-                <span class="pe-1" style="color: rgb(255, 165, 0);">S</span>
-                <span class="pe-1" style="color: rgb(0, 204, 255);">T</span>
-                <span class="pe-1" style="color: rgb(255, 0, 147);">E</span>
-                <span class="pe-1" style="color: rgb(59, 255, 0);">R</span>
-            </div>
-        </div>
+        <Title title="REGISTER" class="title" :small="false" />
         <div class="screen__content">
             <form class="login">
                 <div class="login__field">
@@ -71,6 +60,8 @@
 </template>
 
 <script setup>
+import Title from '../Title.vue';
+
 const emit = defineEmits(['authRotate', 'changeAuth']);
 
 function handleSubmit() {
