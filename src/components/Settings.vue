@@ -16,26 +16,28 @@
                 </div>
                 <div class="modal-body">
                     <div class="mb-3">
-                        <label for="questions based on?" data-bs-toggle="tooltip" data-bs-placement="right"
-                            title="Set questions based on your age or level of education you are in school"
-                            class="fw-bold d-block form-label mb-1">Questions should be based on
+                        <label v-tooltip for="questions based on?" data-bs-placement="right" data-bs-toggle="tooltip"
+                            title="Customize the words shown" class="fw-bold form-label mb-1">Questions should be based
+                            on
                             your?</label>
-                        <div class="form-check form-check-inline">
-                            <input @click="settings.handleSettings('question', 'age')"
-                                :checked="settings.data.question.dependency === 'age'" class="form-check-input"
-                                type="radio" name="question" value="age">
-                            <label class="form-check-label" for="age">Age</label>
-                        </div>
-                        <div class="form-check form-check-inline">
-                            <input @click="settings.handleSettings('question', 'class')"
-                                :checked="settings.data.question.dependency === 'class'" class="form-check-input"
-                                type="radio" name="question" value="class">
-                            <label class="form-check-label" for="class">Class</label>
+                        <div class="flex">
+                            <div class="form-check form-check-inline">
+                                <input @click="settings.handleSettings('question', 'age')"
+                                    :checked="settings.data.question.dependency === 'age'" class="form-check-input"
+                                    type="radio" name="question" value="age">
+                                <label class="form-check-label" for="age">Age</label>
+                            </div>
+                            <div class="form-check form-check-inline">
+                                <input @click="settings.handleSettings('question', 'class')"
+                                    :checked="settings.data.question.dependency === 'class'" class="form-check-input"
+                                    type="radio" name="question" value="class">
+                                <label class="form-check-label" for="class">Class</label>
+                            </div>
                         </div>
                     </div>
                     <div class="mb-3">
-                        <label for="number of questions" data-bs-toggle="tooltip" data-bs-placement="right"
-                            title="Select the age or grade you belong to" class="form-label mb-1">
+                        <label v-tooltip for="number of questions" data-bs-toggle="tooltip" data-bs-placement="right"
+                            title="Select your age or grade" class="form-label mb-1">
                             <Transition mode="out-in">
                                 <span class="fw-bold" v-if="settings.data.question.dependency === 'class'">
                                     Class:
@@ -64,28 +66,29 @@
                         </Transition>
                     </div>
                     <div class="mb-3">
-                        <label for="questions based on?" data-bs-toggle="tooltip" data-bs-placement="right"
-                            title="Dictate what should happen when timer reaches 0"
-                            class="d-block fw-bold form-label mb-1">
+                        <label v-tooltip for="questions based on?" data-bs-toggle="tooltip" data-bs-placement="right"
+                            title="What happens when time ends" class="fw-bold form-label mb-1">
                             Countdown timer
                         </label>
-                        <div class="form-check form-check-inline">
-                            <input @click="settings.handleSettings('time', 'new question')" class="form-check-input"
-                                :checked="settings.data.time.dependency === 'new question'" type="radio" name="time"
-                                value="new question">
-                            <label class="form-check-label" for="new question">New question</label>
-                        </div>
-                        <div class="form-check form-check-inline">
-                            <input @click="settings.handleSettings('time', 'end game')" class="form-check-input"
-                                :checked="settings.data.time.dependency === 'end game'" type="radio" name="time"
-                                value="end game">
-                            <label class="form-check-label" for="end game">End game</label>
+                        <div class="d-flex">
+                            <div class="form-check form-check-inline">
+                                <input @click="settings.handleSettings('time', 'new question')" class="form-check-input"
+                                    :checked="settings.data.time.dependency === 'new question'" type="radio" name="time"
+                                    value="new question">
+                                <label class="form-check-label" for="new question">New question</label>
+                            </div>
+                            <div class="form-check form-check-inline">
+                                <input @click="settings.handleSettings('time', 'end game')" class="form-check-input"
+                                    :checked="settings.data.time.dependency === 'end game'" type="radio" name="time"
+                                    value="end game">
+                                <label class="form-check-label" for="end game">End game</label>
+                            </div>
                         </div>
                     </div>
                     <Transition>
                         <div v-show="settings.data.time.dependency === 'new question'" class="mb-3">
-                            <label for="number of questions" data-bs-toggle="tooltip" data-bs-placement="right"
-                                title="Select the number of questions below within the range of 10 - 30 questions"
+                            <label v-tooltip for="number of questions" data-bs-toggle="tooltip"
+                                data-bs-placement="right" title="Select the number of questions"
                                 class="form-label mb-1"><span class="fw-bold">Number of questions: </span>
                                 <span>{{ settings.data.question.number }}</span>
                             </label>
@@ -95,9 +98,8 @@
                         </div>
                     </Transition>
                     <div class="mb-3">
-                        <label for="time" data-bs-toggle="tooltip" data-bs-placement="right"
-                            title="Length of time is dependent on the countdown timer settings; New question(seconds), End game(min)"
-                            class="form-label mb-1">
+                        <label v-tooltip for="time" data-bs-toggle="tooltip" data-bs-placement="right"
+                            title="Time in (s) or (min)" class="form-label mb-1">
                             <span class="fw-bold">Time: </span>
                             <span>
                                 {{ settings.data.time.number }}
@@ -113,8 +115,8 @@
                             min="10" max="30" step="1">
                     </div>
                     <div class="mb-3">
-                        <label for="lifes" data-bs-toggle="tooltip" data-bs-placement="right"
-                            title="The number of attempts before game over" class="form-label mb-1">
+                        <label v-tooltip for="lifes" data-bs-toggle="tooltip" data-bs-placement="right"
+                            title="Select number of attempts" class="form-label mb-1">
                             <span class="fw-bold">Lifes: </span>
                             <span>
                                 {{ settings.data.lifes }}
@@ -125,8 +127,8 @@
                             min="1" max="7" step="1">
                     </div>
                     <div class="form-check form-switch d-flex ps-0">
-                        <label for="number of questions" data-bs-toggle="tooltip" data-bs-placement="right"
-                            title="Music and sound effects settings" class="form-label fw-bold me-5">
+                        <label v-tooltip for="number of questions" data-bs-toggle="tooltip" data-bs-placement="right"
+                            title="Toggle music and sound" class="form-label fw-bold me-5">
                             Sound:
                         </label>
                         <input class="form-check-input" name="checkbox" type="checkbox" role="switch"
@@ -141,10 +143,14 @@
 
 <script setup>
 import { useSettingsStore } from '../stores/settings';
+import tooltip from '../directives/tooltip';
 import Title from './Title.vue';
+// import { Tooltip } from 'bootstrap/dist/js/bootstrap.esm.min.js';
+
 
 let settings = useSettingsStore();
 
+const vTooltip = tooltip;
 </script>
 
 <style scoped>
