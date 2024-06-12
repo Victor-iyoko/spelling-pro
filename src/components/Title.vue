@@ -1,7 +1,8 @@
 <template>
     <div class="d-flex justify-content-center" :class="small ? 'fw-normal' : 'p-2 pb-0 mb-2 fw-bold'">
         <div class="fs-1 ff-moresugar-regular user-select-none d-flex align-items-center">
-            <span v-for="(char, index) in coloredTitle" :key="index" class="pe-1" :style="{ color: getColor(index) }">
+            <span v-for="(char, index) in coloredTitle" :key="index" :class="small ? '' : 'pe-1'"
+                :style="{ color: getColor(index) }">
                 {{ char }}
             </span>
         </div>

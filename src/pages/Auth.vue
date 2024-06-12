@@ -104,10 +104,10 @@ function handleAuthChange() {
             login.children[0].style.boxShadow = 'none';
             login.children[0].style.boxShadow = '3px 3px 4px #000000';
             loginOverlay.style.backgroundColor = 'transparent';
+            loginOverlay.children[0].classList.add('d-none');
         }, 200);
-        loginOverlay.children[0].classList.add('d-none');
         login.style.transform = 'rotateY(0deg)';
-        loginOverlay.style.transform = 'rotateY(0deg)';
+        // loginOverlay.style.transform = 'rotateY(0deg)';
 
         register.style.transform = 'translate(55%, 0) scale(0.9)';
 

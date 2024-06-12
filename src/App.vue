@@ -1,10 +1,11 @@
 <template>
   <router-view v-slot="{ Component }">
     <transition name="scale" mode="out-in" class="scale">
-      <div class="w-100 h-100" :key="route.name">
+      <div class="w-100 h-100 position-relative" :key="route.name">
         <component :is="Component" />
       </div>
     </transition>
+    <NavMenu />
   </router-view>
 </template>
 
@@ -13,6 +14,7 @@ import { onMounted } from 'vue';
 import { useRoute } from 'vue-router';
 import { useSettingsStore } from './stores/settings';
 import { settingsDefault } from './data/default';
+import NavMenu from './components/NavMenu.vue';
 
 const route = useRoute();
 let settings = useSettingsStore();
