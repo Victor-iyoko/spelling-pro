@@ -33,12 +33,12 @@ import Login from '../components/auth/Login.vue';
 import Register from '../components/auth/Register.vue';
 import ForgotPW from '../components/auth/ForgotPW.vue';
 import ConfirmEmail from '../components/auth/ConfirmEmail.vue';
-import { ref, onMounted } from 'vue';
+import { ref, onMounted, onBeforeUnmount } from 'vue';
 
 const isLogin = ref(true);
 const isShowOverlay = ref(false);
 
-let login, register, registerOverlay, loginOverlay;
+let body, login, register, registerOverlay, loginOverlay;
 
 function handleAuthRotate(auth, overlay) {
     isShowOverlay.value = !isShowOverlay.value;
@@ -135,10 +135,21 @@ function handleAuthChange() {
 }
 
 onMounted(() => {
+    // set the height of body to 100vh for just auth pages for layout reasons
+    body = document.getElementsByTagName('body');
+    body[0].style.height = '100vh';
+
     register = document.getElementById('register');
     login = document.getElementById('login');
     registerOverlay = document.getElementById('register-overlay');
     loginOverlay = document.getElementById('login-overlay');
+});
+
+onBeforeUnmount(() => {
+    setTimeout(() => {
+        // reset the height of body
+        body[0].style.height = '100%';
+    }, 500);
 });
 </script>
 

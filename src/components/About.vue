@@ -30,8 +30,13 @@
                 <div class="modal-footer text-secondary">
                     <p class="me-auto">@2024</p>
                     <RouterLink to="/user/auth">
-                        <button class="btn btn-dark text-white rounded-pill px-4 ls-2 fs-6" data-bs-dismiss="modal">
-                            LOGIN
+                        <button class="btn btn-dark text-white ls-1" data-bs-dismiss="modal">
+                            Login
+                        </button>
+                    </RouterLink>
+                    <RouterLink to="/my-profile">
+                        <button class="btn btn-outline-dark ls-1" data-bs-dismiss="modal">
+                            Profile
                         </button>
                     </RouterLink>
                     <!-- <div>

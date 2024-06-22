@@ -1,6 +1,8 @@
 <template>
     <div class="wrapper">
-        <Title title="SPELLING   PRO." :small="false" />
+        <div class="mb-1">
+            <Title title="SPELLING   PRO." :small="false" />
+        </div>
         <div class="container categories-grid h-100 d-flex flex-column justify-content-center align-items-center">
             <Category v-for="(item, index) in categoriesArr" :key="index" :id="index" :name="item.name"
                 :score="item.score" :url="item.url" :color="item.color" :img="item.img" />
@@ -26,7 +28,7 @@ import About from '../components/About.vue';
         width: 100%;
         height: 100%;
         display: grid;
-        grid-template-rows: auto 80% auto;
+        grid-template-rows: auto 83% auto;
     }
 
     .categories-grid {

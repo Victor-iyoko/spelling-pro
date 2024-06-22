@@ -1,0 +1,147 @@
+<template>
+    <div class="container-fluid px-0">
+        <div class="w-100 position-relative jumbotron shadow rounded-bottom-4">
+            <div class="wrapper mx-auto">
+                <header class="container d-flex justify-content-between align-items-center py-2">
+                    <RouterLink to="/" class="d-flex d-block d-sm-none justify-content-center align-items-center">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" fill="currentColor"
+                            class="text-light" viewBox="0 0 16 16">
+                            <path
+                                d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708" />
+                        </svg>
+                    </RouterLink>
+                    <Title title="MY  PROFILE" />
+                    <form @submit.prevent="router.push('/users?search=' + search)"
+                        class="login__field d-none d-sm-block">
+                        <svg width="16" height="16" class="bi" viewBox="0 0 20 20">
+                            <path
+                                d="M14.386 14.386l4.0877 4.0877-4.0877-4.0877c-2.9418 2.9419-7.7115 2.9419-10.6533 0-2.9419-2.9418-2.9419-7.7115 0-10.6533 2.9418-2.9419 7.7115-2.9419 10.6533 0 2.9419 2.9418 2.9419 7.7115 0 10.6533z"
+                                stroke="currentColor" fill="none" fill-rule="evenodd" stroke-linecap="round"
+                                stroke-linejoin="round">
+                            </path>
+                        </svg>
+                        <input type="text" v-model="search" id="search" required class="login__input"
+                            placeholder="Search for other users">
+                    </form>
+                    <RouterLink class="d-flex d-block d-sm-none justify-content-center align-items-center" to="/users"
+                        role="button">
+                        <svg width="24" height="24" class="text-light" viewBox="0 0 20 20">
+                            <path
+                                d="M14.386 14.386l4.0877 4.0877-4.0877-4.0877c-2.9418 2.9419-7.7115 2.9419-10.6533 0-2.9419-2.9418-2.9419-7.7115 0-10.6533 2.9418-2.9419 7.7115-2.9419 10.6533 0 2.9419 2.9418 2.9419 7.7115 0 10.6533z"
+                                stroke="currentColor" fill="none" fill-rule="evenodd" stroke-linecap="round"
+                                stroke-linejoin="round">
+                            </path>
+                        </svg>
+                    </RouterLink>
+                </header>
+            </div>
+        </div>
+        <div class="wrapper mx-auto">
+            <ProfileDetails />
+            <Stats />
+            <ScoresTable />
+            <div class="container justify-content-between gap-5 gap-md-4 d-flex flex-column flex-md-row mb-3 mt-6">
+                <PlayerConnect :isSavedPlayers="true" />
+                <PlayerConnect :isSavedPlayers="false" />
+            </div>
+        </div>
+    </div>
+</template>
+
+<script setup>
+import Title from '../components/Title.vue';
+import ProfileDetails from '../components/profile/ProfileDetails.vue';
+import Stats from '../components/profile/Stats.vue';
+import ScoresTable from '../components/profile/ScoresTable.vue';
+import PlayerConnect from '../components/profile/PlayerConnect.vue';
+import { useRouter } from 'vue-router';
+import { ref } from 'vue';
+
+const router = useRouter();
+const search = ref('');
+</script>
+
+<style scoped>
+.jumbotron {
+    background-color: #1e292c;
+    height: 250px;
+}
+
+.wrapper {
+    max-width: 800px;
+}
+
+.login__field {
+    padding: 15px 0px;
+    position: relative;
+    display: flex;
+    justify-content: start;
+    z-index: 1;
+}
+
+.bi {
+    position: absolute;
+    top: 26px;
+    color: white;
+}
+
+a svg {
+    transition: all .5s ease-in-out;
+}
+
+a svg:hover {
+    color: #D1D1D4 !important;
+}
+
+.login__input {
+    border: none;
+    border-bottom: 1px solid #D1D1D4;
+    background: none;
+    padding: 10px;
+    padding-left: 24px;
+    font-weight: 500;
+    font-size: 14px;
+    width: 100%;
+    transition: .3s ease-in-out;
+    color: white;
+    letter-spacing: 1px;
+}
+
+.login__input:active,
+.login__input:focus,
+.login__input:hover {
+    outline: none;
+    border-bottom-color: #773516;
+}
+
+.login__input::placeholder {
+    font-size: 14px !important;
+    color: #D1D1D4;
+    letter-spacing: 1px;
+    transition: color .3s ease-in-out;
+}
+
+.mt-6 {
+    margin-top: 60px;
+}
+
+@media screen and (max-width: 575px) {
+    .jumbotron {
+        height: 180px;
+    }
+
+    .login__field {
+        padding: 0;
+    }
+
+    .bi {
+        top: 11px;
+    }
+}
+
+@media screen and (min-width: 576px) and (max-width: 767px) {
+    .jumbotron {
+        height: 210px !important;
+    }
+}
+</style>
