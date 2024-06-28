@@ -30,6 +30,10 @@ body {
   /* z-index: 2; */
 }
 
+a {
+  text-decoration: none;
+}
+
 *::-webkit-scrollbar {
   width: 0.4rem;
   background-color: #8f4d2f;
@@ -63,6 +67,21 @@ body {
 }
 .text-shadow {
   text-shadow: 0 2px 2px #000;
+}
+.text-green {
+  color: #3BFF00;
+}
+.text-indigo {
+  color: #00C2FF;
+}
+.text-yellow {
+  color: #FFA500;
+}
+.text-pink-light {
+  color: #EE82EE;
+}
+.text-pink-dark {
+  color: #FF0093;
 }
 .tap {
   animation: blink .45s ease-in-out infinite alternate;

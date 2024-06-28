@@ -11,7 +11,7 @@
 </template>
 
 <script setup>
-import PlayerTile from './PlayerTile.vue';
+import PlayerTile from '../PlayerTile.vue';
 
 const props = defineProps({
     isSavedPlayers: Boolean
