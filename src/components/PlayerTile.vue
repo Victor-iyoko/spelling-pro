@@ -1,7 +1,7 @@
 <template>
     <div class="player d-flex w-100 py-2 px-3 rounded-3" :class="inUsersList ? 'mb-2' : ''"
         :style="!inUsersList ? { background: '#31393b' } : { background: '#a36041e1' }">
-        <div class="position-relative rounded-circle border me-3"
+        <div class="position-relative rounded-circle border me-3" :id="inTable ? 'hide__sm-table' : ''"
             :class="inUsersList ? 'avatar__container-userlist border-4' : 'avatar__container border-2'">
             <img src="/IMG-20230322-WA0167.jpg" class="w-100 h-100 rounded-circle" alt="avatar">
             <div
@@ -16,7 +16,8 @@
         <div class="player__tile d-flex flex-grow-1 align-items-center justify-content-between">
             <div class="d-flex flex-column">
                 <RouterLink to="/my-profile">
-                    <h5 class="text-white" :class="inUsersList ? 'fs-4' : ''" role="button">Micheal
+                    <h5 class="text-white" :class="inUsersList ? 'fs-4' : ''" role="button">
+                        Micheal
                     </h5>
                 </RouterLink>
                 <div class="info d-flex" :class="inUsersList ? 'p-1 rounded-2' : ''"
@@ -114,7 +115,8 @@ import { RouterLink } from 'vue-router';
 import tooltip from '../directives/tooltip';
 const props = defineProps({
     isSavedPlayers: Boolean,
-    inUsersList: Boolean
+    inUsersList: Boolean,
+    inTable: Boolean
 });
 
 const vTooltip = tooltip;
@@ -160,6 +162,10 @@ img {
     top: 8%;
     right: 0;
     border-color: #1e292c !important;
+}
+
+a {
+    width: fit-content;
 }
 
 h5:hover {
@@ -209,6 +215,12 @@ button:hover {
     .avatar__container-userlist,
     .avatar__container {
         margin-right: .6rem !important;
+    }
+}
+
+@media screen and (max-width: 400px) {
+    #hide__sm-table {
+        display: none;
     }
 }
 </style>

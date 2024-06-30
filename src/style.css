@@ -63,7 +63,7 @@ a {
   font-family: 'grandstander', Arial, Monospace, sans-serif;
 }
 .bg-secondarybg {
-  background-color: #1e292c;
+  background-color: #1e292c !important;
 }
 .text-shadow {
   text-shadow: 0 2px 2px #000;
