@@ -161,7 +161,7 @@ select:focus {
 }
 
 .leaderboard-table {
-    margin-top: -140px !important;
+    margin-top: -130px !important;
 }
 
 .swiper.swiper-coverflow.swiper-3d.swiper-initialized.swiper-horizontal {
@@ -191,7 +191,7 @@ tr td.text-end {
 
 @media screen and (max-width: 500px) {
     .jumbotron {
-        height: 205px;
+        height: 220px;
     }
 
     select,

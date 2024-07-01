@@ -9,64 +9,84 @@
     }" :pagination="{ el: '.swiper-pagination', clickable: true }" :modules="[EffectCoverflow, Pagination]"
         :autoplay="{ delay: 2000 }" class="mySwiper">
         <swiper-slide
-            class="bg-dark p-2 p-md-3 rounded-4 border border-1 border-black d-flex flex-column align-items-center">
-            <img src="/IMG-20230322-WA0206.jpg" class="rounded-circle" />
-            <h2 class="text-yellow mt-2 text-shadow">#1</h2>
-            <span class="text-info fs-4">Daniel</span>
+            class="bg-dark p-2 p-md-3 rounded-4 border border-1 border-black d-flex flex-column justify-content-center align-items-center">
+            <div class="d-flex flex-column align-items-center">
+                <img src="/IMG-20230322-WA0206.jpg" class="rounded-circle" />
+                <h2 class="text-yellow mt-2 text-shadow">#1</h2>
+                <span class="text-info fs-4">Daniel</span>
+            </div>
         </swiper-slide>
         <swiper-slide
-            class="bg-dark p-2 p-md-3 rounded-4 border border-1 border-black d-flex flex-column align-items-center">
-            <img src="/IMG-20230322-WA0206.jpg" class="rounded-circle" />
-            <h2 class="text-yellow mt-2 text-shadow">#2</h2>
-            <span class="text-info fs-4">Samuel</span>
+            class="bg-dark p-2 p-md-3 rounded-4 border border-1 border-black d-flex flex-column justify-content-center align-items-center">
+            <div class="d-flex flex-column align-items-center">
+                <img src="/IMG-20230322-WA0206.jpg" class="rounded-circle" />
+                <h2 class="text-yellow mt-2 text-shadow">#2</h2>
+                <span class="text-info fs-4">Samuel</span>
+            </div>
         </swiper-slide>
         <swiper-slide
-            class="bg-dark p-2 p-md-3 rounded-4 border border-1 border-black d-flex flex-column align-items-center">
-            <img src="/IMG-20230322-WA0206.jpg" class="rounded-circle" />
-            <h2 class="text-yellow mt-2 text-shadow">#3</h2>
-            <span class="text-info fs-4">Francis</span>
+            class="bg-dark p-2 p-md-3 rounded-4 border border-1 border-black d-flex flex-column justify-content-center align-items-center">
+            <div class="d-flex flex-column align-items-center">
+                <img src="/IMG-20230322-WA0206.jpg" class="rounded-circle" />
+                <h2 class="text-yellow mt-2 text-shadow">#3</h2>
+                <span class="text-info fs-4">Francis</span>
+            </div>
         </swiper-slide>
         <swiper-slide
-            class="bg-dark p-2 p-md-3 rounded-4 border border-1 border-black d-flex flex-column align-items-center">
-            <img src="/IMG-20230322-WA0206.jpg" class="rounded-circle" />
-            <h2 class="text-yellow mt-2 text-shadow">#4</h2>
-            <span class="text-info fs-4">Joshua</span>
+            class="bg-dark p-2 p-md-3 rounded-4 border border-1 border-black d-flex flex-column justify-content-center align-items-center">
+            <div class="d-flex flex-column align-items-center">
+                <img src="/IMG-20230322-WA0206.jpg" class="rounded-circle" />
+                <h2 class="text-yellow mt-2 text-shadow">#4</h2>
+                <span class="text-info fs-4">Joshua</span>
+            </div>
         </swiper-slide>
         <swiper-slide
-            class="bg-dark p-2 p-md-3 rounded-4 border border-1 border-black d-flex flex-column align-items-center">
-            <img src="/IMG-20230322-WA0206.jpg" class="rounded-circle" />
-            <h2 class="text-yellow mt-2 text-shadow">#5</h2>
-            <span class="text-info fs-4">Emmanuel</span>
+            class="bg-dark p-2 p-md-3 rounded-4 border border-1 border-black d-flex flex-column justify-content-center align-items-center">
+            <div class="d-flex flex-column align-items-center">
+                <img src="/IMG-20230322-WA0206.jpg" class="rounded-circle" />
+                <h2 class="text-yellow mt-2 text-shadow">#5</h2>
+                <span class="text-info fs-4">Emmanuel</span>
+            </div>
         </swiper-slide>
         <swiper-slide
-            class="bg-dark p-2 p-md-3 rounded-4 border border-1 border-black d-flex flex-column align-items-center">
-            <img src="/IMG-20230322-WA0206.jpg" class="rounded-circle" />
-            <h2 class="text-yellow mt-2 text-shadow">#6</h2>
-            <span class="text-info fs-4">Miracle</span>
+            class="bg-dark p-2 p-md-3 rounded-4 border border-1 border-black d-flex flex-column justify-content-center align-items-center">
+            <div class="d-flex flex-column align-items-center">
+                <img src="/IMG-20230322-WA0206.jpg" class="rounded-circle" />
+                <h2 class="text-yellow mt-2 text-shadow">#6</h2>
+                <span class="text-info fs-4">Miracle</span>
+            </div>
         </swiper-slide>
         <swiper-slide
-            class="bg-dark p-2 p-md-3 rounded-4 border border-1 border-black d-flex flex-column align-items-center">
-            <img src="/IMG-20230322-WA0206.jpg" class="rounded-circle" />
-            <h2 class="text-yellow mt-2 text-shadow">#7</h2>
-            <span class="text-info fs-4">Armstrong</span>
+            class="bg-dark p-2 p-md-3 rounded-4 border border-1 border-black d-flex flex-column justify-content-center align-items-center">
+            <div class="d-flex flex-column align-items-center">
+                <img src="/IMG-20230322-WA0206.jpg" class="rounded-circle" />
+                <h2 class="text-yellow mt-2 text-shadow">#7</h2>
+                <span class="text-info fs-4">Armstrong</span>
+            </div>
         </swiper-slide>
         <swiper-slide
-            class="bg-dark p-2 p-md-3 rounded-4 border border-1 border-black d-flex flex-column align-items-center">
-            <img src="/IMG-20230322-WA0206.jpg" class="rounded-circle" />
-            <h2 class="text-yellow mt-2 text-shadow">#8</h2>
-            <span class="text-info fs-4">Victor</span>
+            class="bg-dark p-2 p-md-3 rounded-4 border border-1 border-black d-flex flex-column justify-content-center align-items-center">
+            <div class="d-flex flex-column align-items-center">
+                <img src="/IMG-20230322-WA0206.jpg" class="rounded-circle" />
+                <h2 class="text-yellow mt-2 text-shadow">#8</h2>
+                <span class="text-info fs-4">Victor</span>
+            </div>
         </swiper-slide>
         <swiper-slide
-            class="bg-dark p-2 p-md-3 rounded-4 border border-1 border-black d-flex flex-column align-items-center">
-            <img src="/IMG-20230322-WA0206.jpg" class="rounded-circle" />
-            <h2 class="text-yellow mt-2 text-shadow">#9</h2>
-            <span class="text-info fs-4">Larry</span>
+            class="bg-dark p-2 p-md-3 rounded-4 border border-1 border-black d-flex flex-column justify-content-center align-items-center">
+            <div class="d-flex flex-column align-items-center">
+                <img src="/IMG-20230322-WA0206.jpg" class="rounded-circle" />
+                <h2 class="text-yellow mt-2 text-shadow">#9</h2>
+                <span class="text-info fs-4">Larry</span>
+            </div>
         </swiper-slide>
         <swiper-slide
-            class="bg-dark p-2 p-md-3 rounded-4 border border-1 border-black d-flex flex-column align-items-center">
-            <img src="/IMG-20230322-WA0206.jpg" class="rounded-circle" />
-            <h2 class="text-yellow mt-2 text-shadow">#10</h2>
-            <span class="text-info fs-4">James</span>
+            class="bg-dark p-2 p-md-3 rounded-4 border border-1 border-black d-flex flex-column justify-content-center align-items-center">
+            <div class="d-flex flex-column align-items-center">
+                <img src="/IMG-20230322-WA0206.jpg" class="rounded-circle" />
+                <h2 class="text-yellow mt-2 text-shadow">#10</h2>
+                <span class="text-info fs-4">James</span>
+            </div>
         </swiper-slide>
         <div class="swiper-pagination"></div>
     </swiper>
