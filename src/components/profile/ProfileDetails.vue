@@ -28,9 +28,7 @@
                     </button>
                 </div>
             </div>
-            <!-- <div class="d-flex flex-column flex-sm-row justify-content-between align-items-center"> -->
             <div class="row">
-                <!-- <div class="d-flex flex-column"> -->
                 <div class="col-8 mx-auto m-sm-0">
                     <div class="progress bg-transparent border border-1 border-white w-100 position-relative">
                         <span
@@ -50,7 +48,6 @@
                         </span>
                     </div>
                 </div>
-                <!-- <h2 class="display-5 text-white text-shadow"> -->
                 <h2 class="d-none d-sm-block col-sm-4 text-end display-5 text-white text-shadow">
                     LVL. 1
                 </h2>
@@ -120,6 +117,12 @@ onUnmounted(() => {
     .name,
     .email {
         text-shadow: 0 2px 2px #000;
+    }
+}
+
+@media screen and (max-width: 390px) {
+    .row .col-8 {
+        min-width: 220px;
     }
 }
 </style>

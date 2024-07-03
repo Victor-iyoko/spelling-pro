@@ -13,15 +13,10 @@
                     <Title title="MY  PROFILE" />
                     <form @submit.prevent="router.push('/users?search=' + search)"
                         class="login__field d-none d-sm-block">
-                        <svg width="16" height="16" class="bi" viewBox="0 0 20 20">
+                        <TextInput :auth="false" type="text" placeholder="Search for other users" size="14">
                             <path
-                                d="M14.386 14.386l4.0877 4.0877-4.0877-4.0877c-2.9418 2.9419-7.7115 2.9419-10.6533 0-2.9419-2.9418-2.9419-7.7115 0-10.6533 2.9418-2.9419 7.7115-2.9419 10.6533 0 2.9419 2.9418 2.9419 7.7115 0 10.6533z"
-                                stroke="currentColor" fill="none" fill-rule="evenodd" stroke-linecap="round"
-                                stroke-linejoin="round">
-                            </path>
-                        </svg>
-                        <input type="text" v-model="search" id="search" required class="login__input"
-                            placeholder="Search for other users">
+                                d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001q.044.06.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1 1 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0" />
+                        </TextInput>
                     </form>
                     <RouterLink class="d-flex d-block d-sm-none justify-content-center align-items-center" to="/users"
                         role="button">
@@ -56,6 +51,7 @@ import ScoresTable from '../components/profile/ScoresTable.vue';
 import PlayerConnect from '../components/profile/PlayerConnect.vue';
 import { useRouter } from 'vue-router';
 import { ref } from 'vue';
+import TextInput from '../components/TextInput.vue';
 
 const router = useRouter();
 const search = ref('');
@@ -71,54 +67,12 @@ const search = ref('');
     max-width: 800px;
 }
 
-.login__field {
-    padding: 15px 0px;
-    position: relative;
-    display: flex;
-    justify-content: start;
-    z-index: 1;
-}
-
-.bi {
-    position: absolute;
-    top: 26px;
-    color: white;
-}
-
 a svg {
     transition: all .5s ease-in-out;
 }
 
 a svg:hover {
     color: #D1D1D4 !important;
-}
-
-.login__input {
-    border: none;
-    border-bottom: 1px solid #D1D1D4;
-    background: none;
-    padding: 10px;
-    padding-left: 24px;
-    font-weight: 500;
-    font-size: 14px;
-    width: 100%;
-    transition: .3s ease-in-out;
-    color: white;
-    letter-spacing: 1px;
-}
-
-.login__input:active,
-.login__input:focus,
-.login__input:hover {
-    outline: none;
-    border-bottom-color: #773516;
-}
-
-.login__input::placeholder {
-    font-size: 14px !important;
-    color: #D1D1D4;
-    letter-spacing: 1px;
-    transition: color .3s ease-in-out;
 }
 
 .mt-6 {
@@ -128,14 +82,6 @@ a svg:hover {
 @media screen and (max-width: 575px) {
     .jumbotron {
         height: 180px;
-    }
-
-    .login__field {
-        padding: 0;
-    }
-
-    .bi {
-        top: 11px;
     }
 }
 

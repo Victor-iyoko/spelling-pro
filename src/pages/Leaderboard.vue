@@ -5,25 +5,8 @@
             <div class="wrapper mx-auto">
                 <header class="container d-flex justify-content-between align-items-center py-2">
                     <Title title="LEADERBOARD" class="title ps-0" />
-                    <div class="select-wrapper rounded-2 d-flex align-items-center p-1 ps-3 ms-1"
-                        :style="{ background: '#31393b' }">
-                        <span class="text-white py-1 d-none d-md-block">
-                            Rank by:
-                        </span>
-                        <select role="button"
-                            class="form-select ps-1 form-select-sm bg-transparent border-0 text-info w-auto fs-6"
-                            :style="{ paddingRight: '27px' }">
-                            <option value="1 word 2 forms" class="text-info bg-dark">1 word 2 forms</option>
-                            <option value="find misspelled" class="text-info bg-dark">find misspelled</option>
-                            <option value="find correct" class="text-info bg-dark">find correct</option>
-                            <option value="which letter" class="text-info bg-dark">which letter</option>
-                            <option value="decide" class="text-info bg-dark">decide</option>
-                            <option value="decide & correct" class="text-info bg-dark">decide & correct</option>
-                            <option value="multiple choice" class="text-info bg-dark">multiple choice</option>
-                            <option value="spell it" class="text-info bg-dark">spell it</option>
-                            <option value="overall game" class="text-info bg-dark">overall game</option>
-                        </select>
-                    </div>
+                    <SelectInput v-model="leaderboardParams" label='Rank by' :options="leaderboardOptions"
+                        :inLeaderBoard="true" />
                 </header>
             </div>
         </div>
@@ -139,6 +122,25 @@ import Title from '../components/Title.vue';
 import PlayerTile from '../components/PlayerTile.vue';
 import Pagination from '../components/Pagination.vue';
 import LeaderBoardSlider from '../components/LeaderBoardSlider.vue';
+import SelectInput from '../components/SelectInput.vue';
+import { ref } from 'vue';
+
+const leaderboardOptions = [
+    { option: '1 word 2 forms', value: '1 word 2 forms' },
+    { option: 'find misspelled', value: 'find misspelled' },
+    { option: 'find correct', value: 'find correct' },
+    { option: 'which letter', value: 'which letter' },
+    { option: 'decide', value: 'decide' },
+    { option: 'decide & correct', value: 'decide & correct' },
+    { option: 'multiple choice', value: 'multiple choice' },
+    { option: 'spell it', value: 'spell it' },
+    { option: 'overall game', value: 'overall game' },
+];
+const leaderboardParams = ref('overall game');
+
+function handleSelectInput(e) {
+    console.log(e);
+}
 
 </script>
 
@@ -149,15 +151,6 @@ import LeaderBoardSlider from '../components/LeaderBoardSlider.vue';
 
 .jumbotron {
     height: 240px;
-}
-
-.form-select {
-    z-index: 10;
-    --bs-form-select-bg-img: url("data: image/svg+xml, <svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' ><path fill='none' stroke='%23ffffff' %20stroke-linecap='round' %20stroke-linejoin='round' %20stroke-width='2' %20d='m2%205%206%206%206-6' /></svg>") !important;
-}
-
-select:focus {
-    box-shadow: none;
 }
 
 .leaderboard-table {
@@ -192,15 +185,6 @@ tr td.text-end {
 @media screen and (max-width: 500px) {
     .jumbotron {
         height: 220px;
-    }
-
-    select,
-    .select-wrapper span {
-        font-size: .9rem !important;
-    }
-
-    .select-wrapper {
-        padding: 0;
     }
 
     header {
