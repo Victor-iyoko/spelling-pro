@@ -6,6 +6,10 @@
   font-family: 'Grandstander';
   src: url('./Grandstander-Regular.ttf');
 }
+@font-face {
+  font-family: 'Grandstander-thin';
+  src: url('./Grandstander-Thin.ttf');
+}
 
 body {
   background-image: linear-gradient(
@@ -43,7 +47,17 @@ a {
   background-color: #182022;
   width: 0.4rem;
   border-radius: 1rem;
-  cursor: pointer;
+  cursor: grab;
+}
+
+input:focus,
+input:active,
+input input,
+input:hover,
+textarea:focus
+ {
+  outline: none !important;
+  box-shadow: none !important;
 }
 
 /* custom utilities */
@@ -61,6 +75,9 @@ a {
 }
 .ff-grandstander {
   font-family: 'grandstander', Arial, Monospace, sans-serif;
+}
+.ff-grandstander-thin {
+  font-family: 'grandstander-thin', Arial, Monospace, sans-serif;
 }
 .bg-secondarybg {
   background-color: #1e292c !important;
