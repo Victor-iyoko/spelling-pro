@@ -18,43 +18,43 @@
                 <tbody>
                     <tr>
                         <th class="border-start-0" scope="row">1</th>
-                        <td class="">one word 2 forms</td>
+                        <td class="" :style="{ color: 'yellow' }">one word 2 forms</td>
                         <td class="">234</td>
                         <td class="border-end-0">335</td>
                     </tr>
                     <tr>
                         <th class="border-start-0" scope="row">2</th>
-                        <td class="">find misspelled</td>
+                        <td class="text-pink-dark">find misspelled</td>
                         <td class="">442</td>
                         <td class="border-end-0">134</td>
                     </tr>
                     <tr>
                         <th class="border-start-0" scope="row">3</th>
-                        <td class="">find correct</td>
+                        <td class="text-green">find correct</td>
                         <td class="">675</td>
                         <td class="border-end-0">342</td>
                     </tr>
                     <tr>
                         <th class="border-start-0" scope="row">4</th>
-                        <td class="">which letter</td>
+                        <td class="text-pink-light">which letter</td>
                         <td class="">645</td>
                         <td class="border-end-0">311</td>
                     </tr>
                     <tr>
                         <th class="border-start-0" scope="row">5</th>
-                        <td class="">decide</td>
+                        <td class="text-yellow">decide</td>
                         <td class="">645</td>
                         <td class="border-end-0">311</td>
                     </tr>
                     <tr>
                         <th class="border-start-0" scope="row">6</th>
-                        <td class="">decide & correct</td>
+                        <td class="text-purple">decide & correct</td>
                         <td class="">645</td>
                         <td class="border-end-0">311</td>
                     </tr>
                     <tr>
                         <th class="border-start-0" scope="row">7</th>
-                        <td class="">multiple choice</td>
+                        <td class="text-info">multiple choice</td>
                         <td class="">645</td>
                         <td class="border-end-0">311</td>
                     </tr>

@@ -54,7 +54,8 @@ input:focus,
 input:active,
 input input,
 input:hover,
-textarea:focus
+textarea:focus,
+select:focus
  {
   outline: none !important;
   box-shadow: none !important;
@@ -86,19 +87,22 @@ textarea:focus
   text-shadow: 0 2px 2px #000;
 }
 .text-green {
-  color: #3BFF00;
+  color: #3BFF00 !important;
 }
 .text-indigo {
-  color: #00C2FF;
+  color: #00C2FF !important;
 }
 .text-yellow {
-  color: #FFA500;
+  color: #FFA500 !important;
 }
 .text-pink-light {
-  color: #EE82EE;
+  color: #EE82EE !important;
 }
 .text-pink-dark {
-  color: #FF0093;
+  color: #FF0093 !important;
+}
+.text-purple {
+  color: #972BD6 !important;
 }
 .tap {
   animation: blink .45s ease-in-out infinite alternate;

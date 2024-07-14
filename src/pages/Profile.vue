@@ -41,6 +41,7 @@
             </div>
         </div>
     </div>
+    <EditProfile />
 </template>
 
 <script setup>
@@ -52,6 +53,7 @@ import PlayerConnect from '../components/profile/PlayerConnect.vue';
 import { useRouter } from 'vue-router';
 import { ref } from 'vue';
 import TextInput from '../components/TextInput.vue';
+import EditProfile from '../components/profile/EditProfile.vue';
 
 const router = useRouter();
 const search = ref('');
