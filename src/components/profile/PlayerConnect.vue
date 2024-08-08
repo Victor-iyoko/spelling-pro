@@ -1,7 +1,7 @@
 <template>
     <div class="w-100 w-md-50 mb-3">
-        <h3 class="fs-4 mb-3 text-white text-shadow ls-1">
-            {{ isSavedPlayers ? 'Saved Players' : 'Recently Played' }}
+        <h3 :class="inRoom ? 'fs-5 fw-bold mb-2 text-white text-shadow ls-1' : 'fs-4 mb-3 text-white text-shadow ls-1'">
+            {{ isSavedPlayers ? 'Saved Players' : 'Recent Opponents' }}
         </h3>
         <div
             class="rounded-4 box-shadow-sharp bg-secondarybg p-3 d-flex flex-column justify-content-center align-items-center">
@@ -14,6 +14,7 @@
 import PlayerTile from '../PlayerTile.vue';
 
 const props = defineProps({
-    isSavedPlayers: Boolean
+    isSavedPlayers: Boolean,
+    inRoom: Boolean
 });
 </script>

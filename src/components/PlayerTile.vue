@@ -14,9 +14,9 @@
             </span>
         </div>
         <div class="player__tile d-flex flex-grow-1 align-items-center justify-content-between">
-            <div class="d-flex flex-column">
+            <div class="d-flex flex-column gap-2">
                 <RouterLink to="/my-profile">
-                    <h5 class="text-white" :class="inUsersList ? 'fs-4' : ''" role="button">
+                    <h5 class="text-white mb-0" :class="inUsersList ? 'fs-5' : ' ff-grandstander-thin'" role="button">
                         Micheal
                     </h5>
                 </RouterLink>
@@ -34,17 +34,11 @@
                     :title="isSavedPlayers ? 'Duel player' : 'save player'" type="button"
                     class="p-md-1 ls-1 me-2 me-sm-3 btn btn-sm d-flex align-items-center justify-content-center"
                     :class="isSavedPlayers ? 'btn-light' : 'btn-success'">
-                    <svg v-if="isSavedPlayers" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="none"
-                        viewBox="0 0 24 24" class="text-dark">
-                        <path fill="currentColor" fill-rule="evenodd"
-                            d="M11.293 3.293a1 1 0 0 1 1.414 0l4 4a1 1 0 0 1-1.414 1.414L13 6.414V15a1 1 0 1 1-2 0V6.414L8.707 8.707a1 1 0 0 1-1.414-1.414zM4 14a1 1 0 0 1 1 1v3a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1v-3a1 1 0 1 1 2 0v3a3 3 0 0 1-3 3H6a3 3 0 0 1-3-3v-3a1 1 0 0 1 1-1"
-                            clip-rule="evenodd"></path>
-                    </svg>
-                    <!-- <svg v-else :style="{ transform: 'rotate(225deg)' }" xmlns="http://www.w3.org/2000/svg" width="22"
-                        height="22" fill="currentColor" class="bi bi-x text-white" viewBox="0 0 16 16">
+                    <svg v-if="isSavedPlayers" xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+                        fill="currentColor" class="bi bi-lightning-charge text-dark" viewBox="0 0 16 16">
                         <path
-                            d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708" />
-                    </svg> -->
+                            d="M11.251.068a.5.5 0 0 1 .227.58L9.677 6.5H13a.5.5 0 0 1 .364.843l-8 8.5a.5.5 0 0 1-.842-.49L6.323 9.5H3a.5.5 0 0 1-.364-.843l8-8.5a.5.5 0 0 1 .615-.09zM4.157 8.5H7a.5.5 0 0 1 .478.647L6.11 13.59l5.732-6.09H9a.5.5 0 0 1-.478-.647L9.89 2.41z" />
+                    </svg>
                     <svg v-else xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
                         class="bi bi-person-plus text-white" viewBox="0 0 16 16">
                         <path
@@ -72,11 +66,10 @@
                         <path
                             d="M6.5 1h3a.5.5 0 0 1 .5.5v1H6v-1a.5.5 0 0 1 .5-.5M11 2.5v-1A1.5 1.5 0 0 0 9.5 0h-3A1.5 1.5 0 0 0 5 1.5v1H1.5a.5.5 0 0 0 0 1h.538l.853 10.66A2 2 0 0 0 4.885 16h6.23a2 2 0 0 0 1.994-1.84l.853-10.66h.538a.5.5 0 0 0 0-1zm1.958 1-.846 10.58a1 1 0 0 1-.997.92h-6.23a1 1 0 0 1-.997-.92L3.042 3.5zm-7.487 1a.5.5 0 0 1 .528.47l.5 8.5a.5.5 0 0 1-.998.06L5 5.03a.5.5 0 0 1 .47-.53Zm5.058 0a.5.5 0 0 1 .47.53l-.5 8.5a.5.5 0 1 1-.998-.06l.5-8.5a.5.5 0 0 1 .528-.47M8 4.5a.5.5 0 0 1 .5.5v8.5a.5.5 0 0 1-1 0V5a.5.5 0 0 1 .5-.5" />
                     </svg>
-                    <svg v-else xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="none"
-                        viewBox="0 0 24 24" class="text-white">
-                        <path fill="currentColor" fill-rule="evenodd"
-                            d="M11.293 3.293a1 1 0 0 1 1.414 0l4 4a1 1 0 0 1-1.414 1.414L13 6.414V15a1 1 0 1 1-2 0V6.414L8.707 8.707a1 1 0 0 1-1.414-1.414zM4 14a1 1 0 0 1 1 1v3a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1v-3a1 1 0 1 1 2 0v3a3 3 0 0 1-3 3H6a3 3 0 0 1-3-3v-3a1 1 0 0 1 1-1"
-                            clip-rule="evenodd"></path>
+                    <svg v-else xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                        class="bi bi-lightning-charge" viewBox="0 0 16 16">
+                        <path
+                            d="M11.251.068a.5.5 0 0 1 .227.58L9.677 6.5H13a.5.5 0 0 1 .364.843l-8 8.5a.5.5 0 0 1-.842-.49L6.323 9.5H3a.5.5 0 0 1-.364-.843l8-8.5a.5.5 0 0 1 .615-.09zM4.157 8.5H7a.5.5 0 0 1 .478.647L6.11 13.59l5.732-6.09H9a.5.5 0 0 1-.478-.647L9.89 2.41z" />
                     </svg>
                     <span v-show="inUsersList" :class="inUsersList ? 'd-sm-block' : ''" class="d-none ms-1 pt-1">{{
             isSavedPlayers ? 'Remove' :
@@ -93,11 +86,10 @@
                         <path
                             d="M6.5 1h3a.5.5 0 0 1 .5.5v1H6v-1a.5.5 0 0 1 .5-.5M11 2.5v-1A1.5 1.5 0 0 0 9.5 0h-3A1.5 1.5 0 0 0 5 1.5v1H1.5a.5.5 0 0 0 0 1h.538l.853 10.66A2 2 0 0 0 4.885 16h6.23a2 2 0 0 0 1.994-1.84l.853-10.66h.538a.5.5 0 0 0 0-1zm1.958 1-.846 10.58a1 1 0 0 1-.997.92h-6.23a1 1 0 0 1-.997-.92L3.042 3.5zm-7.487 1a.5.5 0 0 1 .528.47l.5 8.5a.5.5 0 0 1-.998.06L5 5.03a.5.5 0 0 1 .47-.53Zm5.058 0a.5.5 0 0 1 .47.53l-.5 8.5a.5.5 0 1 1-.998-.06l.5-8.5a.5.5 0 0 1 .528-.47M8 4.5a.5.5 0 0 1 .5.5v8.5a.5.5 0 0 1-1 0V5a.5.5 0 0 1 .5-.5" />
                     </svg>
-                    <svg v-else xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="none"
-                        viewBox="0 0 24 24" class="text-dark">
-                        <path fill="currentColor" fill-rule="evenodd"
-                            d="M11.293 3.293a1 1 0 0 1 1.414 0l4 4a1 1 0 0 1-1.414 1.414L13 6.414V15a1 1 0 1 1-2 0V6.414L8.707 8.707a1 1 0 0 1-1.414-1.414zM4 14a1 1 0 0 1 1 1v3a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1v-3a1 1 0 1 1 2 0v3a3 3 0 0 1-3 3H6a3 3 0 0 1-3-3v-3a1 1 0 0 1 1-1"
-                            clip-rule="evenodd"></path>
+                    <svg v-else xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                        class="bi bi-lightning-charge" viewBox="0 0 16 16">
+                        <path
+                            d="M11.251.068a.5.5 0 0 1 .227.58L9.677 6.5H13a.5.5 0 0 1 .364.843l-8 8.5a.5.5 0 0 1-.842-.49L6.323 9.5H3a.5.5 0 0 1-.364-.843l8-8.5a.5.5 0 0 1 .615-.09zM4.157 8.5H7a.5.5 0 0 1 .478.647L6.11 13.59l5.732-6.09H9a.5.5 0 0 1-.478-.647L9.89 2.41z" />
                     </svg>
                     <span v-show="inUsersList" :class="inUsersList ? 'd-sm-block' : ''" class="d-none ms-1 pt-1">{{
             isSavedPlayers ? 'Remove' :

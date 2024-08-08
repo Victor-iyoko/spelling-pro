@@ -5,6 +5,7 @@ import Profile from './pages/Profile.vue'
 import Users from './pages/Users.vue'
 import Leaderboard from './pages/Leaderboard.vue'
 import Reviews from './pages/Reviews.vue'
+import Multiplayer from './pages/Multiplayer.vue'
 import { createRouter, createWebHistory } from 'vue-router'
 
 const routes = [
@@ -12,6 +13,11 @@ const routes = [
         name: "Home",
         component: Home,
         path: "/"
+    },
+    {
+        name: "Game",
+        component: Game,
+        path: "/game/:id/:category"
     },
     {
         name: "Auth",
@@ -39,9 +45,9 @@ const routes = [
         path: "/reviews"
     },
     {
-        name: "Game",
-        component: Game,
-        path: "/game/:id/:category"
+        name: "Multiplayer",
+        component: Multiplayer,
+        path: "/multiplayer"
     }
 ];
 

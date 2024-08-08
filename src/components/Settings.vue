@@ -2,11 +2,11 @@
     <!-- Modal -->
     <div class="modal fade user-select-none" id="settings" data-bs-backdrop="static" data-bs-keyboard="false"
         tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-        <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
             <div class="modal-content">
-                <div class="modal-header text-light py-1" style="background: #773516">
+                <div class="modal-header text-light py-1" :class="inRoom ? 'bg-secondarybg' : 'bg-brown-dark'">
                     <!-- <h5 class="modal-title fw-bold" id="staticBackdropLabel">Settings</h5> -->
-                    <Title title="Settings" :small="true" />
+                    <Title :title="inRoom ? 'Create     room' : 'Settings'" :small="true" />
                     <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" fill="currentColor"
                         class="bi bi-x text-light ms-auto" role="button" data-bs-dismiss="modal" aria-label="Close"
                         viewBox="0 0 16 16">
@@ -15,6 +15,40 @@
                     </svg>
                 </div>
                 <div class="modal-body">
+                    <div v-if="inRoom" class="mb-3">
+                        <label v-tooltip for="game type" data-bs-placement="right" data-bs-toggle="tooltip"
+                            title="select your game type?" class="fw-bold form-label mb-1">Game type?</label>
+                        <select class="form-select" aria-label="game type">
+                            <option selected value="1">One word two forms</option>
+                            <option value="2">Find correct</option>
+                            <option value="3">Find misspelled</option>
+                            <option value="4">Decide</option>
+                            <option value="5">Decide and correct</option>
+                            <option value="6">Which letter</option>
+                            <option value="7">Multiple choices</option>
+                            <option value="8">Spell it</option>
+                        </select>
+                    </div>
+                    <div v-if="inRoom" class="mb-3 form-check form-switch d-flex ps-0">
+                        <label v-tooltip for="ranked match" data-bs-toggle="tooltip" data-bs-placement="right"
+                            title="play a ranked match?" class="form-label fw-bold me-5">
+                            Ranked Match:
+                        </label>
+                        <input class="form-check-input" name="checkbox" type="checkbox" :checked="true" role="switch"
+                            @click="">
+                    </div>
+                    <div v-if="inRoom" class="mb-3">
+                        <label v-tooltip for="max players" data-bs-toggle="tooltip" data-bs-placement="right"
+                            title="Select max players" class="form-label mb-1">
+                            <span class="fw-bold">
+                                Max No of players:
+                            </span>
+                            <span>
+                                4
+                            </span>
+                        </label>
+                        <input type="range" :value="settings.data.age" class="form-range" min="2" max="4" step="1">
+                    </div>
                     <div class="mb-3">
                         <label v-tooltip for="questions based on?" data-bs-placement="right" data-bs-toggle="tooltip"
                             title="Customize the words shown" class="fw-bold form-label mb-1">Questions should be based
@@ -126,7 +160,7 @@
                             @click="(e) => { settings.handleSettings('lifes', e.target.value) }" class="form-range"
                             min="1" max="7" step="1">
                     </div>
-                    <div class="form-check form-switch d-flex ps-0">
+                    <div v-if="!inRoom" class="form-check form-switch d-flex ps-0">
                         <label v-tooltip for="number of questions" data-bs-toggle="tooltip" data-bs-placement="right"
                             title="Toggle music and sound" class="form-label fw-bold me-5">
                             Sound:
@@ -135,6 +169,11 @@
                             :checked="settings.data.sound"
                             @click="settings.handleSettings('sound', !settings.data.sound)">
                     </div>
+                </div>
+                <div v-if="inRoom" class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <button @click="multiPlayer.inRoom = true" data-bs-dismiss="modal" type="button"
+                        class="btn btn-success">Done</button>
                 </div>
             </div>
         </div>
@@ -145,8 +184,14 @@
 import { useSettingsStore } from '../stores/settings';
 import tooltip from '../directives/tooltip';
 import Title from './Title.vue';
+import { useMultiPlayerStore } from '../stores/multiplayer';
 // import { Tooltip } from 'bootstrap/dist/js/bootstrap.esm.min.js';
 
+const props = defineProps({
+    inRoom: Boolean
+});
+
+const multiPlayer = useMultiPlayerStore();
 
 let settings = useSettingsStore();
 
@@ -171,6 +216,14 @@ label {
 .form-check-input:checked {
     background-color: #773516;
     /* border-color: #773516; */
+}
+
+.form-select:focus {
+    border-color: #773516;
+}
+
+*::-webkit-scrollbar {
+    background-color: #fff;
 }
 
 input[type=radio]:focus,

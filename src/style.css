@@ -83,6 +83,12 @@ select:focus
 .bg-secondarybg {
   background-color: #1e292c !important;
 }
+.bg-brown-light {
+  background-color: #a36041E1 !important;
+}
+.bg-brown-dark {
+  background-color: #773516 !important;
+}
 .text-shadow {
   text-shadow: 0 2px 2px #000;
 }
