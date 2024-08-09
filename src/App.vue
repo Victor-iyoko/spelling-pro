@@ -6,6 +6,7 @@
       </div>
     </transition>
     <NavMenu />
+    <Chat />
   </router-view>
 </template>
 
@@ -15,6 +16,7 @@ import { useRoute } from 'vue-router';
 import { useSettingsStore } from './stores/settings';
 import { settingsDefault } from './data/default';
 import NavMenu from './components/NavMenu.vue';
+import Chat from './components/chat/Chat.vue';
 
 const route = useRoute();
 let settings = useSettingsStore();

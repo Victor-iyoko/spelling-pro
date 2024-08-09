@@ -49,6 +49,25 @@
                             <span>Multiplayer</span>
                         </a>
                     </li>
+                    <li @click="activeMenu = 'chat'" class="navbar__item position-relative" data-bs-toggle="offcanvas"
+                        data-bs-target="#chat" aria-controls="offcanvasScrolling">
+                        <span
+                            class="position-absolute alert__indicator d-flex justify-content-center align-items-center border border-2 badge bg-success rounded-circle ff-grandstander-thin">
+                            10
+                            <span class="visually-hidden">New alerts</span>
+                        </span>
+                        <a class="navbar__link position">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor"
+                                stroke-linecap="round" stroke-linejoin="round" class="bi bi-chat-square-dots"
+                                viewBox="0 0 16 16">
+                                <path
+                                    d="M14 1a1 1 0 0 1 1 1v8a1 1 0 0 1-1 1h-2.5a2 2 0 0 0-1.6.8L8 14.333 6.1 11.8a2 2 0 0 0-1.6-.8H2a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1zM2 0a2 2 0 0 0-2 2v8a2 2 0 0 0 2 2h2.5a1 1 0 0 1 .8.4l1.9 2.533a1 1 0 0 0 1.6 0l1.9-2.533a1 1 0 0 1 .8-.4H14a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2z" />
+                                <path
+                                    d="M5 6a1 1 0 1 1-2 0 1 1 0 0 1 2 0m4 0a1 1 0 1 1-2 0 1 1 0 0 1 2 0m4 0a1 1 0 1 1-2 0 1 1 0 0 1 2 0" />
+                            </svg>
+                            <span>Chat</span>
+                        </a>
+                    </li>
                     <li @click="activeMenu = 'leaderboard'" class="navbar__item"
                         :class="activeMenu === 'leaderboard' ? 'active' : ''">
                         <a class="navbar__link"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
@@ -111,8 +130,9 @@ const activeMenu = ref('home');
 
 <style scoped>
 main {
-    left: 30px;
+    right: 30px;
     bottom: 30px;
+    z-index: 30;
 }
 
 main>button {
@@ -122,6 +142,16 @@ main>button {
     border-left-style: none;
     border-top-style: none;
     box-shadow: 1px 1px 5px #000000;
+}
+
+.alert__indicator {
+    right: 18px;
+    top: 5px;
+    font-size: 11px !important;
+    border-color: #1b2426 !important;
+    width: 22px;
+    height: 22px;
+    z-index: 5;
 }
 
 svg {
@@ -141,7 +171,7 @@ svg {
     left: 0;
     /* transform: translate(-10%, -115%); */
     transform-origin: bottom;
-    background: #1e292c;
+    background: #1b2426;
     border-radius: 20px;
     padding: 1rem 0;
     box-shadow: 3px 3px 4px #000000;
@@ -149,7 +179,7 @@ svg {
 }
 
 .show {
-    transform: translate(-10%, -120%);
+    transform: translate(-10%, -115%);
     opacity: 1;
 }
 
@@ -181,8 +211,8 @@ li {
 
 .navbar__link span {
     position: absolute;
-    left: 100%;
-    transform: translate(-3rem);
+    right: 104%;
+    transform: translate(3rem);
     margin-left: 1rem;
     opacity: 0;
     pointer-events: none;
@@ -195,6 +225,10 @@ li {
 
 .navbar__link:hover {
     color: white;
+}
+
+.active {
+    pointer-events: none;
 }
 
 .active>.navbar__link {
