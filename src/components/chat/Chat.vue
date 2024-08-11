@@ -21,7 +21,7 @@
                 :style="{ background: '#1b2426', borderColor: 'rgba(240, 255, 255, 0.09) !important' }">
                 <form @submit.prevent="" class="d-flex align-items-center gap-2">
                     <input type="text" class="form-control bg-transparent text-light ff-grandstander-thin"
-                        placeholder="write a message to..." aria-label="input" aria-describedby="message input">
+                        placeholder="write a to Johnny..." aria-label="input" aria-describedby="message input">
                     <button class="btn btn-outline-success" type="button">Send</button>
                 </form>
             </div>

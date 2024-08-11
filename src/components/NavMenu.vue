@@ -3,11 +3,10 @@
         <button class="rounded-circle position-relative">
             <div @click.prevent="isMenuOpen = !isMenuOpen"
                 class="w-100 h-100 rounded-circle position-absolute top-50 start-50 translate-middle d-flex justify-content-center align-items-center">
-                <svg xmlns="http://www.w3.org/2000/svg" width="50" height="50" fill="currentColor"
-                    class="bi bi-x text-white" :class="isMenuOpen ? 'open' : 'close'" aria-label="Close"
-                    viewBox="0 0 16 16">
+                <svg xmlns="http://www.w3.org/2000/svg" width="60" height="60" fill="currentColor"
+                    class="bi bi-plus text-white" :class="isMenuOpen ? 'open' : 'close'" viewBox="0 0 16 16">
                     <path
-                        d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708" />
+                        d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4" />
                 </svg>
             </div>
             <nav class="navbar" :class="isMenuOpen ? 'show' : 'hide'">
@@ -49,11 +48,11 @@
                             <span>Multiplayer</span>
                         </a>
                     </li>
-                    <li @click="activeMenu = 'chat'" class="navbar__item position-relative" data-bs-toggle="offcanvas"
-                        data-bs-target="#chat" aria-controls="offcanvasScrolling">
+                    <li class="navbar__item position-relative" data-bs-toggle="offcanvas" data-bs-target="#chat"
+                        aria-controls="offcanvasScrolling">
                         <span
-                            class="position-absolute alert__indicator d-flex justify-content-center align-items-center border border-2 badge bg-success rounded-circle ff-grandstander-thin">
-                            10
+                            class="position-absolute alert__indicator d-flex justify-content-center align-items-center border border-3 badge bg-success rounded-circle ff-grandstander-thin">
+                            9+
                             <span class="visually-hidden">New alerts</span>
                         </span>
                         <a class="navbar__link position">
@@ -90,15 +89,18 @@
                             <span>Profile</span>
                         </a>
                     </li>
-                    <li @click="activeMenu = 'notifications'" class="navbar__item"
-                        :class="activeMenu === 'notifications' ? 'active' : ''">
-                        <a class="navbar__link"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
-                                viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
-                                stroke-linecap="round" stroke-linejoin="round" class="feather feather-settings">
-                                <circle cx="12" cy="12" r="3"></circle>
+                    <li class="navbar__item position-relative" data-bs-toggle="offcanvas"
+                        data-bs-target="#notifications" aria-controls="offcanvasScrolling">
+                        <span
+                            class="position-absolute alert__indicator d-flex justify-content-center align-items-center border border-3 badge bg-success rounded-circle ff-grandstander-thin">
+                            5
+                            <span class="visually-hidden">New alerts</span>
+                        </span>
+                        <a class="navbar__link position">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor"
+                                class="bi bi-bell" viewBox="0 0 16 16">
                                 <path
-                                    d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z">
-                                </path>
+                                    d="M8 16a2 2 0 0 0 2-2H6a2 2 0 0 0 2 2M8 1.918l-.797.161A4 4 0 0 0 4 6c0 .628-.134 2.197-.459 3.742-.16.767-.376 1.566-.663 2.258h10.244c-.287-.692-.502-1.49-.663-2.258C12.134 8.197 12 6.628 12 6a4 4 0 0 0-3.203-3.92zM14.22 12c.223.447.481.801.78 1H1c.299-.199.557-.553.78-1C2.68 10.2 3 6.88 3 6c0-2.42 1.72-4.44 4.005-4.901a1 1 0 1 1 1.99 0A5 5 0 0 1 13 6c0 .88.32 4.2 1.22 6" />
                             </svg>
                             <span>Notifications</span>
                         </a>
@@ -130,8 +132,8 @@ const activeMenu = ref('home');
 
 <style scoped>
 main {
-    right: 30px;
-    bottom: 30px;
+    left: 25px;
+    bottom: 10px;
     z-index: 30;
 }
 
@@ -149,8 +151,8 @@ main>button {
     top: 5px;
     font-size: 11px !important;
     border-color: #1b2426 !important;
-    width: 22px;
-    height: 22px;
+    width: 24px;
+    height: 24px;
     z-index: 5;
 }
 
@@ -159,11 +161,11 @@ svg {
 }
 
 .open {
-    transform: rotate(0);
+    transform: rotate(225deg);
 }
 
 .close {
-    transform: rotate(225deg);
+    transform: rotate(0);
 }
 
 .navbar {
@@ -179,13 +181,13 @@ svg {
 }
 
 .show {
-    transform: translate(-10%, -115%);
+    transform: translate(-10%, -113%);
     opacity: 1;
 }
 
 .hide {
     opacity: 0;
-    transform: translate(-10%, -110%);
+    transform: translate(-10%, -106%);
     pointer-events: none;
 }
 
@@ -211,8 +213,8 @@ li {
 
 .navbar__link span {
     position: absolute;
-    right: 104%;
-    transform: translate(3rem);
+    left: 104%;
+    transform: translate(-3rem);
     margin-left: 1rem;
     opacity: 0;
     pointer-events: none;
@@ -225,10 +227,6 @@ li {
 
 .navbar__link:hover {
     color: white;
-}
-
-.active {
-    pointer-events: none;
 }
 
 .active>.navbar__link {
