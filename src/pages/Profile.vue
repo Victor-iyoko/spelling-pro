@@ -1,5 +1,5 @@
 <template>
-    <div class="container-fluid px-0">
+    <div v-ActivePage="useRoute().name" class="container-fluid px-0">
         <div class="w-100 position-relative jumbotron shadow rounded-bottom-4">
             <div class="wrapper mx-auto">
                 <header class="container d-flex justify-content-between align-items-center py-2">
@@ -54,7 +54,10 @@ import { useRouter } from 'vue-router';
 import { ref } from 'vue';
 import TextInput from '../components/TextInput.vue';
 import EditProfile from '../components/profile/EditProfile.vue';
+import ActivePage from '../directives/activePage.js';
+import { useRoute } from 'vue-router';
 
+const vActivePage = ActivePage;
 const router = useRouter();
 const search = ref('');
 </script>

@@ -1,5 +1,6 @@
 <template>
-    <div class="text-center text-white d-flex align-items-center justify-content-center w-100 h-100">
+    <div v-ActivePage="useRoute().name"
+        class="text-center text-white d-flex align-items-center justify-content-center w-100 h-100">
         <main class="w-100 h-100 d-flex align-items-center justify-content-center overflow-hidden position-relative">
             <div id="login" class="position-absolute">
                 <div class="screen position-relative overflow-hidden rounded-3">
@@ -34,9 +35,12 @@ import Register from '../components/auth/Register.vue';
 import ForgotPW from '../components/auth/ForgotPW.vue';
 import ConfirmEmail from '../components/auth/ConfirmEmail.vue';
 import { ref, onMounted, onBeforeUnmount } from 'vue';
+import { useRoute } from 'vue-router';
+import ActivePage from '../directives/activePage.js';
 
 const isLogin = ref(true);
 const isShowOverlay = ref(false);
+const vActivePage = ActivePage;
 
 let body, login, register, registerOverlay, loginOverlay;
 

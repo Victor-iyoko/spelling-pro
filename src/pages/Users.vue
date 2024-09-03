@@ -1,5 +1,5 @@
 <template>
-    <div class="container-fluid px-0">
+    <div v-ActivePage="useRoute().name" class="container-fluid px-0">
         <div class="jumbotron pb-2 w-100 position-relative bg-secondarybg">
             <div class="wrapper mx-auto">
                 <header class="container d-flex justify-content-between align-items-center py-2">
@@ -73,7 +73,10 @@ import { useRouter } from 'vue-router';
 import { ref, onMounted, onUnmounted } from 'vue';
 import SelectInput from '../components/SelectInput.vue';
 import TextInput from '../components/TextInput.vue';
+import ActivePage from '../directives/activePage.js';
+import { useRoute } from 'vue-router';
 
+const vActivePage = ActivePage;
 const sortOptions = [
     { option: 'Name', value: 'name' },
     { option: 'Rank', value: 'rank' },

@@ -20,6 +20,7 @@ const props = defineProps({
     auth: Boolean,
     size: String,
     type: String,
+    small: Boolean,
     placeholder: String
 });
 const model = defineModel();

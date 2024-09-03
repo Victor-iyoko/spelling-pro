@@ -1,5 +1,5 @@
 <template>
-    <div class="container-fluid px-0">
+    <div v-ActivePage="useRoute().name" class="container-fluid px-0">
         <!-- jumbotron starts -->
         <div class="jumbotron pb-2 w-100 position-relative bg-secondarybg">
             <div class="wrapper mx-auto">
@@ -70,7 +70,10 @@ import SelectInput from '../components/SelectInput.vue';
 import RatingsDetails from '../components/reviews/RatingsDetails.vue';
 import Review from '../components/reviews/Review.vue';
 import AddReview from '../components/reviews/AddReview.vue';
+import ActivePage from '../directives/activePage.js';
+import { useRoute } from 'vue-router';
 
+const vActivePage = ActivePage;
 const sort = ref('latest');
 const rating = ref('all');
 </script>

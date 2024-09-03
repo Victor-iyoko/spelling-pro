@@ -1,5 +1,5 @@
 <template>
-    <div class="container-fluid px-0">
+    <div v-ActivePage="useRoute().name" class="container-fluid px-0">
         <!-- jumbotron starts -->
         <div class="jumbotron pb-2 w-100 position-relative bg-secondarybg">
             <div class="wrapper mx-auto">
@@ -124,7 +124,10 @@ import Pagination from '../components/Pagination.vue';
 import LeaderBoardSlider from '../components/LeaderBoardSlider.vue';
 import SelectInput from '../components/SelectInput.vue';
 import { ref } from 'vue';
+import ActivePage from '../directives/activePage.js';
+import { useRoute } from 'vue-router';
 
+const vActivePage = ActivePage;
 const leaderboardOptions = [
     { option: '1 word 2 forms', value: '1 word 2 forms' },
     { option: 'find misspelled', value: 'find misspelled' },

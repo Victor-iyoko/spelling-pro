@@ -6,7 +6,7 @@
             </div>
             <div class="player__tile d-flex flex-grow-1 align-items-center justify-content-between">
                 <div class="d-flex flex-column">
-                    <RouterLink to="/my-profile">
+                    <RouterLink to="/profile">
                         <h5 class="text-light fs-6 ls-1 mb-0" role="button">
                             Micheal
                         </h5>

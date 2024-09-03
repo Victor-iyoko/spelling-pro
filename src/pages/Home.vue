@@ -1,5 +1,5 @@
 <template>
-    <div class="wrapper">
+    <div v-ActivePage="useRoute().name" class="wrapper">
         <div class="mb-1">
             <Title title="SPELLING   PRO." :small="false" />
         </div>
@@ -20,6 +20,10 @@ import Category from '../components/Category.vue';
 import Footer from '../components/Footer.vue';
 import Settings from '../components/Settings.vue';
 import About from '../components/About.vue';
+import ActivePage from '../directives/activePage.js';
+import { useRoute } from 'vue-router';
+
+const vActivePage = ActivePage;
 </script>
 
 <style scoped>

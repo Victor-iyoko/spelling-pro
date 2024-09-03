@@ -1,6 +1,6 @@
 <template>
     <!-- header starts -->
-    <div ref="head" class="container-fluid px-0">
+    <div v-ActivePage="useRoute().name" ref="head" class="container-fluid px-0">
         <div class="jumbotron pb-2 w-100 position-relative bg-secondarybg">
             <div class="wrapper mx-auto">
                 <header class="container d-flex justify-content-between align-items-center py-2">
@@ -129,7 +129,7 @@
                 <Lobby v-if="multiPlayer.activeTab === 'lobby'" />
                 <Room v-else-if="multiPlayer.activeTab === 'room'"
                     :headerHeight="head?.clientHeight + nav?.clientHeight" />
-                <History v-else :headerHeight="head.clientHeight + nav.clientHeight" />
+                <History v-else :headerHeight="head?.clientHeight + nav?.clientHeight" />
             </Transition>
         </div>
     </div>
@@ -150,7 +150,10 @@ import { useMultiPlayerStore } from '../stores/multiplayer';
 import RandomMatch from '../components/multiplayer/RandomMatch.vue';
 import ChallengeDetails from '../components/multiplayer/ChallengeDetails.vue';
 import { ref } from 'vue';
+import ActivePage from '../directives/activePage.js';
+import { useRoute } from 'vue-router';
 
+const vActivePage = ActivePage;
 const multiPlayer = useMultiPlayerStore();
 const head = ref(null);
 const nav = ref(null);

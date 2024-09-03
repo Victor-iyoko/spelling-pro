@@ -6,6 +6,7 @@
       </div>
     </transition>
     <NavMenu />
+    <Menu />
     <Chat />
     <Notifications />
   </router-view>
@@ -17,6 +18,7 @@ import { useRoute } from 'vue-router';
 import { useSettingsStore } from './stores/settings';
 import { settingsDefault } from './data/default';
 import NavMenu from './components/NavMenu.vue';
+import Menu from './components/Menu.vue';
 import Chat from './components/chat/Chat.vue';
 import Notifications from './components/Notifications.vue';
 
@@ -30,11 +32,9 @@ function loadSettings() {
     // setting the default settings in the local storage
     localStorage.setItem('settings', JSON.stringify(settingsDefault));
     settings.data = settingsDefault;
-    console.log("set store to default value");
   } else {
     // check if global store is empty then set to local storage value
     if (Object.keys(settings.$state).length === 0) {
-      console.log("set store to local storage value");
       settings.data = localSettings;
     }
   }

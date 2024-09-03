@@ -1,7 +1,7 @@
 <template>
     <Hud />
     <CountDown />
-    <Board>
+    <Board v-ActivePage="useRoute().name">
         <Transition mode="out-in">
             <Instructions @click="loadQuestions = true"
                 v-if="!loadQuestions && !game.start && game.questions.length === 0 && !game.game0ver" />
@@ -43,11 +43,13 @@ import { useRoute } from 'vue-router';
 import { useGameStore } from '../stores/game';
 import { useSettingsStore } from '../stores/settings';
 import CountDown from '../components/CountDown.vue';
+import ActivePage from '../directives/activePage.js';
 
 let game = useGameStore();
 let settings = useSettingsStore();
 const gameMode = useRoute().params.category;
 const loadQuestions = ref(false);
+const vActivePage = ActivePage;
 
 function setLifes() {
     let lifes = [];

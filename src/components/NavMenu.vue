@@ -1,6 +1,6 @@
 <template>
     <main class="position-fixed">
-        <button class="rounded-circle position-relative">
+        <button class="rounded-circle position-relative" data-bs-toggle="offcanvas" data-bs-target="#menu">
             <div @click.prevent="isMenuOpen = !isMenuOpen"
                 class="w-100 h-100 rounded-circle position-absolute top-50 start-50 translate-middle d-flex justify-content-center align-items-center">
                 <svg xmlns="http://www.w3.org/2000/svg" width="60" height="60" fill="currentColor"
@@ -8,48 +8,52 @@
                     <path
                         d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4" />
                 </svg>
+                <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor"
+                    class="bi bi-menu-button-wide text-white d-none" viewBox="0 0 16 16">
+                    <path
+                        d="M0 1.5A1.5 1.5 0 0 1 1.5 0h13A1.5 1.5 0 0 1 16 1.5v2A1.5 1.5 0 0 1 14.5 5h-13A1.5 1.5 0 0 1 0 3.5zM1.5 1a.5.5 0 0 0-.5.5v2a.5.5 0 0 0 .5.5h13a.5.5 0 0 0 .5-.5v-2a.5.5 0 0 0-.5-.5z" />
+                    <path
+                        d="M2 2.5a.5.5 0 0 1 .5-.5h3a.5.5 0 0 1 0 1h-3a.5.5 0 0 1-.5-.5m10.823.323-.396-.396A.25.25 0 0 1 12.604 2h.792a.25.25 0 0 1 .177.427l-.396.396a.25.25 0 0 1-.354 0M0 8a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2zm1 3v2a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1v-2zm14-1V8a1 1 0 0 0-1-1H2a1 1 0 0 0-1 1v2zM2 8.5a.5.5 0 0 1 .5-.5h9a.5.5 0 0 1 0 1h-9a.5.5 0 0 1-.5-.5m0 4a.5.5 0 0 1 .5-.5h6a.5.5 0 0 1 0 1h-6a.5.5 0 0 1-.5-.5" />
+                </svg>
             </div>
             <nav class="navbar" :class="isMenuOpen ? 'show' : 'hide'">
                 <ul class="navbar__menu">
-                    <li @click="activeMenu = 'home'" class="navbar__item"
-                        :class="activeMenu === 'home' ? 'active' : ''">
+                    <RouterLink to="/" @click="app.toggleActiveMenu('home')" class="navbar__item"
+                        :class="app.activeMenu === 'home' ? 'active' : ''">
                         <a class="navbar__link">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
-                                fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                                stroke-linejoin="round" class="feather feather-home">
-                                <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path>
-                                <polyline points="9 22 9 12 15 12 15 22"></polyline>
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor"
+                                class="bi bi-house-door" viewBox="0 0 16 16">
+                                <path
+                                    d="M8.354 1.146a.5.5 0 0 0-.708 0l-6 6A.5.5 0 0 0 1.5 7.5v7a.5.5 0 0 0 .5.5h4.5a.5.5 0 0 0 .5-.5v-4h2v4a.5.5 0 0 0 .5.5H14a.5.5 0 0 0 .5-.5v-7a.5.5 0 0 0-.146-.354L13 5.793V2.5a.5.5 0 0 0-.5-.5h-1a.5.5 0 0 0-.5.5v1.293zM2.5 14V7.707l5.5-5.5 5.5 5.5V14H10v-4a.5.5 0 0 0-.5-.5h-3a.5.5 0 0 0-.5.5v4z" />
                             </svg>
                             <span>Home</span>
                         </a>
-                    </li>
-                    <li @click="activeMenu = 'reviews'" class="navbar__item"
-                        :class="activeMenu === 'reviews' ? 'active' : ''">
+                    </RouterLink>
+                    <RouterLink to="/reviews" @click="app.toggleActiveMenu('reviews')" class="navbar__item"
+                        :class="app.activeMenu === 'reviews' ? 'active' : ''">
                         <a class="navbar__link">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
-                                fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                                stroke-linejoin="round" class="feather feather-message-square">
-                                <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor"
+                                class="bi bi-chat-square-text" viewBox="0 0 16 16">
+                                <path
+                                    d="M14 1a1 1 0 0 1 1 1v8a1 1 0 0 1-1 1h-2.5a2 2 0 0 0-1.6.8L8 14.333 6.1 11.8a2 2 0 0 0-1.6-.8H2a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1zM2 0a2 2 0 0 0-2 2v8a2 2 0 0 0 2 2h2.5a1 1 0 0 1 .8.4l1.9 2.533a1 1 0 0 0 1.6 0l1.9-2.533a1 1 0 0 1 .8-.4H14a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2z" />
+                                <path
+                                    d="M3 3.5a.5.5 0 0 1 .5-.5h9a.5.5 0 0 1 0 1h-9a.5.5 0 0 1-.5-.5M3 6a.5.5 0 0 1 .5-.5h9a.5.5 0 0 1 0 1h-9A.5.5 0 0 1 3 6m0 2.5a.5.5 0 0 1 .5-.5h5a.5.5 0 0 1 0 1h-5a.5.5 0 0 1-.5-.5" />
                             </svg>
                             <span>Reviews</span>
                         </a>
-                    </li>
-                    <li @click="activeMenu = 'multi'" class="navbar__item"
-                        :class="activeMenu === 'multi' ? 'active' : ''">
+                    </RouterLink>
+                    <RouterLink to="/multiplayer" @click="app.toggleActiveMenu('multiplayer')" class="navbar__item"
+                        :class="app.activeMenu === 'multiplayer' ? 'active' : ''">
                         <a class="navbar__link">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
-                                fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                                stroke-linejoin="round" class="feather feather-users">
-                                <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
-                                <circle cx="9" cy="7" r="4"></circle>
-                                <path d="M23 21v-2a4 4 0 0 0-3-3.87"></path>
-                                <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor"
+                                class="bi bi-people" viewBox="0 0 16 16">
+                                <path
+                                    d="M15 14s1 0 1-1-1-4-5-4-5 3-5 4 1 1 1 1zm-7.978-1L7 12.996c.001-.264.167-1.03.76-1.72C8.312 10.629 9.282 10 11 10c1.717 0 2.687.63 3.24 1.276.593.69.758 1.457.76 1.72l-.008.002-.014.002zM11 7a2 2 0 1 0 0-4 2 2 0 0 0 0 4m3-2a3 3 0 1 1-6 0 3 3 0 0 1 6 0M6.936 9.28a6 6 0 0 0-1.23-.247A7 7 0 0 0 5 9c-4 0-5 3-5 4q0 1 1 1h4.216A2.24 2.24 0 0 1 5 13c0-1.01.377-2.042 1.09-2.904.243-.294.526-.569.846-.816M4.92 10A5.5 5.5 0 0 0 4 13H1c0-.26.164-1.03.76-1.724.545-.636 1.492-1.256 3.16-1.275ZM1.5 5.5a3 3 0 1 1 6 0 3 3 0 0 1-6 0m3-2a2 2 0 1 0 0 4 2 2 0 0 0 0-4" />
                             </svg>
                             <span>Multiplayer</span>
                         </a>
-                    </li>
-                    <li class="navbar__item position-relative" data-bs-toggle="offcanvas" data-bs-target="#chat"
-                        aria-controls="offcanvasScrolling">
+                    </RouterLink>
+                    <li class="navbar__item position-relative" data-bs-toggle="offcanvas" data-bs-target="#chat">
                         <span
                             class="position-absolute alert__indicator d-flex justify-content-center align-items-center border border-3 badge bg-success rounded-circle ff-grandstander-thin">
                             9+
@@ -67,30 +71,33 @@
                             <span>Chat</span>
                         </a>
                     </li>
-                    <li @click="activeMenu = 'leaderboard'" class="navbar__item"
-                        :class="activeMenu === 'leaderboard' ? 'active' : ''">
-                        <a class="navbar__link"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
-                                viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
-                                stroke-linecap="round" stroke-linejoin="round" class="feather feather-help-circle">
-                                <circle cx="12" cy="12" r="10"></circle>
-                                <path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"></path>
-                                <line x1="12" y1="17" x2="12.01" y2="17"></line>
+                    <RouterLink to="/leaderboard" @click="app.toggleActiveMenu('leaderboard')" class="navbar__item"
+                        :class="app.activeMenu === 'leaderboard' ? 'active' : ''">
+                        <a class="navbar__link">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor"
+                                class="bi bi-award" viewBox="0 0 16 16">
+                                <path
+                                    d="M9.669.864 8 0 6.331.864l-1.858.282-.842 1.68-1.337 1.32L2.6 6l-.306 1.854 1.337 1.32.842 1.68 1.858.282L8 12l1.669-.864 1.858-.282.842-1.68 1.337-1.32L13.4 6l.306-1.854-1.337-1.32-.842-1.68zm1.196 1.193.684 1.365 1.086 1.072L12.387 6l.248 1.506-1.086 1.072-.684 1.365-1.51.229L8 10.874l-1.355-.702-1.51-.229-.684-1.365-1.086-1.072L3.614 6l-.25-1.506 1.087-1.072.684-1.365 1.51-.229L8 1.126l1.356.702z" />
+                                <path d="M4 11.794V16l4-1 4 1v-4.206l-2.018.306L8 13.126 6.018 12.1z" />
                             </svg>
                             <span>Leaderboard</span>
                         </a>
-                    </li>
-                    <li @click="activeMenu = 'profile'" class="navbar__item"
-                        :class="activeMenu === 'profile' ? 'active' : ''">
-                        <a class="navbar__link"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
-                                fill="currentColor" class="bi bi-person" viewBox="0 0 16 16">
+                    </RouterLink>
+                    <RouterLink to="/profile" @click="app.toggleActiveMenu('profile')" class="navbar__item"
+                        :class="app.activeMenu === 'profile' ? 'active' : ''">
+                        <a class="navbar__link">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor"
+                                class="bi bi-person-vcard" viewBox="0 0 16 16">
                                 <path
-                                    d="M8 8a3 3 0 1 0 0-6 3 3 0 0 0 0 6m2-3a2 2 0 1 1-4 0 2 2 0 0 1 4 0m4 8c0 1-1 1-1 1H3s-1 0-1-1 1-4 6-4 6 3 6 4m-1-.004c-.001-.246-.154-.986-.832-1.664C11.516 10.68 10.289 10 8 10s-3.516.68-4.168 1.332c-.678.678-.83 1.418-.832 1.664z" />
+                                    d="M5 8a2 2 0 1 0 0-4 2 2 0 0 0 0 4m4-2.5a.5.5 0 0 1 .5-.5h4a.5.5 0 0 1 0 1h-4a.5.5 0 0 1-.5-.5M9 8a.5.5 0 0 1 .5-.5h4a.5.5 0 0 1 0 1h-4A.5.5 0 0 1 9 8m1 2.5a.5.5 0 0 1 .5-.5h3a.5.5 0 0 1 0 1h-3a.5.5 0 0 1-.5-.5" />
+                                <path
+                                    d="M2 2a2 2 0 0 0-2 2v8a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V4a2 2 0 0 0-2-2zM1 4a1 1 0 0 1 1-1h12a1 1 0 0 1 1 1v8a1 1 0 0 1-1 1H8.96q.04-.245.04-.5C9 10.567 7.21 9 5 9c-2.086 0-3.8 1.398-3.984 3.181A1 1 0 0 1 1 12z" />
                             </svg>
                             <span>Profile</span>
                         </a>
-                    </li>
+                    </RouterLink>
                     <li class="navbar__item position-relative" data-bs-toggle="offcanvas"
-                        data-bs-target="#notifications" aria-controls="offcanvasScrolling">
+                        data-bs-target="#notifications">
                         <span
                             class="position-absolute alert__indicator d-flex justify-content-center align-items-center border border-3 badge bg-success rounded-circle ff-grandstander-thin">
                             5
@@ -105,18 +112,19 @@
                             <span>Notifications</span>
                         </a>
                     </li>
-                    <li @click="activeMenu = 'login'" class="navbar__item"
-                        :class="activeMenu === 'login' ? 'active' : ''">
-                        <a class="navbar__link"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
-                                fill="currentColor" class="bi bi-check2-circle" viewBox="0 0 16 16">
-                                <path
-                                    d="M2.5 8a5.5 5.5 0 0 1 8.25-4.764.5.5 0 0 0 .5-.866A6.5 6.5 0 1 0 14.5 8a.5.5 0 0 0-1 0 5.5 5.5 0 1 1-11 0" />
-                                <path
-                                    d="M15.354 3.354a.5.5 0 0 0-.708-.708L8 9.293 5.354 6.646a.5.5 0 1 0-.708.708l3 3a.5.5 0 0 0 .708 0z" />
+                    <RouterLink to="/auth" @click="app.toggleActiveMenu('auth')" class="navbar__item"
+                        :class="app.activeMenu === 'auth' ? 'active' : ''">
+                        <a class="navbar__link">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor"
+                                class="bi bi-box-arrow-in-left" viewBox="0 0 16 16">
+                                <path fill-rule="evenodd"
+                                    d="M10 3.5a.5.5 0 0 0-.5-.5h-8a.5.5 0 0 0-.5.5v9a.5.5 0 0 0 .5.5h8a.5.5 0 0 0 .5-.5v-2a.5.5 0 0 1 1 0v2A1.5 1.5 0 0 1 9.5 14h-8A1.5 1.5 0 0 1 0 12.5v-9A1.5 1.5 0 0 1 1.5 2h8A1.5 1.5 0 0 1 11 3.5v2a.5.5 0 0 1-1 0z" />
+                                <path fill-rule="evenodd"
+                                    d="M4.146 8.354a.5.5 0 0 1 0-.708l3-3a.5.5 0 1 1 .708.708L5.707 7.5H14.5a.5.5 0 0 1 0 1H5.707l2.147 2.146a.5.5 0 0 1-.708.708z" />
                             </svg>
                             <span>Login</span>
                         </a>
-                    </li>
+                    </RouterLink>
                 </ul>
             </nav>
         </button>
@@ -124,10 +132,11 @@
 </template>
 
 <script setup>
+import { useAppStore } from '../stores/app';
 import { ref } from 'vue';
 
 const isMenuOpen = ref(false);
-const activeMenu = ref('home');
+const app = useAppStore();
 </script>
 
 <style scoped>
@@ -160,14 +169,6 @@ svg {
     transition: all .5s ease-in-out;
 }
 
-.open {
-    transform: rotate(225deg);
-}
-
-.close {
-    transform: rotate(0);
-}
-
 .navbar {
     position: absolute;
     left: 0;
@@ -180,6 +181,12 @@ svg {
     transition: all .5s ease-in-out;
 }
 
+ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
 .show {
     transform: translate(-10%, -113%);
     opacity: 1;
@@ -189,15 +196,6 @@ svg {
     opacity: 0;
     transform: translate(-10%, -106%);
     pointer-events: none;
-}
-
-ul {
-    padding: 0;
-    margin: 0;
-}
-
-li {
-    list-style: none;
 }
 
 .navbar__link {
@@ -256,5 +254,57 @@ li {
     background: white;
     border-radius: 17.5px;
     transition: all 250ms ease-in-out;
+}
+
+@media screen and (max-width: 929px) {
+    .navbar {
+        display: none;
+    }
+}
+
+@media screen and (max-width: 730px) {
+    main {
+        left: 10px;
+    }
+
+    main>button {
+        width: 54px;
+        height: 54px;
+    }
+
+    main>button svg.bi-plus {
+        width: 50px;
+        height: 50px;
+    }
+}
+
+@media screen and (max-width: 600px) {
+    main {
+        left: 8px;
+        top: 60%;
+    }
+
+    main>button {
+        width: 54px;
+        height: 54px;
+    }
+
+    .bi-plus {
+        display: none;
+    }
+
+    .bi-menu-button-wide {
+        display: inline !important;
+    }
+}
+
+@media screen and (min-width: 930px) {
+    .open {
+        transform: rotate(225deg);
+    }
+
+    .close {
+        transform: rotate(0);
+    }
 }
 </style>

@@ -10,7 +10,7 @@
             <div class="d-flex align-items-center gap-3">
                 <div class="d-flex align-items-center">
                     <span class="text-secondary">To: &nbsp;</span>
-                    <RouterLink to="/my-profile">
+                    <RouterLink to="/profile">
                         <span data-bs-dismiss="offcanvas">
                             Johnny
                         </span>

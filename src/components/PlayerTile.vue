@@ -15,7 +15,7 @@
         </div>
         <div class="player__tile d-flex flex-grow-1 align-items-center justify-content-between">
             <div class="d-flex flex-column gap-2">
-                <RouterLink to="/my-profile">
+                <RouterLink to="/profile">
                     <h5 class="text-white mb-0" :class="inUsersList ? 'fs-5' : ' ff-grandstander-thin'" role="button">
                         Micheal
                     </h5>

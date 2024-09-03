@@ -10,42 +10,42 @@ import { createRouter, createWebHistory } from 'vue-router'
 
 const routes = [
     {
-        name: "Home",
+        name: "home",
         component: Home,
         path: "/"
     },
     {
-        name: "Game",
+        name: "",
         component: Game,
         path: "/game/:id/:category"
     },
     {
-        name: "Auth",
+        name: "auth",
         component: Auth,
-        path: "/user/auth"
+        path: "/auth"
     },
     {
-        name: "Profile",
+        name: "profile",
         component: Profile,
-        path: "/my-profile"
+        path: "/profile"
     },
     {
-        name: "Users",
+        name: "",
         component: Users,
         path: "/users"
     },
     {
-        name: "Leaderboard",
+        name: "leaderboard",
         component: Leaderboard,
         path: "/leaderboard"
     },
     {
-        name: "Reviews",
+        name: "reviews",
         component: Reviews,
         path: "/reviews"
     },
     {
-        name: "Multiplayer",
+        name: "multiplayer",
         component: Multiplayer,
         path: "/multiplayer"
     }
