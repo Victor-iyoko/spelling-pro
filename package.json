@@ -12,6 +12,8 @@
     "@popperjs/core": "^2.11.8",
     "bootstrap": "^5.3.3",
     "chart.js": "^4.4.3",
+    "country-flag-emoji": "^1.0.3",
+    "country-flag-icons": "^1.5.13",
     "pinia": "^2.1.7",
     "swiper": "^11.1.4",
     "validator": "^13.12.0",

@@ -135,7 +135,7 @@
 import { useAppStore } from '../stores/app';
 import { ref } from 'vue';
 
-const isMenuOpen = ref(false);
+const isMenuOpen = ref(true);
 const app = useAppStore();
 </script>
 
@@ -281,7 +281,7 @@ ul {
 @media screen and (max-width: 600px) {
     main {
         left: 8px;
-        top: 60%;
+        bottom: 40%;
     }
 
     main>button {

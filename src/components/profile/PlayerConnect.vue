@@ -1,10 +1,14 @@
 <template>
     <div class="w-100 w-md-50 mb-3">
-        <h3 :class="inRoom ? 'fs-5 fw-bold mb-2 text-white text-shadow ls-1' : 'fs-4 mb-3 text-white text-shadow ls-1'">
+        <h3 :class="inRoom ? 'fs-5 fw-bold mb-2 text-white text-shadow ls-1' : 'fs-4 mb-2 text-white text-shadow ls-1'">
             {{ isSavedPlayers ? 'Saved Players' : 'Recent Opponents' }}
         </h3>
+        <p class="fs-6 ff-grandstander-thin text-yellow mb-1">
+            {{ isSavedPlayers ? 'Your favorite competitors at a glance.' : 'Review your recent challengers!'
+            }}
+        </p>
         <div
-            class="rounded-4 box-shadow-sharp bg-secondarybg p-3 d-flex flex-column justify-content-center align-items-center">
+            class="rounded-2 box-shadow-sharp bg-secondarybg p-3 d-flex flex-column justify-content-center align-items-center">
             <PlayerTile :isSavedPlayers="isSavedPlayers" v-for="i in 5" :class="i === 5 ? '' : 'mb-3'" />
         </div>
     </div>

@@ -83,6 +83,9 @@ select:focus
 .bg-secondarybg {
   background-color: #1e292c !important;
 }
+.bg-secondarybg-light {
+  background-color: #31393B !important;
+}
 .bg-brown-light {
   background-color: #a36041E1 !important;
 }
@@ -120,6 +123,9 @@ select:focus
 }
 .fs-7 {
   font-size: 14px;
+}
+.mt-6 {
+  margin-top: 60px;
 }
 .box-shadow-sharp {
   box-shadow: 3px 3px 4px #000000;

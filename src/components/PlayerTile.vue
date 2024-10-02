@@ -2,7 +2,7 @@
     <div class="player d-flex w-100 py-2 px-3 rounded-3" :class="inUsersList ? 'mb-2' : ''"
         :style="!inUsersList ? { background: '#31393b' } : { background: '#a36041e1' }">
         <div class="position-relative rounded-circle border me-3" :id="inTable ? 'hide__sm-table' : ''"
-            :class="inUsersList ? 'avatar__container-userlist border-4' : 'avatar__container border-2'">
+            :class="inUsersList ? 'avatar__container-userlist border-4' : 'avatar__container border-2 border-secondary'">
             <img src="/IMG-20230322-WA0167.jpg" class="w-100 h-100 rounded-circle" alt="avatar">
             <div
                 class="rank w-100 h-100 overflow-hidden position-absolute top-0 start-0 bg-dark bg-opacity-50 opacity-0 rounded-circle text-white d-flex flex-column align-items-center justify-content-center">

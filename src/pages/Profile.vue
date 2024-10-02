@@ -1,15 +1,8 @@
 <template>
-    <div v-ActivePage="useRoute().name" class="container-fluid px-0">
-        <div class="w-100 position-relative jumbotron shadow rounded-bottom-4">
+    <div v-ActivePage="useRoute().name" class="container-fluid px-0" :style="{ minHeight: '100vh' }">
+        <div class="w-100 position-relative jumbotron shadow">
             <div class="wrapper mx-auto">
                 <header class="container d-flex justify-content-between align-items-center py-2">
-                    <RouterLink to="/" class="d-flex d-block d-sm-none justify-content-center align-items-center">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" fill="currentColor"
-                            class="text-light" viewBox="0 0 16 16">
-                            <path
-                                d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708" />
-                        </svg>
-                    </RouterLink>
                     <Title title="MY  PROFILE" />
                     <form @submit.prevent="router.push('/users?search=' + search)"
                         class="login__field d-none d-sm-block">
@@ -34,13 +27,16 @@
         <div class="wrapper mx-auto">
             <ProfileDetails />
             <Stats />
-            <ScoresTable />
-            <div class="container justify-content-between gap-5 gap-md-4 d-flex flex-column flex-md-row mb-3 mt-6">
+            <ProfileAnalytics />
+            <Badges />
+            <Progress />
+            <div class="container justify-content-between gap-3 gap-md-4 d-flex flex-column flex-md-row mt-6 mb-3">
                 <PlayerConnect :isSavedPlayers="true" />
                 <PlayerConnect :isSavedPlayers="false" />
             </div>
         </div>
     </div>
+    <!-- <Footing /> -->
     <EditProfile />
 </template>
 
@@ -48,14 +44,17 @@
 import Title from '../components/Title.vue';
 import ProfileDetails from '../components/profile/ProfileDetails.vue';
 import Stats from '../components/profile/Stats.vue';
-import ScoresTable from '../components/profile/ScoresTable.vue';
+import ProfileAnalytics from '../components/profile/ProfileAnalytics.vue';
+import Badges from '../components/profile/Badges.vue';
 import PlayerConnect from '../components/profile/PlayerConnect.vue';
+import EditProfile from '../components/profile/EditProfile.vue';
+import TextInput from '../components/TextInput.vue';
+import ActivePage from '../directives/activePage.js';
+// import Footing from '../components/Footing.vue';
 import { useRouter } from 'vue-router';
 import { ref } from 'vue';
-import TextInput from '../components/TextInput.vue';
-import EditProfile from '../components/profile/EditProfile.vue';
-import ActivePage from '../directives/activePage.js';
 import { useRoute } from 'vue-router';
+import Progress from '../components/profile/Progress.vue';
 
 const vActivePage = ActivePage;
 const router = useRouter();
@@ -78,10 +77,6 @@ a svg {
 
 a svg:hover {
     color: #D1D1D4 !important;
-}
-
-.mt-6 {
-    margin-top: 60px;
 }
 
 @media screen and (max-width: 575px) {
