@@ -5,7 +5,7 @@
                 class="ratio-1x1 avatar rounded-circle shadow border border-5 rounded-circle">
             </img>
             <span
-                class="active__indicator position-absolute translate-middle p-2 bg-danger border border-light rounded-circle">
+                class="active__indicator position-absolute translate-middle p-2 bg-danger border border-3 border-light rounded-circle">
                 <span class="visually-hidden">New alerts</span>
             </span>
             <div
@@ -30,7 +30,7 @@
                     <h2 class="name display-5 text-sm-center lh-1 mb-0 text-white align-middle">
                         JohnnyDoe
                     </h2>
-                    <span class="email fs-6 text-info text-sm-center d-flex align-items-center gap-1">
+                    <span class="email fs-6 text-info text-sm-center d-flex align-items-center gap-2">
                         <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" fill="currentColor"
                             class="bi bi-envelope-fill" viewBox="0 0 16 16">
                             <path
@@ -131,7 +131,7 @@ onUnmounted(() => {
 .active__indicator {
     top: 10%;
     right: 10%;
-    /* border-color: #1e292c !important; */
+    border-color: #1e292c !important;
 }
 
 .gender {

@@ -7,7 +7,7 @@
             <Category v-for="(item, index) in categoriesArr" :key="index" :id="index" :name="item.name"
                 :score="item.score" :url="item.url" :color="item.color" :img="item.img" />
         </div>
-        <Footer score="1792" />
+        <HomeFooter score="1792" />
     </div>
     <About />
     <Settings />
@@ -17,7 +17,7 @@
 import Title from '../components/Title.vue';
 import categoriesArr from '../data/categories.js';
 import Category from '../components/Category.vue';
-import Footer from '../components/Footer.vue';
+import HomeFooter from '../components/HomeFooter.vue';
 import Settings from '../components/Settings.vue';
 import About from '../components/About.vue';
 import ActivePage from '../directives/activePage.js';

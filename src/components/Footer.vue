@@ -1,57 +1,183 @@
 <template>
-    <div style="width: 80%; max-width: 500px;"
-        class="mt-2 w-100 d-flex ms-auto me-auto align-items-center justify-content-between ff-moresugar-thin">
-        <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor"
-            class="bi bi-gear m-2 text-light" data-bs-toggle="modal" data-bs-target="#settings" role="button"
-            viewBox="0 0 16 16">
-            <path
-                d="M9.405 1.05c-.413-1.4-2.397-1.4-2.81 0l-.1.34a1.464 1.464 0 0 1-2.105.872l-.31-.17c-1.283-.698-2.686.705-1.987 1.987l.169.311c.446.82.023 1.841-.872 2.105l-.34.1c-1.4.413-1.4 2.397 0 2.81l.34.1a1.464 1.464 0 0 1 .872 2.105l-.17.31c-.698 1.283.705 2.686 1.987 1.987l.311-.169a1.464 1.464 0 0 1 2.105.872l.1.34c.413 1.4 2.397 1.4 2.81 0l.1-.34a1.464 1.464 0 0 1 2.105-.872l.31.17c1.283.698 2.686-.705 1.987-1.987l-.169-.311a1.464 1.464 0 0 1 .872-2.105l.34-.1c1.4-.413 1.4-2.397 0-2.81l-.34-.1a1.464 1.464 0 0 1-.872-2.105l.17-.31c.698-1.283-.705-2.686-1.987-1.987l-.311.169a1.464 1.464 0 0 1-2.105-.872zM8 10.93a2.929 2.929 0 1 1 0-5.86 2.929 2.929 0 0 1 0 5.858z" />
+    <div class="container-fluid bg-secondarybg shadow ff-grandstander-thin">
+        <div class="container">
+            <footer class="pt-5 pb-1 pb-sm-5 mx-auto">
+                <div class="row justify-content-between justify-lg-content-center px-2 px-md-0">
+                    <div class="col-6 col-sm-4 col-lg-2">
+                        <h5 class="text-light text-shadow">Powered by</h5>
+                        <div class="row w-75 gy-2">
+                            <div class="col-4">
+                                <a href="#">
+                                    <img src="/powered/vue.webp" alt="vue js">
+                                </a>
+                            </div>
+                            <div class="col-4">
+                                <a href="#">
+                                    <img src="/powered/laravel.svg" alt="laravel">
+                                </a>
+                            </div>
+                            <div class="col-4">
+                                <a href="#">
+                                    <img src="/powered/Bootstrap.webp" alt="bootstrap">
+                                </a>
+                            </div>
+                            <div class="col-4">
+                                <a href="#">
+                                    <img src="/powered/pinia.svg" alt="pinia">
+                                </a>
+                            </div>
+                            <div class="col-4">
+                                <a href="#">
+                                    <img src="/powered/chatgpt.svg" alt="chatgpt">
+                                </a>
+                            </div>
+                            <div class="col-4">
+                                <a href="#">
+                                    <img src="/powered/chartjs.svg" alt="chart js">
+                                </a>
+                            </div>
+                            <div class="col-4">
+                                <a href="#">
+                                    <img src="/powered/swiper.svg" alt="swiper js">
+                                </a>
+                            </div>
+                            <div class="col-4">
+                                <a href="#">
+                                    <img src="/powered/tsParticles.webp" alt="tsparticles">
+                                </a>
+                            </div>
+                        </div>
+                    </div>
 
-        </svg>
-        <div id="overall" class="text-shadow pb-1 fs-4 fw-bold ls-1 text-light border-bottom border-3">OVERALL: {{ score
-            }}
+                    <div class="col-6 col-sm-4 col-lg-2">
+                        <h5 class="text-light text-shadow">Legal</h5>
+                        <ul class="nav flex-column">
+                            <li class="nav-item mb-2"><a href="#" class="nav-link p-0">Privacy Policy</a>
+                            </li>
+                            <li class="nav-item mb-2"><a href="#" class="nav-link p-0">Terms of Service</a>
+                            </li>
+                            <li class="nav-item mb-2"><a href="#" class="nav-link p-0">Cookie Policy</a></li>
+                        </ul>
+                    </div>
+
+                    <div class="col-6 col-sm-4 col-lg-2 mt-3 mt-sm-0">
+                        <h5 class="text-light text-shadow">Game</h5>
+                        <ul class="nav flex-column">
+                            <li class="nav-item mb-2"><Router-link to="/leaderboard">Leaderboard</Router-link></li>
+                            <li class="nav-item mb-2">
+                                <Router-link to="/multiplayer">Multiplayer</Router-link>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <div class="col-12 col-md-9 col-lg-5 ms-lg-4 mt-4 mt-lg-0">
+                        <form>
+                            <h5 class="text-info text-shadow">Subscribe to our newsletter</h5>
+                            <p class="text-light">Monthly digest of whats new and exciting from us.</p>
+                            <div class="d-flex w-100 gap-2">
+                                <label for="newsletter1" class="visually-hidden">Email address</label>
+                                <input id="newsletter1" type="text" class="form-control fw-bold"
+                                    placeholder="Email address">
+                                <button class="btn btn-primary" type="button">Subscribe</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+
+                <div
+                    class="copy-right d-flex flex-column flex-sm-row justify-content-between align-items-center py-4 my-4 border-top">
+                    <div class="d-flex align-items-center gap-2 me-auto me-sm-0">
+                        <img src="/spelling-pro-icon.png" alt="spelling pro" class="logo">
+                        <span class="mb-0 text-light fs-7">© 2024 Spelling Pro, Inc. All rights reserved.</span>
+                    </div>
+                    <ul class="list-unstyled mb-0 ms-auto ms-sm-0 mt-2 mt-sm-0 d-flex">
+                        <li class="ms-3">
+                            <a class="link-dark" href="#">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor"
+                                    class="bi bi-whatsapp" viewBox="0 0 16 16">
+                                    <path
+                                        d="M13.601 2.326A7.85 7.85 0 0 0 7.994 0C3.627 0 .068 3.558.064 7.926c0 1.399.366 2.76 1.057 3.965L0 16l4.204-1.102a7.9 7.9 0 0 0 3.79.965h.004c4.368 0 7.926-3.558 7.93-7.93A7.9 7.9 0 0 0 13.6 2.326zM7.994 14.521a6.6 6.6 0 0 1-3.356-.92l-.24-.144-2.494.654.666-2.433-.156-.251a6.56 6.56 0 0 1-1.007-3.505c0-3.626 2.957-6.584 6.591-6.584a6.56 6.56 0 0 1 4.66 1.931 6.56 6.56 0 0 1 1.928 4.66c-.004 3.639-2.961 6.592-6.592 6.592m3.615-4.934c-.197-.099-1.17-.578-1.353-.646-.182-.065-.315-.099-.445.099-.133.197-.513.646-.627.775-.114.133-.232.148-.43.05-.197-.1-.836-.308-1.592-.985-.59-.525-.985-1.175-1.103-1.372-.114-.198-.011-.304.088-.403.087-.088.197-.232.296-.346.1-.114.133-.198.198-.33.065-.134.034-.248-.015-.347-.05-.099-.445-1.076-.612-1.47-.16-.389-.323-.335-.445-.34-.114-.007-.247-.007-.38-.007a.73.73 0 0 0-.529.247c-.182.198-.691.677-.691 1.654s.71 1.916.81 2.049c.098.133 1.394 2.132 3.383 2.992.47.205.84.326 1.129.418.475.152.904.129 1.246.08.38-.058 1.171-.48 1.338-.943.164-.464.164-.86.114-.943-.049-.084-.182-.133-.38-.232" />
+                                </svg>
+                            </a>
+                        </li>
+                        <li class="ms-3">
+                            <a class="link-dark" href="#">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor"
+                                    class="bi bi-facebook" viewBox="0 0 16 16">
+                                    <path
+                                        d="M16 8.049c0-4.446-3.582-8.05-8-8.05C3.58 0-.002 3.603-.002 8.05c0 4.017 2.926 7.347 6.75 7.951v-5.625h-2.03V8.05H6.75V6.275c0-2.017 1.195-3.131 3.022-3.131.876 0 1.791.157 1.791.157v1.98h-1.009c-.993 0-1.303.621-1.303 1.258v1.51h2.218l-.354 2.326H9.25V16c3.824-.604 6.75-3.934 6.75-7.951" />
+                                </svg>
+                            </a>
+                        </li>
+                        <li class="ms-3">
+                            <a class="link-dark" href="#">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor"
+                                    class="bi bi-linkedin" viewBox="0 0 16 16">
+                                    <path
+                                        d="M0 1.146C0 .513.526 0 1.175 0h13.65C15.474 0 16 .513 16 1.146v13.708c0 .633-.526 1.146-1.175 1.146H1.175C.526 16 0 15.487 0 14.854zm4.943 12.248V6.169H2.542v7.225zm-1.2-8.212c.837 0 1.358-.554 1.358-1.248-.015-.709-.52-1.248-1.342-1.248S2.4 3.226 2.4 3.934c0 .694.521 1.248 1.327 1.248zm4.908 8.212V9.359c0-.216.016-.432.08-.586.173-.431.568-.878 1.232-.878.869 0 1.216.662 1.216 1.634v3.865h2.401V9.25c0-2.22-1.184-3.252-2.764-3.252-1.274 0-1.845.7-2.165 1.193v.025h-.016l.016-.025V6.169h-2.4c.03.678 0 7.225 0 7.225z" />
+                                </svg>
+                            </a>
+                        </li>
+                        <li class="ms-3">
+                            <a class="link-dark" href="#">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor"
+                                    class="bi bi-github" viewBox="0 0 16 16">
+                                    <path
+                                        d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27s1.36.09 2 .27c1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.01 8.01 0 0 0 16 8c0-4.42-3.58-8-8-8" />
+                                </svg>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </footer>
         </div>
-        <svg xmlns="http://www.w3.org/2000/svg" width="35" height="35" fill="currentColor"
-            class="bi bi-check-lg text-light" data-bs-toggle="modal" data-bs-target="#about" role="button"
-            viewBox="0 0 16 16">
-            <path
-                d="M8 16A8 8 0 1 0 8 0a8 8 0 0 0 0 16m.93-9.412-1 4.705c-.07.34.029.533.304.533.194 0 .487-.07.686-.246l-.088.416c-.287.346-.92.598-1.465.598-.703 0-1.002-.422-.808-1.319l.738-3.468c.064-.293.006-.399-.287-.47l-.451-.081.082-.381 2.29-.287zM8 5.5a1 1 0 1 1 0-2 1 1 0 0 1 0 2" />
-        </svg>
     </div>
 </template>
 
 <script setup>
-const props = defineProps({
-    score: String
-});
 </script>
 
 <style scoped>
-#overall {
-    border-color: rgb(59, 255, 0) !important;
+.container-fluid {
+    margin-top: 60px !important;
 }
 
-@keyframes rotate {
-    100% {
-        transform: rotate(360deg);
+footer {
+    max-width: 900px;
+}
+
+ul>li a {
+    color: rgb(148, 148, 148) !important;
+    transition: color .3s ease-in-out;
+}
+
+ul>li a:hover {
+    color: white !important;
+}
+
+.col-4 img {
+    width: 20px;
+    height: 20px;
+    /* cursor: pointer; */
+}
+
+img.logo {
+    width: 30px;
+    height: 25px;
+}
+
+.copy-right {
+    border-color: #9695957a !important;
+}
+
+@media screen and (max-width: 575px) {
+    h5 {
+        font-size: 18px;
     }
-}
 
-@keyframes size-change {
-    0% {
-        transform: scale(1.0);
+    ul>li a,
+    form p {
+        font-size: 15px;
     }
-
-    100% {
-        transform: scale(1.2);
-    }
-}
-
-.bi-gear {
-    animation: rotate 1.8s infinite alternate;
-}
-
-.bi-check-lg {
-    animation: size-change 0.7s infinite alternate;
 }
 </style>

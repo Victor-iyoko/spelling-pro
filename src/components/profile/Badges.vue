@@ -5,7 +5,7 @@
         </h3>
         <div class="d-flex align-items-center justify-content-between">
             <span class="fs-6 text-yellow mb-1">
-                Earn badges while you play!
+                Unlock new badges as you master the game.
             </span>
             <SelectInput class="ff-grandstander" v-model="filterBadge" label='filter' :options="badgeOptions"
                 :inLeaderBoard="true" />
@@ -83,8 +83,8 @@ const badges = [
         img: "/badges/perfectionist.svg"
     },
     {
-        name: 'Comeback King/Queen',
-        description: "Achieved by winning a game after being behind by a certain number of points.",
+        name: 'King/Queen',
+        description: "Achieved by becoming number 1 in any game mode on the leaderboard.",
         points: 200,
         img: "/badges/comeback-king.svg"
     },

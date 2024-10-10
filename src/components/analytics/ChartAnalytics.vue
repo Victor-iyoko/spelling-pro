@@ -1,8 +1,8 @@
 <template>
     <div
         class="w-100 chart__container bg-secondarybg d-flex gap-3 gap-lg-5 justify-content-center justify-sm-content-between justify-content-md-center align-items-center p-3">
-        <canvas :id="dataType === 'line' ? 'line-chart' : 'charts'"></canvas>
-        <div v-if="dataType === 'doughnut'" class="ps-2 ps-md-4 pe-md-0 px-lg-4 d-none d-sm-block">
+        <canvas :id="activeMode.chartType === 'line' ? 'line-chart' : 'charts'"></canvas>
+        <div v-if="activeMode.chartType === 'doughnut'" class="ps-2 ps-md-4 pe-md-0 px-lg-4 d-none d-sm-block">
             <div class="label d-flex align-items-center gap-2 mb-1"><span class="tag"></span><span
                     class="text-secondary">1 word 2
                     forms</span>
@@ -36,66 +36,75 @@
 </template>
 
 <script setup>
-import { ref, onMounted } from 'vue';
+import { ref, onMounted, watch } from 'vue';
 import Chart from 'chart.js/auto';
 
 const props = defineProps({
-    dataType: String,
-    lineColor: String
+    activeMode: Object
 });
 const canvas = ref(null);
+let chartInstance;
+const chartColors = [
+    '#FFD700',
+    '#FF1493',
+    '#32CD32',
+    '#EE82EE',
+    '#FF8C00',
+    '#972BD6',
+    '#00BFFF',
+    '#F8F8FF'
+];
+
+function initChart() {
+    chartInstance = new Chart(
+        document.getElementById(props.activeMode.chartType === 'line' ? 'line-chart' : 'charts'),
+        {
+            type: props.activeMode.chartType,
+            options: {
+                plugins: {
+                    legend: {
+                        display: false
+                    }
+                }
+            },
+            data: {
+                labels: props.activeMode.chartType === 'line' ? [1, 2, 3, 4, 5, 6, 7, 8] : [
+                    '1 word 2 forms',
+                    'Find misspelled',
+                    'Find correct',
+                    'Which letter',
+                    'Decide',
+                    'Decide & correct',
+                    'Multiple choice',
+                    'Spell it'
+                ],
+                datasets: [{
+                    label: 'Plays',
+                    data: props.activeMode.chartType === 'line' ? props.activeMode.data : [300, 50, 100, 40, 70, 120, 200, 80],
+                    backgroundColor: props.activeMode.chartType === 'line' ? [chartColors[props.activeMode.colorIndex]] : chartColors,
+                    hoverOffset: 15,
+                    borderColor: props.activeMode.chartType === 'line' ? chartColors[props.activeMode.colorIndex] : '#1E292C',
+                    borderWidth: props.activeMode.chartType === 'line' ? 1 : 3,
+                    line: {
+                        showLine: true
+                    }
+                }]
+            }
+        }
+    );
+}
+
+watch(() => props.activeMode, (newValue, oldValue) => {
+    if (newValue.chartType === 'line') {
+        chartInstance.data.datasets[0].data = newValue.data;
+        chartInstance.data.datasets[0].backgroundColor[0] = chartColors[newValue.colorIndex];
+        chartInstance.data.datasets[0].borderColor = chartColors[newValue.colorIndex];
+    }
+    chartInstance.update();
+});
 
 onMounted(() => {
-    (async function () {
-
-        new Chart(
-            document.getElementById(props.dataType === 'line' ? 'line-chart' : 'charts'),
-            {
-                type: props.dataType,
-                options: {
-                    plugins: {
-                        legend: {
-                            display: false
-                        }
-                    }
-                },
-                data: {
-                    labels: props.dataType === 'line' ? [1, 2, 3, 4, 5, 6, 7, 8] : [
-                        '1 word 2 forms',
-                        'Find misspelled',
-                        'Find correct',
-                        'Which letter',
-                        'Decide',
-                        'Decide & correct',
-                        'Multiple choice',
-                        'Spell it'
-                    ],
-                    datasets: [{
-                        label: 'Plays',
-                        data: [300, 50, 100, 40, 70, 120, 200, 80],
-                        backgroundColor: props.dataType === 'line' ? ['#fff'] : [
-                            '#FFD700',
-                            '#FF1493',
-                            '#32CD32',
-                            '#EE82EE',
-                            '#FF8C00',
-                            '#972BD6',
-                            '#00BFFF',
-                            '#F8F8FF'
-                        ],
-                        hoverOffset: 15,
-                        borderColor: props.dataType === 'line' ? '#fff' : '#1E292C',
-                        borderWidth: props.dataType === 'line' ? 2 : 3,
-                        line: {
-                            showLine: true
-                        },
-                        borderRadius: 4
-                    }]
-                }
-            }
-        );
-    })();
-
+    initChart();
 });
 </script>
 

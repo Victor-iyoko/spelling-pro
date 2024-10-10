@@ -36,7 +36,7 @@
             </div>
         </div>
     </div>
-    <!-- <Footing /> -->
+    <Footer />
     <EditProfile />
 </template>
 
@@ -50,7 +50,7 @@ import PlayerConnect from '../components/profile/PlayerConnect.vue';
 import EditProfile from '../components/profile/EditProfile.vue';
 import TextInput from '../components/TextInput.vue';
 import ActivePage from '../directives/activePage.js';
-// import Footing from '../components/Footing.vue';
+import Footer from '../components/Footer.vue';
 import { useRouter } from 'vue-router';
 import { ref } from 'vue';
 import { useRoute } from 'vue-router';
