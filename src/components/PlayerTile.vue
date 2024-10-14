@@ -9,7 +9,9 @@
                 <span class="fs-5">#12</span>
                 <!-- <span v-show="!inUsersList" class="fs-6" :style="{ marginTop: '-10px' }">1342</span> -->
             </div>
-            <span class="active__indicator position-absolute translate-middle p-1 bg-success border rounded-circle">
+            <span :class="inUsersList ? 'border-2 border-brown' : 'border-dark'"
+                class="active__indicator position-absolute translate-middle p-1 bg-success border rounded-circle">
+
                 <span class="visually-hidden">New alerts</span>
             </span>
         </div>
@@ -20,7 +22,7 @@
                         Micheal
                     </h5>
                 </RouterLink>
-                <div class="info d-flex" :class="inUsersList ? 'p-1 rounded-2' : ''"
+                <div class="info d-flex" :class="inUsersList ? 'py-1 px-2 rounded-2' : ''"
                     :style="inUsersList ? { background: '#8f4d2f' } : {}">
                     <span class="text-yellow me-1 me-md-2" :style="{ textShadow: '0 2px 2px #3e3c3c' }">lvl 2</span>
                     <span v-show="inUsersList" class="text-white">|</span>
@@ -32,8 +34,8 @@
                 <button v-tooltip data-bs-toggle="tooltip" data-bs-placement="top"
                     :style="!inUsersList ? { boxShadow: '2px 2px 2px #000000c2' } : {}"
                     :title="isSavedPlayers ? 'Duel player' : 'save player'" type="button"
-                    class="p-md-1 ls-1 me-2 me-sm-3 btn btn-sm d-flex align-items-center justify-content-center"
-                    :class="isSavedPlayers ? 'btn-light' : 'btn-success'">
+                    class="ls-1 me-2 me-sm-3 btn btn-sm d-flex align-items-center justify-content-center"
+                    :class="!inUsersList ? (isSavedPlayers ? 'btn-light p-md-1' : 'btn-success p-md-1') : (isSavedPlayers ? 'btn-light' : 'btn-success')">
                     <svg v-if="isSavedPlayers" xmlns="http://www.w3.org/2000/svg" width="16" height="16"
                         fill="currentColor" class="bi bi-lightning-charge text-dark" viewBox="0 0 16 16">
                         <path
@@ -79,7 +81,7 @@
                 <button v-else v-tooltip data-bs-toggle="tooltip" data-bs-placement="top"
                     :style="!inUsersList ? { boxShadow: '2px 2px 2px #000000c2' } : {}"
                     :title="isSavedPlayers ? 'remove player' : 'Duel player'" type="button"
-                    class="p-md-1 ls-1 btn btn-sm d-flex align-items-center justify-content-center"
+                    class="ls-1 btn btn-sm d-flex align-items-center justify-content-center"
                     :class="isSavedPlayers ? 'btn-danger' : 'btn-light'">
                     <svg v-if="isSavedPlayers" xmlns="http://www.w3.org/2000/svg" width="16" height="16"
                         fill="currentColor" class="bi bi-trash3 text-light" viewBox="0 0 16 16">
@@ -92,7 +94,7 @@
                             d="M11.251.068a.5.5 0 0 1 .227.58L9.677 6.5H13a.5.5 0 0 1 .364.843l-8 8.5a.5.5 0 0 1-.842-.49L6.323 9.5H3a.5.5 0 0 1-.364-.843l8-8.5a.5.5 0 0 1 .615-.09zM4.157 8.5H7a.5.5 0 0 1 .478.647L6.11 13.59l5.732-6.09H9a.5.5 0 0 1-.478-.647L9.89 2.41z" />
                     </svg>
                     <span v-show="inUsersList" :class="inUsersList ? 'd-sm-block' : ''" class="d-none ms-1 pt-1">{{
-            isSavedPlayers ? 'Remove' :
+                        isSavedPlayers ? 'Remove' :
                         'Duel'
                         }}</span>
                 </button>
@@ -154,6 +156,10 @@ img {
     top: 8%;
     right: 0;
     border-color: #1e292c !important;
+}
+
+.border-brown {
+    border-color: #8f4d2f !important;
 }
 
 a {
