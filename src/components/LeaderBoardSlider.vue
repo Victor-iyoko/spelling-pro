@@ -1,6 +1,6 @@
 <template>
-    <swiper :effect="'coverflow'" :grabCursor="true" :centeredSlides="true" :loop="true" :slidesPerView="'auto'"
-        :coverflowEffect="{
+    <Swiper @realIndexChange="toggleProgress" :effect="'coverflow'" :grabCursor="true" :centeredSlides="true"
+        :loop="true" :slidesPerView="'auto'" :coverflowEffect="{
         rotate: 0,
         stretch: 0,
         depth: 350,
@@ -9,7 +9,7 @@
     }" :pagination="{ el: '.swiper-pagination', clickable: true }" :modules="[EffectCoverflow, Pagination]"
         :autoplay="{ delay: 2000 }" class="mySwiper">
         <swiper-slide
-            class="bg-dark p-2 p-md-3 rounded-4 border border-1 border-black d-flex flex-column justify-content-center align-items-center">
+            class="bg-secondarybg p-2 p-md-3 rounded-4 border border-1 border-black d-flex flex-column justify-content-center align-items-center">
             <div class="d-flex flex-column align-items-center">
                 <img src="/IMG-20230322-WA0206.jpg" class="rounded-circle" />
                 <h2 class="text-yellow mt-2 text-shadow">#1</h2>
@@ -17,7 +17,7 @@
             </div>
         </swiper-slide>
         <swiper-slide
-            class="bg-dark p-2 p-md-3 rounded-4 border border-1 border-black d-flex flex-column justify-content-center align-items-center">
+            class="bg-secondarybg p-2 p-md-3 rounded-4 border border-1 border-black d-flex flex-column justify-content-center align-items-center">
             <div class="d-flex flex-column align-items-center">
                 <img src="/IMG-20230322-WA0206.jpg" class="rounded-circle" />
                 <h2 class="text-yellow mt-2 text-shadow">#2</h2>
@@ -25,7 +25,7 @@
             </div>
         </swiper-slide>
         <swiper-slide
-            class="bg-dark p-2 p-md-3 rounded-4 border border-1 border-black d-flex flex-column justify-content-center align-items-center">
+            class="bg-secondarybg p-2 p-md-3 rounded-4 border border-1 border-black d-flex flex-column justify-content-center align-items-center">
             <div class="d-flex flex-column align-items-center">
                 <img src="/IMG-20230322-WA0206.jpg" class="rounded-circle" />
                 <h2 class="text-yellow mt-2 text-shadow">#3</h2>
@@ -33,7 +33,7 @@
             </div>
         </swiper-slide>
         <swiper-slide
-            class="bg-dark p-2 p-md-3 rounded-4 border border-1 border-black d-flex flex-column justify-content-center align-items-center">
+            class="bg-secondarybg p-2 p-md-3 rounded-4 border border-1 border-black d-flex flex-column justify-content-center align-items-center">
             <div class="d-flex flex-column align-items-center">
                 <img src="/IMG-20230322-WA0206.jpg" class="rounded-circle" />
                 <h2 class="text-yellow mt-2 text-shadow">#4</h2>
@@ -41,7 +41,7 @@
             </div>
         </swiper-slide>
         <swiper-slide
-            class="bg-dark p-2 p-md-3 rounded-4 border border-1 border-black d-flex flex-column justify-content-center align-items-center">
+            class="bg-secondarybg p-2 p-md-3 rounded-4 border border-1 border-black d-flex flex-column justify-content-center align-items-center">
             <div class="d-flex flex-column align-items-center">
                 <img src="/IMG-20230322-WA0206.jpg" class="rounded-circle" />
                 <h2 class="text-yellow mt-2 text-shadow">#5</h2>
@@ -49,7 +49,7 @@
             </div>
         </swiper-slide>
         <swiper-slide
-            class="bg-dark p-2 p-md-3 rounded-4 border border-1 border-black d-flex flex-column justify-content-center align-items-center">
+            class="bg-secondarybg p-2 p-md-3 rounded-4 border border-1 border-black d-flex flex-column justify-content-center align-items-center">
             <div class="d-flex flex-column align-items-center">
                 <img src="/IMG-20230322-WA0206.jpg" class="rounded-circle" />
                 <h2 class="text-yellow mt-2 text-shadow">#6</h2>
@@ -57,7 +57,7 @@
             </div>
         </swiper-slide>
         <swiper-slide
-            class="bg-dark p-2 p-md-3 rounded-4 border border-1 border-black d-flex flex-column justify-content-center align-items-center">
+            class="bg-secondarybg p-2 p-md-3 rounded-4 border border-1 border-black d-flex flex-column justify-content-center align-items-center">
             <div class="d-flex flex-column align-items-center">
                 <img src="/IMG-20230322-WA0206.jpg" class="rounded-circle" />
                 <h2 class="text-yellow mt-2 text-shadow">#7</h2>
@@ -65,7 +65,7 @@
             </div>
         </swiper-slide>
         <swiper-slide
-            class="bg-dark p-2 p-md-3 rounded-4 border border-1 border-black d-flex flex-column justify-content-center align-items-center">
+            class="bg-secondarybg p-2 p-md-3 rounded-4 border border-1 border-black d-flex flex-column justify-content-center align-items-center">
             <div class="d-flex flex-column align-items-center">
                 <img src="/IMG-20230322-WA0206.jpg" class="rounded-circle" />
                 <h2 class="text-yellow mt-2 text-shadow">#8</h2>
@@ -73,7 +73,7 @@
             </div>
         </swiper-slide>
         <swiper-slide
-            class="bg-dark p-2 p-md-3 rounded-4 border border-1 border-black d-flex flex-column justify-content-center align-items-center">
+            class="bg-secondarybg p-2 p-md-3 rounded-4 border border-1 border-black d-flex flex-column justify-content-center align-items-center">
             <div class="d-flex flex-column align-items-center">
                 <img src="/IMG-20230322-WA0206.jpg" class="rounded-circle" />
                 <h2 class="text-yellow mt-2 text-shadow">#9</h2>
@@ -81,7 +81,7 @@
             </div>
         </swiper-slide>
         <swiper-slide
-            class="bg-dark p-2 p-md-3 rounded-4 border border-1 border-black d-flex flex-column justify-content-center align-items-center">
+            class="bg-secondarybg p-2 p-md-3 rounded-4 border border-1 border-black d-flex flex-column justify-content-center align-items-center">
             <div class="d-flex flex-column align-items-center">
                 <img src="/IMG-20230322-WA0206.jpg" class="rounded-circle" />
                 <h2 class="text-yellow mt-2 text-shadow">#10</h2>
@@ -89,37 +89,34 @@
             </div>
         </swiper-slide>
         <div class="swiper-pagination"></div>
-    </swiper>
+    </Swiper>
 </template>
 <script setup>
 // Import Swiper Vue.js components
 import { Swiper, SwiperSlide } from 'swiper/vue';
-
 // Import Swiper styles
 import 'swiper/css';
 import 'swiper/css/autoplay';
 import 'swiper/css/effect-coverflow';
 import 'swiper/css/pagination';
-
 // import required modules
 import { EffectCoverflow, Pagination } from 'swiper/modules';
+
+function toggleProgress(swiper) {
+    console.log(swiper.realIndex);
+}
 </script>
 
 <style scoped>
 .swiper-slide {
     width: 230px;
     height: 250px;
-    aspect-ratio: 1/1;
+    /* aspect-ratio: 1/1; */
 }
 
 .swiper-coverflow {
     padding: 30px 0;
 }
-
-/* 
-.swiper-pagination {
-    margin-top: 130px;
-} */
 
 img {
     height: 130px;

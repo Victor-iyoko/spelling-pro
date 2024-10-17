@@ -1,8 +1,8 @@
 <template>
     <div class="player d-flex w-100 py-2 px-3 rounded-3" :class="inUsersList ? 'mb-2' : ''"
         :style="!inUsersList ? { background: '#31393b' } : { background: '#a36041e1' }">
-        <div class="position-relative rounded-circle border me-3" :id="inTable ? 'hide__sm-table' : ''"
-            :class="inUsersList ? 'avatar__container-userlist border-4' : 'avatar__container border-2 border-secondary'">
+        <div class="position-relative rounded-circle border me-3"
+            :class="inUsersList || inTable ? `avatar__container-userlist border-4 ${inTable ? 'hide__sm-table' : ''}` : 'avatar__container border-2 border-secondary'">
             <img src="/IMG-20230322-WA0167.jpg" class="w-100 h-100 rounded-circle" alt="avatar">
             <div
                 class="rank w-100 h-100 overflow-hidden position-absolute top-0 start-0 bg-dark bg-opacity-50 opacity-0 rounded-circle text-white d-flex flex-column align-items-center justify-content-center">
@@ -94,7 +94,7 @@
                             d="M11.251.068a.5.5 0 0 1 .227.58L9.677 6.5H13a.5.5 0 0 1 .364.843l-8 8.5a.5.5 0 0 1-.842-.49L6.323 9.5H3a.5.5 0 0 1-.364-.843l8-8.5a.5.5 0 0 1 .615-.09zM4.157 8.5H7a.5.5 0 0 1 .478.647L6.11 13.59l5.732-6.09H9a.5.5 0 0 1-.478-.647L9.89 2.41z" />
                     </svg>
                     <span v-show="inUsersList" :class="inUsersList ? 'd-sm-block' : ''" class="d-none ms-1 pt-1">{{
-                        isSavedPlayers ? 'Remove' :
+            isSavedPlayers ? 'Remove' :
                         'Duel'
                         }}</span>
                 </button>
@@ -187,6 +187,11 @@ button:hover {
     color: rgb(33, 37, 41) !important
 }
 
+@media screen and (max-width: 767px) {
+    .hide__sm-table {
+        margin-right: 8px !important;
+    }
+}
 
 @media screen and (max-width: 500px) {
     .avatar__container-userlist {
@@ -217,7 +222,7 @@ button:hover {
 }
 
 @media screen and (max-width: 400px) {
-    #hide__sm-table {
+    .hide__sm-table {
         display: none;
     }
 }

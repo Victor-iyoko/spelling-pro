@@ -75,8 +75,9 @@
                             v-tooltip data-bs-toggle="tooltip" data-bs-placement="bottom" title="45000 XP more to go ">
                             15000 / 60000 XP
                         </span>
-                        <div class="progress-bar bg-success fs-6 rounded-1" role="progressbar" style="width: 25%;"
-                            aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
+                        <div class="progress-bar progress-bar-striped progress-bar-animated bg-success fs-6 rounded-1"
+                            role="progressbar" style="width: 25%;" aria-valuenow="25" aria-valuemin="0"
+                            aria-valuemax="100"></div>
                     </div>
                     <div class="w-100 mt-2 d-flex justify-content-between text-white">
                         <span>

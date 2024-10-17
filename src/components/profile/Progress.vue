@@ -3,11 +3,9 @@
         <h3 class="fs-4 fw-bold mb-2 text-white text-shadow ls-1">
             Progress
         </h3>
-        <div class="d-flex align-items-center justify-content-between">
-            <span class="fs-6 text-yellow mb-1">
-                Check out your progress over the last 50 matches.
-            </span>
-        </div>
+        <span class="fs-6 text-yellow mb-1">
+            Check out your player's progress over the last 50 matches.
+        </span>
         <div :style="{ boxShadow: '3px 0px 4px #000000', width: 'fit-content' }"
             class="charts bg-secondarybg bg-light p-2 border-0 rounded-top-2 ms-auto d-flex gap-3">
             <svg v-for="data, i in categoriesArr" width="16" height="16" xmlns="http://www.w3.org/2000/svg"
