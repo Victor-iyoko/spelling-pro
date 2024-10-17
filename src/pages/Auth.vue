@@ -1,28 +1,32 @@
 <template>
     <div v-ActivePage="useRoute().name"
         class="text-center text-white d-flex align-items-center justify-content-center w-100 h-100">
-        <main class="w-100 h-100 d-flex align-items-center justify-content-center overflow-hidden position-relative">
-            <div id="login" class="position-absolute">
-                <div class="screen position-relative overflow-hidden rounded-3">
-                    <div id="login-overlay">
-                        <div class="d-none">
-                            <ForgotPW @changeAuth="handleAuthChange" @authRotate="handleAuthRotate(login, loginOverlay)"
-                                :isShowOverlay="isShowOverlay" />
+        <main class="w-100 h-100 overflow-hidden">
+            <div class="w-100 h-100 auth__container position-relative d-flex align-items-center justify-content-center">
+
+                <div id="login" class="position-absolute">
+                    <div class="screen position-relative overflow-hidden rounded-3">
+                        <div id="login-overlay">
+                            <div class="d-none">
+                                <ForgotPW @changeAuth="handleAuthChange"
+                                    @authRotate="handleAuthRotate(login, loginOverlay)"
+                                    :isShowOverlay="isShowOverlay" />
+                            </div>
                         </div>
+                        <Login @changeAuth="handleAuthChange" @authRotate="handleAuthRotate(login, loginOverlay)"
+                            :isLogin="isLogin" :isShowOverlay="isShowOverlay" />
                     </div>
-                    <Login @changeAuth="handleAuthChange" @authRotate="handleAuthRotate(login, loginOverlay)"
-                        :isLogin="isLogin" :isShowOverlay="isShowOverlay" />
                 </div>
-            </div>
-            <div id="register" class="position-absolute">
-                <div class="screen position-relative overflow-hidden rounded-3">
-                    <div id="register-overlay">
-                        <div class="d-none">
-                            <ConfirmEmail @changeAuth="handleAuthChange" />
+                <div id="register" class="position-absolute">
+                    <div class="screen position-relative overflow-hidden rounded-3">
+                        <div id="register-overlay">
+                            <div class="d-none">
+                                <ConfirmEmail @changeAuth="handleAuthChange" />
+                            </div>
                         </div>
+                        <Register @changeAuth="handleAuthChange"
+                            @authRotate="handleAuthRotate(register, registerOverlay)" :isLogin="isLogin" />
                     </div>
-                    <Register @changeAuth="handleAuthChange" @authRotate="handleAuthRotate(register, registerOverlay)"
-                        :isLogin="isLogin" />
                 </div>
             </div>
         </main>
@@ -205,5 +209,17 @@ main {
     width: 100%;
     height: 100%;
     background-color: #121516;
+}
+
+@media screen and (max-width: 500px) {
+    main .auth__container {
+        transform: scale(.8);
+    }
+}
+
+@media screen and (max-height: 490px) {
+    main .auth__container {
+        transform: scale(.8);
+    }
 }
 </style>

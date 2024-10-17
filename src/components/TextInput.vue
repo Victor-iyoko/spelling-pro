@@ -9,7 +9,7 @@
             </span>
             <input @focus="handleFocus" @blur="handleFocus" v-model="model" :type="type"
                 class="form-control text-white bg-transparent border-0 rounded-0 ls-1"
-                :style="size ? { fontSize: size + 'px' } : {}" :placeholder="placeholder"
+                :style="size ? { fontSize: size + 'px' } : {}" :placeholder="placeholder" :autocomplete="type === 'password' ? 'current-password' : ''"
                 :class="auth && !size ? 'padding__big' : 'pb-1'" :aria-label="type">
         </div>
     </div>
