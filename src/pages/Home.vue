@@ -47,4 +47,10 @@ const vActivePage = ActivePage;
         gap: 10px;
     }
 }
+
+@media screen and (max-width: 599px) {
+    .categories-grid {
+        margin: 15px auto;
+    }
+}
 </style>
