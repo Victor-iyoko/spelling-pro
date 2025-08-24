@@ -347,4 +347,10 @@ onMounted(() => {
 div {
     cursor: progress;
 }
+
+@media (max-width: 576px) {
+    h2 {
+        font-size: 20px !important;
+    }
+}
 </style>

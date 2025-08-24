@@ -1,5 +1,5 @@
 <template>
-    <header class="bg-light-subtle p-1 p-md-2 d-flex justify-content-between align-items-center user-select-none">
+    <header class="bg-light-subtle p-1 p-md-2 d-flex justify-content-between align-items-center position-relative">
         <div class="d-flex justify-content-between align-items-center">
             <RouterLink to="/" class="me-auto">
                 <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" fill="currentColor"
@@ -9,8 +9,9 @@
                 </svg>
             </RouterLink>
             <Transition>
-                <div v-show="game.start" class="fs-4">
-                    {{ game.questionAns }} / <span v-if="settings.data.time.dependency === 'new question'">
+                <div v-show="game.start" class="question fs-4">
+                    {{ game.questionAns }} /
+                    <span v-if="settings.data.time.dependency === 'new question'">
                         {{ settings.data.question.number }}
                     </span>
                     <svg v-else xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor"
@@ -36,21 +37,19 @@
                 </div>
                 <div class="position-absolute d-flex">
                     <svg v-for=" heart  in  game.lifesArr " xmlns="http://www.w3.org/2000/svg" width="25" height="25"
-                        fill="currentColor" class="bi bi-heart pe-1 text-danger pe-none" viewBox="0 0 16 16"
-                        :class="{ 'last-life': game.lifes === 1 && heart.id === 1 }">
+                        fill="currentColor" class="bi bi-heart pe-1 text-danger pe-none" viewBox="0 0 16 16">
                         <path
                             d="m8 2.748-.717-.737C5.6.281 2.514.878 1.4 3.053c-.523 1.023-.641 2.5.314 4.385.92 1.815 2.834 3.989 6.286 6.357 3.452-2.368 5.365-4.542 6.286-6.357.955-1.886.838-3.362.314-4.385C13.486.878 10.4.28 8.717 2.01zM8 15C-7.333 4.868 3.279-3.04 7.824 1.143q.09.083.176.171a3 3 0 0 1 .176-.17C12.72-3.042 23.333 4.867 8 15" />
                     </svg>
                 </div>
             </div>
-            <h1 v-else class="fs-4 m-0 text-dark user-select-none">HOW TO PLAY</h1>
+            <h1 v-else class="fs-4 m-0 text-dark position-absolute">HOW TO PLAY</h1>
         </Transition>
         <div class="d-flex justify-content-between align-items-center">
-            <Transition><span v-show="game.start" class="fs-4">{{ game.score }}</span></Transition>
+            <Transition><span v-show="game.start" class="score fs-4">{{ game.score }}</span></Transition>
 
             <svg @click="settings.handleSettings('sound', !settings.data.sound)" xmlns="http://www.w3.org/2000/svg"
-                width="40" height="40" fill="currentColor" class="bi bi-volume-up text-dark ms-auto"
-                viewBox="0 0 16 16">
+                width="40" height="40" fill="currentColor" class="bi bi-volume text-dark ms-auto" viewBox="0 0 16 16">
                 <template v-if="settings.data.sound">
                     <path
                         d="M11.536 14.01A8.47 8.47 0 0 0 14.026 8a8.47 8.47 0 0 0-2.49-6.01l-.708.707A7.48 7.48 0 0 1 13.025 8c0 2.071-.84 3.946-2.197 5.303z" />
@@ -115,5 +114,88 @@ let game = useGameStore();
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
+}
+
+@media screen and (max-width: 767px) {
+
+    .bi-heart,
+    .bi-heart-fill {
+        width: 22px;
+        height: 22px;
+    }
+
+    .bi-x,
+    .bi-volume {
+        width: 35px;
+        height: 35px;
+    }
+
+    .question,
+    .score {
+        font-size: 20px !important;
+    }
+}
+
+@media screen and (max-width: 600px) {
+
+    header {
+        padding: 8px 15px !important;
+        min-height: 43px;
+    }
+
+    a,
+    .bi-volume {
+        display: none;
+    }
+
+    .question {
+        margin-right: auto;
+    }
+
+    .score {
+        margin-left: auto;
+    }
+}
+
+@media screen and (max-width: 480px) {
+
+    .bi-heart,
+    .bi-heart-fill {
+        width: 20px;
+        height: 20px;
+    }
+
+    .question,
+    .score {
+        font-size: 18px !important;
+    }
+
+    .question>svg {
+        width: 20px;
+        height: 20px;
+    }
+}
+
+@media screen and (max-width: 399px) {
+
+    header {
+        min-height: 40px !important;
+    }
+
+    .bi-heart,
+    .bi-heart-fill {
+        width: 19px;
+        height: 19px;
+    }
+
+    .question,
+    .score {
+        font-size: 16px !important;
+    }
+
+    .question>svg {
+        width: 19px;
+        height: 19px;
+    }
 }
 </style>

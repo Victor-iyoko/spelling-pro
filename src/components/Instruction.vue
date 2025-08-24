@@ -13,4 +13,22 @@ const props = defineProps({
 p {
     width: 90%;
 }
+
+@media (max-width: 991px) {
+    p {
+        font-size: 22px !important;
+    }
+}
+
+@media (max-width: 576px) {
+    p {
+        font-size: 20px !important;
+    }
+}
+
+@media (max-width: 450px) {
+    p {
+        font-size: 18px !important;
+    }
+}
 </style>

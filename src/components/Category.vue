@@ -51,7 +51,6 @@ function getColor(index) {
     return colors[index % colors.length];
 };
 
-let hoverAnimationInterval;
 const animatedTiles = ref([]);
 
 onMounted(() => {
@@ -91,7 +90,7 @@ svg.vertical {
 }
 
 .category {
-    box-shadow: 3px 3px 4px #000000;
+    box-shadow: 3px 3px 4px #000000ce;
     transition: all .4s ease-in-out;
     overflow: hidden;
 }

@@ -29,3 +29,11 @@ onMounted(() => {
     game.time.dependency = settings.data.time.dependency;
 });
 </script>
+
+<style scoped>
+@media screen and (max-width: 399px) {
+    h2 {
+        font-size: 24px !important;
+    }
+}
+</style>
