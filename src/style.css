@@ -1,14 +1,14 @@
 @font-face {
   font-family: 'MoreSugar-regular';
-  src: url('./MoreSugar-Regular.ttf');
+  src: url('/fonts/MoreSugar-Regular.ttf');
 }
 @font-face {
   font-family: 'Grandstander';
-  src: url('./Grandstander-Regular.ttf');
+  src: url('/fonts/Grandstander-Regular.ttf');
 }
 @font-face {
   font-family: 'Grandstander-thin';
-  src: url('./Grandstander-Thin.ttf');
+  src: url('/fonts/Grandstander-Thin.ttf');
 }
 
 body {
